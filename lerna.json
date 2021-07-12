@@ -1,0 +1,11 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "ignoreChanges": [
+    "**/package-lock.json",
+    "**/__tests__/**",
+    "**/*.md"
+  ],
+  "version": "independent"
+}
