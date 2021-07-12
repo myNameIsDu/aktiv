@@ -1,6 +1,6 @@
 {
   "name": "@du012/formula",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -48,7 +48,7 @@
   "devDependencies": {
     "eslint": "^7.23.0"
   },
-  "publishConfig":{
-    "access":"public"
+  "publishConfig": {
+    "access": "public"
   }
 }
