@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/myNameIsDu/du-cli/compare/@du012/launcher@0.3.1...@du012/launcher@0.3.2) (2021-07-18)
+
+
+### Bug Fixes
+
+* launcher mv react react-dom to peer ([c9624fa](https://github.com/myNameIsDu/du-cli/commit/c9624fa8a843a56d5352c4444ac85483ea5da0fd))
+
+
+
+
+
 ## [0.3.1](https://github.com/myNameIsDu/du-cli/compare/@du012/launcher@0.3.0...@du012/launcher@0.3.1) (2021-07-18)
 
 
