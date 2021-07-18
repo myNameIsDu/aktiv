@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/myNameIsDu/du-cli/compare/@du012/launcher@0.3.2...@du012/launcher@0.4.0) (2021-07-18)
+
+
+### Features
+
+* launcher打包配置 ([2ae7800](https://github.com/myNameIsDu/du-cli/commit/2ae78001658368d78c04a56580f69e13c5b27596))
+
+
+
+
+
 ## [0.3.2](https://github.com/myNameIsDu/du-cli/compare/@du012/launcher@0.3.1...@du012/launcher@0.3.2) (2021-07-18)
 
 
