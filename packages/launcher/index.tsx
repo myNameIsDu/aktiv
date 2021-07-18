@@ -2,16 +2,6 @@ import ReactDOM from 'react-dom';
 import type { ComponentType } from 'react';
 import { BrowserRouter, HashRouter, Routes } from 'react-router-dom';
 import renderRoutes from './render-routers';
-// [
-//     {
-//         path:'',
-//         component:'',
-//         casessensitive:'',
-//         children:[
-
-//         ]
-//     }
-// ]
 export interface RouteItem {
     path?: string;
     component: ComponentType | (() => Promise<ComponentType>);
