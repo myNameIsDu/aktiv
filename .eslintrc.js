@@ -25,10 +25,10 @@ module.exports = {
         react: {
             version: 'detect',
         },
-        'import/ignore': ['react-native'],
+        'import/ignore': ['react', 'react-dom'],
         'import/resolver': {
             node: {
-                extensions: ['.js', '.ts', '.tsx'],
+                extensions: ['.js', 'jsx', '.ts', '.tsx'],
             },
         },
     },
@@ -243,12 +243,7 @@ module.exports = {
         '@typescript-eslint/no-var-requires': 0,
         'react/jsx-uses-react': 'error',
         'react/jsx-uses-vars': 'error',
+        // 忽略react react-dom 因为这里是peer依赖
+        'import/no-unresolved': [2, { ignore: ['react', 'react-dom'] }],
     },
-    // rules: {
-
-    //     'no-unused-vars': 'error',
-
-    //     '@typescript-eslint/no-unused-vars': 'off',
-
-    // },
 };
