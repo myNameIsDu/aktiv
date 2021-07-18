@@ -1,11 +1,12 @@
 {
   "name": "@du012/launcher",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "",
   "main": "./lib/index.js",
   "module": "./lib/index.esm.js",
   "scripts": {
-    "build": "rm -rf types && rm -rf lib && tsc && rollup -c"
+    "build": "rm -rf types && rm -rf lib && tsc && rollup -c",
+    "rollup": "rollup -c"
   },
   "keywords": [],
   "author": "du012",
@@ -18,9 +19,7 @@
     "react-dom": "^17.0.2"
   },
   "dependencies": {
-    "@babel/preset-env": "^7.14.7",
-    "@babel/preset-react": "^7.14.5",
-    "@rollup/plugin-babel": "^5.3.0",
+    "@babel/runtime": "^7.14.6",
     "history": "^5.0.0",
     "react-loadable": "^5.5.0",
     "react-router": "^6.0.0-beta.0",
@@ -28,10 +27,17 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
+    "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-typescript": "^8.2.3",
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
+    "@types/react-loadable": "^5.5.6",
     "rollup": "^2.53.2",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "tslib": "^2.3.0",
     "typescript": "^4.3.5"
   }

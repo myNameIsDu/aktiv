@@ -20,7 +20,7 @@ interface OptionsType {
 }
 
 export default class {
-    readonly options;
+    options: OptionsType;
 
     constructor(params: OptionsType) {
         this.options = params;
