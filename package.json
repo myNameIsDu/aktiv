@@ -25,5 +25,8 @@
   "dependencies": {},
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint --cache"
-  }
+  },
+  "workspaces": [
+    "./packages/*"
+  ]
 }
