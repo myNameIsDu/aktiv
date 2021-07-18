@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/myNameIsDu/du-cli/compare/@du012/launcher@0.3.0...@du012/launcher@0.3.1) (2021-07-18)
+
+
+### Bug Fixes
+
+* delete comment ([b907c67](https://github.com/myNameIsDu/du-cli/commit/b907c67a3722a2cbcf3e1d0a116fcdbd5c867a03))
+
+
+
+
+
 # [0.3.0](https://github.com/myNameIsDu/du-cli/compare/@du012/launcher@0.0.4...@du012/launcher@0.3.0) (2021-07-18)
 
 
