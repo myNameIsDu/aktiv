@@ -1,15 +1,20 @@
 import ReactDOM from 'react-dom';
-import type { ComponentType } from 'react';
 import { BrowserRouter, HashRouter, Routes } from 'react-router-dom';
 import renderRoutes from './render-routers';
+// import { hot } from 'react-hot-loader';
+import type { ComponentType } from 'react';
 
 export * from 'react-router-dom';
-export interface PropsType {
+export { renderRoutes };
+
+export interface RouteComponentPropsType {
     routes?: Array<RouteItem>;
 }
+export type RouteComponentType = ComponentType;
+export type DynamicImportType = Promise<{ default: RouteComponentType }>;
 export interface RouteItem {
     path?: string;
-    component: ComponentType<PropsType> | (() => Promise<ComponentType<PropsType>>);
+    component: RouteComponentType | (() => DynamicImportType);
     casessensitive?: boolean;
     children?: Array<RouteItem>;
     lazy?: boolean;
@@ -29,12 +34,12 @@ export default class {
     start(): void {
         const { hash, routes } = this.options;
         const Router = hash ? HashRouter : BrowserRouter;
-
-        ReactDOM.render(
+        const APP = () => (
             <Router>
                 <Routes>{renderRoutes(routes)}</Routes>
-            </Router>,
-            document.getElementById('root'),
+            </Router>
         );
+
+        ReactDOM.render(<APP />, document.getElementById('root'));
     }
 }

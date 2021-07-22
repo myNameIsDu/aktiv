@@ -4,8 +4,11 @@
   "description": "",
   "main": "./lib/index.js",
   "module": "./lib/index.esm.js",
+  "types": "./types/index.d.ts",
   "scripts": {
     "build": "rm -rf types && rm -rf lib && tsc && rollup -c",
+    "watch:tsc": "rm -rf types &&  tsc -w",
+    "watch:rollup":"rm -rf lib && rollup -c -w",
     "rollup": "rollup -c"
   },
   "keywords": [],
@@ -21,6 +24,7 @@
   "dependencies": {
     "@babel/runtime": "^7.14.6",
     "history": "^5.0.0",
+    "react-hot-loader": "^4.13.0",
     "react-loadable": "^5.5.0",
     "react-router": "^6.0.0-beta.0",
     "react-router-dom": "^6.0.0-beta.0"

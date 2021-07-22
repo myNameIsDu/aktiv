@@ -2,32 +2,36 @@ import { ReactNode } from 'react';
 import { Route } from 'react-router-dom';
 import loadable from 'react-loadable';
 import loading from './loading';
-import type { RouteItem, PropsType } from './index';
+import type { RouteItem, RouteComponentPropsType, DynamicImportType } from './index';
 import type { ComponentType } from 'react';
 
-export default (routes: Array<RouteItem>): Array<ReactNode> => {
-    return routes.map(item => {
-        const { path, component, lazy } = item;
+const renderRoutes = (routes: Array<RouteItem> | undefined): Array<ReactNode> => {
+    return routes
+        ? routes.map(item => {
+              const { path, component, lazy, children } = item;
 
-        const props: PropsType = {};
+              if (lazy) {
+                  const LoadCom = loadable({
+                      loader: component as () => DynamicImportType,
+                      loading,
+                  });
 
-        if (lazy) {
-            const LoadCom = loadable({
-                loader: component as () => Promise<ComponentType<PropsType>>,
-                loading,
-            });
+                  return (
+                      <Route key={path} path={path} element={<LoadCom />}>
+                          {renderRoutes(children)}
+                      </Route>
+                  );
+              }
 
-            if (item.children) {
-                props.routes = item.children;
-            }
+              const Com = component as ComponentType<RouteComponentPropsType>;
 
-            return <Route key={path} path={path} element={<LoadCom {...props} />} />;
-        }
-        if (item.children) {
-            props.routes = item.children;
-        }
-        const Com = component as ComponentType<PropsType>;
-
-        return <Route key={path} path={path} element={<Com {...props} />} />;
-    });
+              return (
+                  <Route key={path} path={path} element={<Com />}>
+                      {renderRoutes(children)}
+                  </Route>
+              );
+          })
+        : [];
 };
+
+export default renderRoutes;
