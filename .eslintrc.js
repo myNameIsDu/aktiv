@@ -241,6 +241,7 @@ module.exports = {
         '@typescript-eslint/no-use-before-define': ['error'],
         '@typescript-eslint/type-annotation-spacing': 'error',
         '@typescript-eslint/no-var-requires': 0,
+        '@typescript-eslint/no-non-null-assertion': 0,
         'react/jsx-uses-react': 'error',
         'react/jsx-uses-vars': 'error',
         // 忽略react react-dom 因为这里是peer依赖
