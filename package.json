@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "publish": "lerna publish --yes --conventional-commits",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint": "eslint ./packages/launcher"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
