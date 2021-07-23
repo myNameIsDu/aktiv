@@ -19,10 +19,19 @@
     "access": "public"
   },
   "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^16.8.3 || ^17"
+  },
+  "peerDependenciesMeta": {
+    "react-dom": {
+      "optional": true
+    },
+    "react-native": {
+      "optional": true
+    }
   },
   "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "@babel/runtime": "^7.14.6",
     "history": "^5.0.0",
     "react-hot-loader": "^4.13.0",

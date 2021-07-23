@@ -4,5 +4,5 @@
     "outDir": "./types",
     "emitDeclarationOnly":true,
   },
-  "exclude": ["rollup.config.js", "types", "lib", "jest.config.js"]
+  "exclude": ["rollup.config.js", "types", "lib", "jest.config.js", "babel.config.js"]
 }
