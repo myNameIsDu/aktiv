@@ -1,7 +1,9 @@
-import { babel } from '@rollup/plugin-babel';
+import babel from '@rollup/plugin-babel';
 import tsc from '@rollup/plugin-typescript';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
+
+const extensions = ['js', 'jsx', 'ts', 'tsx'];
 
 export default {
     input: './index.tsx',
@@ -21,24 +23,14 @@ export default {
     external: ['react', 'react-dom'],
     plugins: [
         // 帮助 rollup 查找 node_modules 里的三方模块
-        resolve(),
+        resolve({ extensions }),
         // 帮助 rollup 查找 commonjs 规范的模块, 常配合 rollup-plugin-node-resolve 一起使用
         commonjs(),
         tsc(),
         babel({
-            extensions: ['js', 'jsx', 'ts', 'tsx'],
+            extensions,
             babelHelpers: 'runtime',
             exclude: /node_modules/,
-            presets: [
-                ['@babel/preset-env', { loose: true }],
-                [
-                    '@babel/preset-react',
-                    {
-                        runtime: 'automatic',
-                    },
-                ],
-            ],
-            plugins: ['@babel/plugin-transform-runtime'],
         }),
     ],
 };
