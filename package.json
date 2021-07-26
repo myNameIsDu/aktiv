@@ -5,7 +5,7 @@
     "publish": "lerna publish --yes --conventional-commits",
     "prepare": "husky install",
     "lint": "eslint ./packages/launcher",
-    "bootstrap":"lerna bootstrap"
+    "bootstrap": "lerna bootstrap"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
