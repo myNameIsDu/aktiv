@@ -5,6 +5,7 @@ import renderRoutes from './router/render-routers';
 import type { ComponentType } from 'react';
 
 export * from 'react-router-dom';
+export * from './hooks';
 export { renderRoutes };
 
 export interface RouteComponentPropsType {
