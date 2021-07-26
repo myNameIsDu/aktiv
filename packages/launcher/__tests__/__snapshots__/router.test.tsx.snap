@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test router test router config lazy should loading and load component 1`] = `
+<body>
+  <div
+    data-testid="root"
+    id="root"
+  >
+    <div />
+  </div>
+</body>
+`;
+
+exports[`test router test router config lazy should loading and load component 2`] = `
+<body>
+  <div
+    data-testid="root"
+    id="root"
+  >
+    <div>
+      home
+    </div>
+  </div>
+</body>
+`;
