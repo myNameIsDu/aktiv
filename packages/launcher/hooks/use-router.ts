@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 type UseRouterReturns = {
     redirect(path: string, params: Params): void;
+    replace(path: string, params: Params): void;
 };
 
 type Params = Partial<Record<string, unknown>>;
