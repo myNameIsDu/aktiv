@@ -109,4 +109,62 @@ describe('test router', () => {
             );
         });
     });
+
+    describe('test router config title', () => {
+        it('should assign document.title', () => {
+            const Home = () => {
+                return <div>home</div>;
+            };
+            const app = new Launcher({
+                routes: [
+                    {
+                        path: '/',
+                        component: Home,
+                        title: 'home',
+                    },
+                ],
+            });
+
+            act(() => {
+                app.start();
+            });
+            expect(document.title).toBe('home');
+        });
+    });
+
+    describe('test router config lazy', () => {
+        function waitFor(delay: number) {
+            return new Promise(resolve => {
+                setTimeout(resolve, delay);
+            });
+        }
+        it('should loading and load component', async () => {
+            function Home() {
+                return <div>home</div>;
+            }
+            const homeLazy = () => {
+                return waitFor(4000).then(() => {
+                    return { default: Home, __esModule: true };
+                });
+            };
+            const app = new Launcher({
+                routes: [
+                    {
+                        path: '/',
+                        component: homeLazy,
+                        title: 'home',
+                        lazy: true,
+                    },
+                ],
+            });
+
+            act(() => {
+                app.start();
+            });
+
+            expect(document.body).toMatchSnapshot();
+            await waitFor(4000);
+            expect(document.body).toMatchSnapshot();
+        });
+    });
 });

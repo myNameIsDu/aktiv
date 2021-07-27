@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/myNameIsDu/du-cli/compare/@du012/launcher@0.4.1...@du012/launcher@0.5.0) (2021-07-25)
+
+
+### Features
+
+* 实现launcher路由基本渲染能力 ([45db45f](https://github.com/myNameIsDu/du-cli/commit/45db45f7e9392c04a211aac3d5c5c1545c6544cc))
+* router add redirect and title ([23424bf](https://github.com/myNameIsDu/du-cli/commit/23424bf858ef22e565959843f169084862d6e88d))
+
+
+
+
+
 ## [0.4.1](https://github.com/myNameIsDu/du-cli/compare/@du012/launcher@0.4.0...@du012/launcher@0.4.1) (2021-07-18)
 
 **Note:** Version bump only for package @du012/launcher

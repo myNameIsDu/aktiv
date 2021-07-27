@@ -1,4 +1,4 @@
-const NODE_ENV = process.env.NODE_ENV;
+const { NODE_ENV } = process.env;
 const isDevelopment = NODE_ENV === 'development';
 const isProduction = NODE_ENV === 'production';
 
@@ -10,7 +10,7 @@ module.exports = () => {
                 {
                     useBuiltIns: 'usage',
                     corejs: {
-                        version: 3
+                        version: 3,
                     },
                     // 指定兼容到哪个版本
                     targets: {
@@ -22,7 +22,7 @@ module.exports = () => {
                     },
                 },
             ],
-            '@babel/preset-react'
+            '@babel/preset-react',
         ].filter(Boolean),
         plugins: [
             [
@@ -30,7 +30,7 @@ module.exports = () => {
                 {
                     libraryName: 'antd',
                     libraryDirectory: 'es',
-                    style: 'css'
+                    style: 'css',
                 },
             ],
             /*
@@ -40,11 +40,12 @@ module.exports = () => {
             */
             '@babel/plugin-transform-runtime',
             '@babel/plugin-proposal-optional-chaining', // 可选连
-            isDevelopment && 'react-hot-loader/babel' // 热更新
+            isDevelopment && 'react-hot-loader/babel', // 热更新
         ].filter(Boolean),
         // 超过行数压缩  babel的配置
-        compact: isProduction
+        compact: isProduction,
     };
+
     if (isDevelopment) {
         // 开启编译缓存
         config.cacheDirectory = true;
@@ -54,5 +55,6 @@ module.exports = () => {
         */
         config.cacheCompression = false;
     }
+
     return config;
 };
