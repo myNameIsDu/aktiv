@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/myNameIsDu/du-cli/compare/@du012/formula@0.3.1...@du012/formula@0.5.0) (2021-07-27)
+
+
+### Features
+
+* add useRouter for launcher ([e8af7dc](https://github.com/myNameIsDu/du-cli/commit/e8af7dc87aebc7dc9411dc3d02f9ef55b713f087))
+
+
+
+
+
 # [0.4.0](https://github.com/myNameIsDu/du-cli/compare/@du012/formula@0.3.1...@du012/formula@0.4.0) (2021-07-27)
 
 
