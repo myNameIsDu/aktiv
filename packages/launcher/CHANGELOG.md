@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/myNameIsDu/du-cli/compare/@du012/launcher@0.5.0...@du012/launcher@0.7.0) (2021-07-27)
+
+
+### Bug Fixes
+
+* add useRouter declare ([1091f77](https://github.com/myNameIsDu/du-cli/commit/1091f777ad0ef8a582ef52bac1d916f418e16ff8))
+* delete rollup-plugin-closure-compiler dep ([bdb5044](https://github.com/myNameIsDu/du-cli/commit/bdb50444d8533626268c90d7c0b10b1a84b3208d))
+* modify script & add terser & react react-dom => devdep ([1dfe622](https://github.com/myNameIsDu/du-cli/commit/1dfe622c8c340008d8609a390b5f837c5a5c70d3))
+* publish launcher test dep ([ceae417](https://github.com/myNameIsDu/du-cli/commit/ceae4177f5fcf46c6b73e2fa6f0dd132d02d468e))
+
+
+### Features
+
+* add useRouter for launcher ([e8af7dc](https://github.com/myNameIsDu/du-cli/commit/e8af7dc87aebc7dc9411dc3d02f9ef55b713f087))
+
+
+
+
+
 # [0.5.0](https://github.com/myNameIsDu/du-cli/compare/@du012/launcher@0.4.1...@du012/launcher@0.5.0) (2021-07-25)
 
 
