@@ -15,7 +15,7 @@ export default {
             esModule: false,
         },
         {
-            file: './lib/index.esm.js',
+            file: './es/index.js',
             sourcemap: true,
             format: 'esm',
         },
@@ -26,7 +26,9 @@ export default {
         resolve({ extensions }),
         // 帮助 rollup 查找 commonjs 规范的模块, 常配合 rollup-plugin-node-resolve 一起使用
         commonjs(),
-        tsc(),
+        tsc({
+            tsconfig: './tsconfig.json',
+        }),
         babel({
             extensions,
             babelHelpers: 'runtime',
