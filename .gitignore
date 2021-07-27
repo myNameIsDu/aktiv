@@ -1,4 +1,12 @@
-node_modules
-.eslintcache
+### Node ###
 lib
+logs
+*.log
 types
+.eslintcache
+node_modules
+packages/**/node_modules
+
+### Editor ###
+.idea
+.vscode/*
