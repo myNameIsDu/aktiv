@@ -3,10 +3,10 @@
   "version": "0.5.0",
   "description": "",
   "main": "./lib/index.js",
-  "module": "./lib/index.esm.js",
-  "types": "./types/index.d.ts",
+  "module": "./es/index.js",
+  "types": "./es/index.d.ts",
   "scripts": {
-    "build": "rm -rf types && rm -rf lib && tsc && rollup -c",
+    "build": "rm -rf types && rm -rf lib && rm -rf es && rollup -c",
     "watch:tsc": "rm -rf types &&  tsc -w",
     "watch:rollup": "rm -rf lib && rollup -c -w",
     "rollup": "rollup -c",
