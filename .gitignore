@@ -15,6 +15,7 @@ node_modules
 packages/**/node_modules
 
 # Other
+es
 lib
 types
 

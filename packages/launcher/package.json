@@ -1,15 +1,14 @@
 {
   "name": "@du012/launcher",
-  "version": "0.5.0",
+  "version": "0.8.0",
   "description": "",
   "main": "./lib/index.js",
-  "module": "./lib/index.esm.js",
-  "types": "./types/index.d.ts",
+  "module": "./es/index.js",
+  "types": "./es/index.d.ts",
   "scripts": {
-    "build": "rm -rf types && rm -rf lib && tsc && rollup -c",
-    "watch:tsc": "rm -rf types &&  tsc -w",
-    "watch:rollup": "rm -rf lib && rollup -c -w",
-    "rollup": "rollup -c",
+    "clean": "rm -rf lib && rm -rf es",
+    "build": "npm run clean && rollup -c",
+    "watch": "npm run clean && rollup -c -w",
     "test": "jest"
   },
   "keywords": [],
@@ -32,8 +31,6 @@
   "dependencies": {
     "@babel/runtime": "^7.14.6",
     "history": "^5.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
     "react-hot-loader": "^4.13.0",
     "react-loadable": "^5.5.0",
     "react-router": "^6.0.0-beta.0",
@@ -55,9 +52,12 @@
     "@types/react-dom": "^17.0.9",
     "@types/react-loadable": "^5.5.6",
     "jest": "^27.0.6",
+    "react": "^16.8.3 || ^17",
+    "react-dom": "^17.0.2",
     "rollup": "^2.53.2",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^7.0.2",
     "ts-jest": "^27.0.4",
     "tslib": "^2.3.0",
     "typescript": "^4.3.5"
