@@ -1,11 +1,8 @@
 {
   "name": "@du012/formula",
-  "version": "0.3.1",
+  "version": "0.5.0",
   "description": "",
-  "main": "index.js",
-  "bin": {
-    "bh": "./bin/bh.js"
-  },
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
