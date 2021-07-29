@@ -13,7 +13,7 @@
   },
   "keywords": [],
   "author": "du012",
-  "license": "ISC",
+  "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
