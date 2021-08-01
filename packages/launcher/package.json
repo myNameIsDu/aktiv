@@ -4,12 +4,13 @@
   "description": "",
   "main": "./lib/index.js",
   "module": "./es/index.js",
-  "types": "./es/types/index.d.ts",
+  "types": "./es/types.d.ts",
   "scripts": {
     "clean": "gulp clean",
-    "build": "gulp && rollup -c",
+    "build": "gulp && rollup -c && npm run types",
     "watch": "gulp clean && rollup -c -w",
-    "test": "jest"
+    "test": "jest",
+    "types": "api-extractor run"
   },
   "keywords": [],
   "author": "du012",
@@ -41,6 +42,7 @@
     "@babel/plugin-transform-runtime": "^7.14.5",
     "@babel/preset-env": "^7.14.7",
     "@babel/preset-react": "^7.14.5",
+    "@microsoft/api-extractor": "^7.18.4",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-typescript": "^8.2.3",
     "@testing-library/jest-dom": "^5.14.1",
