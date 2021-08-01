@@ -1,16 +1,11 @@
 import ReactDOM from 'react-dom';
-import { BrowserRouter, HashRouter, Routes } from 'react-router-dom';
-import renderRoutes from './router/render-routers';
 // import { hot } from 'react-hot-loader';
+import WrapperInit, { pluginsRegistry } from './wrapperInit';
 import type { ComponentType } from 'react';
-
+import type { Plugin, PluginOpt } from './wrapperInit';
 export * from 'react-router-dom';
 export * from './hooks';
-export { renderRoutes };
 
-export interface RouteComponentPropsType {
-    routes?: Array<RouteItem>;
-}
 export type DynamicImportType = Promise<{ default: ComponentType }>;
 
 interface RouteItemBase {
@@ -41,27 +36,33 @@ export interface RouteItem {
     component?: ComponentType | (() => DynamicImportType);
 }
 
-interface OptionsType {
+interface ConstructorOptionsType {
     hash?: boolean;
     routes: Array<RouteItem>;
 }
 
 export default class {
-    options: OptionsType;
+    options: ConstructorOptionsType;
 
-    constructor(params: OptionsType) {
+    constructor(params: ConstructorOptionsType) {
         this.options = params;
     }
 
     start(): void {
         const { hash, routes } = this.options;
-        const Router = hash ? HashRouter : BrowserRouter;
-        const APP = () => (
-            <Router>
-                <Routes>{renderRoutes(routes)}</Routes>
-            </Router>
-        );
 
-        ReactDOM.render(<APP />, document.getElementById('root'));
+        ReactDOM.render(
+            <WrapperInit hash={hash} routes={routes} />,
+            document.getElementById('root'),
+        );
     }
+
+    /* eslint-disable class-methods-use-this*/
+    use(plugin: Plugin, opt?: PluginOpt): void {
+        pluginsRegistry({
+            plugin,
+            opt,
+        });
+    }
+    /* eslint-enable class-methods-use-this*/
 }

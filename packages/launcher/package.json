@@ -4,7 +4,7 @@
   "description": "",
   "main": "./lib/index.js",
   "module": "./es/index.js",
-  "types": "./es/index.d.ts",
+  "types": "./es/types/index.d.ts",
   "scripts": {
     "clean": "gulp clean",
     "build": "gulp && rollup -c",

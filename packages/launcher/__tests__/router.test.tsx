@@ -1,4 +1,4 @@
-import Launcher, { useNavigate, Outlet } from '../index';
+import Launcher, { useNavigate, Outlet } from '../src';
 import { act, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -20,7 +20,7 @@ afterEach(() => {
     window.history.pushState({}, '', '/');
 });
 
-describe('test router', () => {
+describe('router', () => {
     describe('test router redirect', () => {
         it('Redirect Route should redirect ', () => {
             function Home() {
