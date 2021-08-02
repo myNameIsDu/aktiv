@@ -8,23 +8,29 @@ export * from './hooks';
 
 export type DynamicImportType = Promise<{ default: ComponentType }>;
 
-interface RouteItemBase {
-    path?: string;
-    casessensitive?: boolean;
-    children?: Array<RouteItem>;
-    lazy?: boolean;
-    title?: string;
-}
-export interface RedirectRouteItem extends RouteItemBase {
-    redirect: string;
-}
-export interface NormalRouteItem extends RouteItemBase {
-    component: ComponentType | (() => DynamicImportType);
-}
-export interface ParentRedirectRoteItem extends RouteItemBase {
-    redirect: string;
-    component: ComponentType | (() => DynamicImportType);
-}
+/*
+    There are three routes:
+        RedirectRouteItem
+        NormalRouteItem
+        ParentRedirectRoteItem
+*/
+// interface RouteItemBase {
+//     path?: string;
+//     casessensitive?: boolean;
+//     children?: Array<RouteItem>;
+//     lazy?: boolean;
+//     title?: string;
+// }
+// export interface RedirectRouteItem extends RouteItemBase {
+//     redirect: string;
+// }
+// export interface NormalRouteItem extends RouteItemBase {
+//     component: ComponentType | (() => DynamicImportType);
+// }
+// export interface ParentRedirectRoteItem extends RouteItemBase {
+//     redirect: string;
+//     component: ComponentType | (() => DynamicImportType);
+// }
 
 export interface RouteItem {
     path?: string;
@@ -34,6 +40,7 @@ export interface RouteItem {
     title?: string;
     redirect?: string;
     component?: ComponentType | (() => DynamicImportType);
+    [x: string]: any;
 }
 
 interface ConstructorOptionsType {

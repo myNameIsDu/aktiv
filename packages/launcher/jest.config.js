@@ -1,5 +1,5 @@
 module.exports = {
-    testMatch: ['<rootDir>/__tests__/*.test.{ts,tsx}'],
+    testMatch: ['<rootDir>/__tests__/**/*.test.{ts,tsx}'],
     displayName: 'launcher',
     preset: 'ts-jest',
     collectCoverage: false,

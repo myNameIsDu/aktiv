@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`plugin plugin with router should inner wrap the route 1`] = `
+exports[`plugin inner with router should inner wrap the route component and receive opt and route 1`] = `
 <body>
   <div
     data-testid="root"
@@ -21,7 +21,7 @@ exports[`plugin plugin with router should inner wrap the route 1`] = `
 </body>
 `;
 
-exports[`plugin plugin with router should inner wrap the route 2`] = `
+exports[`plugin inner with router should inner wrap the route component and receive opt and route 2`] = `
 <body>
   <div
     data-testid="root"

@@ -3,7 +3,7 @@ import renderRoutes from './router/render-routers';
 import type { RouteItem } from './index';
 import type { ReactElement } from 'react';
 
-type PluginRenderType = (children?: ReactElement, opt?: PluginOpt, route?: any) => ReactElement;
+type PluginRenderType = (children: ReactElement, opt?: PluginOpt, route?: any) => ReactElement;
 
 export interface Plugin {
     name: string;
@@ -43,7 +43,11 @@ interface WrapperInitPropsType {
     routes: Array<RouteItem>;
 }
 type typeType = 'inner' | 'outer';
-const pluginsWrapper = (type: typeType, children: ReactElement, route: RouteItem): ReactElement => {
+const pluginsWrapper = (
+    type: typeType,
+    children: ReactElement,
+    route?: RouteItem,
+): ReactElement => {
     let wrapper = children;
 
     plugins.forEach(item => {
@@ -73,7 +77,10 @@ const routeWrapper = ({ hash, routes }: WrapperInitPropsType): JSX.Element => {
 };
 
 const WrapperInit = ({ hash, routes }: WrapperInitPropsType): JSX.Element => {
-    return routeWrapper({ hash, routes });
+    const wrapperInner = routeWrapper({ hash, routes });
+    const wrapperOuter = pluginsWrapper('outer', wrapperInner);
+
+    return wrapperOuter;
 };
 
 export default WrapperInit;
