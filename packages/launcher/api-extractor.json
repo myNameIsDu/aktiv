@@ -330,8 +330,11 @@
       "default": {
         "logLevel": "warning"
         // "addToApiReportFile": false
+      },
+      // ignore tag https://api-extractor.com/pages/messages/ae-missing-release-tag/
+      "ae-missing-release-tag": {
+        "logLevel": "none"
       }
-
       // "ae-extra-release-tag": {
       //   "logLevel": "warning",
       //   "addToApiReportFile": true
@@ -349,7 +352,8 @@
      */
     "tsdocMessageReporting": {
       "default": {
-        "logLevel": "warning"
+        // fix: tsdoc-undefined-tag
+        "logLevel": "none"
         // "addToApiReportFile": false
       }
 

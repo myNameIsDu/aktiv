@@ -1,16 +1,10 @@
 import ReactDOM from 'react-dom';
 // import { hot } from 'react-hot-loader';
-import { createStore, initialStore, createActions } from './store';
+import { createStore, initialStore } from './store';
 import WrapperInit, { pluginsRegistry, pluginReducers } from './wrapperInit';
 import type { ReducerConfig, ReducersMapObject, Store } from './store';
 import type { ComponentType } from 'react';
 import type { Plugin, PluginOpt } from './wrapperInit';
-
-export type DynamicImportType = Promise<{ default: ComponentType }>;
-export { ReducerConfig, Plugin, PluginOpt };
-
-// eslint-disable-next-line init-declarations
-let store: Store;
 
 /*
     There are three routes:
@@ -35,6 +29,7 @@ let store: Store;
 //     redirect: string;
 //     component: ComponentType | (() => DynamicImportType);
 // }
+export type DynamicImportType = Promise<{ default: ComponentType }>;
 
 export interface RouteItem {
     path?: string;
@@ -44,10 +39,11 @@ export interface RouteItem {
     title?: string;
     redirect?: string;
     component?: ComponentType | (() => DynamicImportType);
-    [x: string]: any;
+    // plugin route options
+    [x: string]: unknown;
 }
 
-interface ConstructorOptionsType {
+export interface ConstructorOptionsType {
     hash?: boolean;
     routes: Array<RouteItem>;
     reducerConfig?: ReducerConfig;
@@ -63,9 +59,12 @@ export default class {
 
     start(): void {
         const { hash, routes, reducerConfig, reducers } = this.options;
+        // eslint-disable-next-line init-declarations
+        let store: Store | null = null;
 
         if (reducerConfig || reducers || Object.keys(pluginReducers).length) {
             store = createStore({ ...reducerConfig, ...pluginReducers }, reducers);
+
             initialStore(store);
         }
 
@@ -84,10 +83,3 @@ export default class {
     }
     /* eslint-enable class-methods-use-this*/
 }
-export * from 'react-router-dom';
-export * from 'react-router';
-export * from 'react-redux';
-export * from 'redux';
-export * from 'immer';
-export * from './hooks';
-export { createActions };

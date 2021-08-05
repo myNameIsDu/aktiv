@@ -171,7 +171,7 @@ describe('store', () => {
                 state3: { c: 'promise-resolve-payload' },
             });
             // promise reject
-            const resultCPromiseReject = await state3Actions
+            const resultCPromiseReject = await (state3Actions as any)
                 .editorState3CPromiseReject()
                 .catch((error: any) => error);
 

@@ -7,10 +7,10 @@ import { ReactElement } from 'react';
 describe('plugin inner with router', () => {
     it('should inner wrap the route component and receive opt and route', () => {
         /* eslint-disable */
-            const spyInnerCallTime = jest.fn(() => {});
-            const spyInnerRenderTime = jest.fn(()=>{});
-            const spyHomeRenderTime = jest.fn(()=>{})
-            /* eslint-enable */
+        const spyInnerCallTime = jest.fn(() => {});
+        const spyInnerRenderTime = jest.fn(() => {});
+        const spyHomeRenderTime = jest.fn(()=>{})
+        /* eslint-enable */
 
         const opt = {
             a: 1,
@@ -31,10 +31,10 @@ describe('plugin inner with router', () => {
 
         const plugin = {
             name: 'testPlugin',
-            inner: (children: ReactElement, receiveOpt: any, route: RouteItem) => {
+            inner: (children: ReactElement, route: RouteItem, receiveOpt: any) => {
                 expect(receiveOpt).toEqual(opt);
                 spyInnerCallTime();
-                routeList.push(route);
+                routeList.push(route as RouteItem);
 
                 return <InnerComponent>{children}</InnerComponent>;
             },

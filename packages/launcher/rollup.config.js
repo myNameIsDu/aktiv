@@ -7,7 +7,7 @@ import { terser } from 'rollup-plugin-terser';
 const extensions = ['js', 'jsx', 'ts', 'tsx'];
 
 export default {
-    input: './src/index.tsx',
+    input: './src/index.ts',
     output: [
         {
             file: './lib/index.js',
@@ -21,7 +21,7 @@ export default {
             format: 'esm',
         },
     ],
-    external: ['react', 'react-dom'],
+    external: ['react', 'react-dom', 'react/jsx-runtime'],
     plugins: [
         // 帮助 rollup 查找 node_modules 里的三方模块
         resolve({ extensions }),

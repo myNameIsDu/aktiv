@@ -3,12 +3,10 @@ import { createStore as reduxCreateStore, compose, combineReducers, applyMiddlew
 import reduxThunk from 'redux-thunk';
 import reduxPromise from './promiseMiddleware';
 import type { Store, ReducersMapObject, AnyAction } from 'redux';
-import type {} from 'immer';
 
 export type { ReducersMapObject, Store };
-/* eslint-disable */
+// eslint-disable-next-line init-declarations
 let store: Store;
-/* eslint-enable*/
 
 export const initialStore = (s: Store): void => {
     store = s;
@@ -17,40 +15,30 @@ export const initialStore = (s: Store): void => {
 type WritableDraft<T> = {
     -readonly [K in keyof T]: T[K];
 };
-type StateType = {
-    readonly [x: string]: any;
-};
-type PayloadType = any;
+export type StateType = Readonly<Record<string, unknown>>;
 
-type ActionItem = {
+export type PayloadType = unknown;
+
+export type ActionItem = {
     key: string;
-    payload: (...arg: any[]) => any;
-    handle?: (s: StateType, p: PayloadType) => any;
+    payload: (...arg: unknown[]) => unknown;
+    handle?: (s: StateType, p: PayloadType) => unknown;
 };
+export type ActionsConfig = Record<string, ActionItem>;
 
-type ActionsConfig = {
-    [x: string]: ActionItem;
-};
-
-type ResultActionTypes = {
-    [x: string]: (...arg: any[]) => any;
-};
+export type ResultActionTypes = Record<string, (...arg: unknown[]) => unknown>;
 
 export type ReducerConfigItem = {
     state: StateType;
     config: ActionsConfig;
 };
 
-export type ReducerConfig = {
-    [x: string]: ReducerConfigItem;
-};
+export type ReducerConfig = Record<string, ReducerConfigItem>;
 
 interface HandleType {
-    (s: StateType, a: AnyAction): any;
+    (s: StateType, a: AnyAction): unknown;
 }
-interface HandlesType {
-    [x: string]: HandleType;
-}
+type HandlesType = Record<string, HandleType>;
 
 export const createActions = (actionsConfig: ActionsConfig): ResultActionTypes => {
     const result: ResultActionTypes = {};
@@ -94,7 +82,7 @@ const transReducers = (initialState: StateType, handles: HandlesType) => {
         if (Object.prototype.hasOwnProperty.call(handles, action.type)) {
             /*
                 immer: https://immerjs.github.io/immer/return
-                use handle return nothing
+                use handle not return anything
                 default return state
             */
             handles[action.type](state, action);
@@ -142,6 +130,6 @@ export const createStore = (
 
     return reduxCreateStore(
         combineReducers(newReducers),
-        applyMiddleware(reduxThunk, reduxPromise),
+        composeEnhancers(applyMiddleware(reduxThunk, reduxPromise)),
     );
 };
