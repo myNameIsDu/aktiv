@@ -1,12 +1,16 @@
 import ReactDOM from 'react-dom';
 // import { hot } from 'react-hot-loader';
-import WrapperInit, { pluginsRegistry } from './wrapperInit';
+import { createStore, initialStore, createActions } from './store';
+import WrapperInit, { pluginsRegistry, pluginReducers } from './wrapperInit';
+import type { ReducerConfig, ReducersMapObject, Store } from './store';
 import type { ComponentType } from 'react';
 import type { Plugin, PluginOpt } from './wrapperInit';
-export * from 'react-router-dom';
-export * from './hooks';
 
 export type DynamicImportType = Promise<{ default: ComponentType }>;
+export { ReducerConfig, Plugin, PluginOpt };
+
+// eslint-disable-next-line init-declarations
+let store: Store;
 
 /*
     There are three routes:
@@ -46,6 +50,8 @@ export interface RouteItem {
 interface ConstructorOptionsType {
     hash?: boolean;
     routes: Array<RouteItem>;
+    reducerConfig?: ReducerConfig;
+    reducers?: ReducersMapObject;
 }
 
 export default class {
@@ -56,10 +62,15 @@ export default class {
     }
 
     start(): void {
-        const { hash, routes } = this.options;
+        const { hash, routes, reducerConfig, reducers } = this.options;
+
+        if (reducerConfig || reducers || Object.keys(pluginReducers).length) {
+            store = createStore({ ...reducerConfig, ...pluginReducers }, reducers);
+            initialStore(store);
+        }
 
         ReactDOM.render(
-            <WrapperInit hash={hash} routes={routes} />,
+            <WrapperInit store={store} hash={hash} routes={routes} />,
             document.getElementById('root'),
         );
     }
@@ -73,3 +84,10 @@ export default class {
     }
     /* eslint-enable class-methods-use-this*/
 }
+export * from 'react-router-dom';
+export * from 'react-router';
+export * from 'react-redux';
+export * from 'redux';
+export * from 'immer';
+export * from './hooks';
+export { createActions };

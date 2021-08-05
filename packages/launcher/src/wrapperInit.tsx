@@ -1,6 +1,8 @@
 import { BrowserRouter, HashRouter, Routes } from 'react-router-dom';
 import renderRoutes from './router/render-routers';
+import { Provider } from 'react-redux';
 import type { RouteItem } from './index';
+import type { Store, ReducerConfig, ReducerConfigItem } from './store';
 import type { ReactElement } from 'react';
 
 type PluginRenderType = (children: ReactElement, opt?: PluginOpt, route?: any) => ReactElement;
@@ -9,10 +11,11 @@ export interface Plugin {
     name: string;
     outer?: PluginRenderType;
     inner?: PluginRenderType;
-    action?: any;
+    reducerConfig?: ReducerConfigItem;
 }
 export interface PluginOpt {
     pluginSortIndex?: number;
+    reducers?: ReducerConfigItem;
     [x: string]: any;
 }
 export interface PluginItem {
@@ -21,26 +24,28 @@ export interface PluginItem {
 }
 
 const plugins: PluginItem[] = [];
-const pluginActions: any = {};
+
+export const pluginReducers: ReducerConfig = {};
 
 export function pluginsRegistry(item: PluginItem): void {
     const { plugin, opt = {} } = item;
-    const { action, name } = plugin;
+    const { reducerConfig, name } = plugin;
 
     plugins.push(item);
-    let thisAction = action;
+    let thisReducerConfig = reducerConfig;
 
-    if (opt.action) {
-        thisAction = opt.action;
+    if (opt.reducers) {
+        thisReducerConfig = opt.reducers;
     }
-    if (thisAction) {
-        pluginActions[name] = action;
+    if (thisReducerConfig) {
+        pluginReducers[name] = thisReducerConfig;
     }
 }
 
 interface WrapperInitPropsType {
     hash?: boolean;
     routes: Array<RouteItem>;
+    store?: Store;
 }
 type typeType = 'inner' | 'outer';
 const pluginsWrapper = (
@@ -64,7 +69,8 @@ const pluginsWrapper = (
 const renderRoutesPluginWrapper = (wrapper: ReactElement, route: RouteItem): ReactElement =>
     pluginsWrapper('inner', wrapper, route);
 
-const routeWrapper = ({ hash, routes }: WrapperInitPropsType): JSX.Element => {
+type RouteWrapperParamsType = Omit<WrapperInitPropsType, 'store'>;
+const routeWrapper = ({ hash, routes }: RouteWrapperParamsType): JSX.Element => {
     const Router = hash ? HashRouter : BrowserRouter;
 
     const APP = () => (
@@ -76,9 +82,13 @@ const routeWrapper = ({ hash, routes }: WrapperInitPropsType): JSX.Element => {
     return <APP />;
 };
 
-const WrapperInit = ({ hash, routes }: WrapperInitPropsType): JSX.Element => {
+const WrapperInit = ({ hash, routes, store }: WrapperInitPropsType): JSX.Element => {
     const wrapperInner = routeWrapper({ hash, routes });
     const wrapperOuter = pluginsWrapper('outer', wrapperInner);
+
+    if (store) {
+        return <Provider store={store}>{wrapperOuter}</Provider>;
+    }
 
     return wrapperOuter;
 };

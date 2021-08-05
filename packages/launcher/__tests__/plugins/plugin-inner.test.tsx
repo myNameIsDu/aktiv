@@ -4,21 +4,6 @@ import { act, screen } from '@testing-library/react';
 import type { RouteItem } from '../../src';
 import { ReactElement } from 'react';
 
-// eslint-disable-next-line init-declarations
-let node: HTMLDivElement;
-
-beforeEach(() => {
-    node = document.createElement('div');
-
-    node.id = 'root';
-    node.setAttribute('data-testid', 'root');
-    document.body.appendChild(node);
-});
-
-afterEach(() => {
-    node.remove();
-    window.history.pushState({}, '', '/');
-});
 describe('plugin inner with router', () => {
     it('should inner wrap the route component and receive opt and route', () => {
         /* eslint-disable */

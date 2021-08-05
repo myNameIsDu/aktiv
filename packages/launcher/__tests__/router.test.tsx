@@ -3,23 +3,6 @@ import { act, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import '@testing-library/jest-dom';
-
-// eslint-disable-next-line init-declarations
-let node: HTMLDivElement;
-
-beforeEach(() => {
-    node = document.createElement('div');
-
-    node.id = 'root';
-    node.setAttribute('data-testid', 'root');
-    document.body.appendChild(node);
-});
-
-afterEach(() => {
-    node.remove();
-    window.history.pushState({}, '', '/');
-});
-
 describe('router', () => {
     describe('test router redirect', () => {
         it('Redirect Route should redirect ', () => {

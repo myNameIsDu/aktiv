@@ -245,6 +245,17 @@ module.exports = {
         '@typescript-eslint/no-non-null-assertion': 0,
         'react/jsx-uses-react': 'error',
         'react/jsx-uses-vars': 'error',
+        // 使用@ts-<directive> 时需要声明描述
+        '@typescript-eslint/ban-ts-comment': [
+            'error',
+            {
+                'ts-expect-error': 'allow-with-description',
+                'ts-ignore': 'allow-with-description',
+                'ts-nocheck': 'allow-with-description',
+                'ts-check': 'allow-with-description',
+                minimumDescriptionLength: 3,
+            },
+        ],
         // 忽略react react-dom 因为这里是peer依赖
         'import/no-unresolved': [2, { ignore: ['react', 'react-dom'] }],
     },
