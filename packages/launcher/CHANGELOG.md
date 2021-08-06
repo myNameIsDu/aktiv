@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/myNameIsDu/du-cli/compare/@du012/launcher@0.8.0...@du012/launcher@0.9.0) (2021-08-06)
+
+
+### Features
+
+* add gulp task for clean & copy license ([319716c](https://github.com/myNameIsDu/du-cli/commit/319716c67020885f4be65191d5ce9538f491c13f))
+* done launcher base  feature ([038b001](https://github.com/myNameIsDu/du-cli/commit/038b0017bf357df171103ff9da3dbfdc29c5d80a))
+* done plugin inner & adjust the directory ([0132eef](https://github.com/myNameIsDu/du-cli/commit/0132eef8858758ff454f21239c968581ee6b6a77))
+* launcher plugin add inner feature and outer feature and test case ([9a5ece0](https://github.com/myNameIsDu/du-cli/commit/9a5ece05dffba2c505db11dec75511005b3d0976))
+* summarize the ts statement file ([2e82237](https://github.com/myNameIsDu/du-cli/commit/2e82237f69950ea5506ff776c4677b7869925bb2))
+
+
+### Performance Improvements
+
+* add config for tree shaking ([01f7c4b](https://github.com/myNameIsDu/du-cli/commit/01f7c4b914519c7e852fb6bd8d1d462c6600343f))
+* add config for tree shaking ([00badf9](https://github.com/myNameIsDu/du-cli/commit/00badf9024a1c394ea016d252787987c825b47e1))
+
+
+### Reverts
+
+* revert ([2534572](https://github.com/myNameIsDu/du-cli/commit/2534572d2b74e73cde4a498c7357dac8f941c678))
+
+
+
+
+
 # [0.8.0](https://github.com/myNameIsDu/du-cli/compare/@du012/launcher@0.5.0...@du012/launcher@0.8.0) (2021-07-27)
 
 
