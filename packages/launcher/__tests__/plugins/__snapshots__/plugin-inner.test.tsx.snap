@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`plugin inner with router should inner wrap the route component and receive opt and route 1`] = `
+<body>
+  <div
+    data-testid="root"
+    id="root"
+  >
+    <div>
+      innerRouter
+      <div>
+        <div>
+          <button>
+            go children
+          </button>
+          home
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`plugin inner with router should inner wrap the route component and receive opt and route 2`] = `
+<body>
+  <div
+    data-testid="root"
+    id="root"
+  >
+    <div>
+      innerRouter
+      <div>
+        <div>
+          <button>
+            go children
+          </button>
+          home
+          <div>
+            innerRouter
+            <div>
+              <div>
+                children
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

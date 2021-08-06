@@ -4,8 +4,9 @@
   "scripts": {
     "publish": "lerna publish --yes --conventional-commits",
     "prepare": "husky install",
-    "lint": "eslint ./packages/launcher",
-    "bootstrap": "lerna bootstrap"
+    "lint": "eslint .",
+    "bootstrap": "lerna bootstrap",
+    "test":"cd packages/launcher && npm run test"
   },
   "license": "MIT",
   "devDependencies": {

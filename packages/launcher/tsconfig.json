@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": ".",
+    "outDir": "./types",
     "emitDeclarationOnly":true,
   },
   "exclude": [
@@ -15,6 +15,7 @@
     "rollup.config.js",
     "types",
     "jest.config.js",
-    "babel.config.js"
+    "babel.config.js",
+    "jest.setup.ts"
   ]
 }

@@ -1,13 +1,13 @@
 import babel from '@rollup/plugin-babel';
 import tsc from '@rollup/plugin-typescript';
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 
 const extensions = ['js', 'jsx', 'ts', 'tsx'];
 
 export default {
-    input: './index.tsx',
+    input: './src/index.ts',
     output: [
         {
             file: './lib/index.js',
@@ -21,7 +21,7 @@ export default {
             format: 'esm',
         },
     ],
-    external: ['react', 'react-dom'],
+    external: ['react', 'react-dom', 'react/jsx-runtime'],
     plugins: [
         // 帮助 rollup 查找 node_modules 里的三方模块
         resolve({ extensions }),

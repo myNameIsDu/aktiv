@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`plugin outer with router should outer wrap router component and receive opt 1`] = `
+<body>
+  <div
+    data-testid="root"
+    id="root"
+  >
+    <div>
+      outer Router
+      <div>
+        <button>
+          go about
+        </button>
+        home
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`plugin outer with router should outer wrap router component and receive opt 2`] = `
+<body>
+  <div
+    data-testid="root"
+    id="root"
+  >
+    <div>
+      outer Router
+      <div>
+        about
+      </div>
+    </div>
+  </div>
+</body>
+`;

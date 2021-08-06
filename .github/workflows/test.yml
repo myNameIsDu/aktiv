@@ -1,4 +1,4 @@
-name: lint
+name: Tests
 
 on:
   # push:
@@ -9,8 +9,8 @@ on:
       - master
 
 jobs:
-  lint:
-    name: lint check
+  test:
+    name: Test Suite
     runs-on: ubuntu-latest
     
     steps: 
@@ -28,5 +28,5 @@ jobs:
       - name: bootstrap
         run: npm run bootstrap
       
-      - name: run lint
-        run: npm run lint
+      - name: run test
+        run: npm run test
