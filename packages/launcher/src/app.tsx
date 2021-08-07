@@ -13,7 +13,7 @@ import type { Plugin, PluginOpt } from './wrapperInit';
         NormalRouteItem
         ParentRedirectRoteItem
 */
-interface RouteItemBase {
+export interface RouteItemBase {
     path?: string;
     casessensitive?: boolean;
     children?: Array<RouteItem>;

@@ -7,7 +7,7 @@ export * from 'redux';
 export * from 'immer';
 export * from './hooks';
 
-export type { DynamicImportType, RouteItem, ConstructorOptionsType } from './app';
+export type { DynamicImportType, RouteItem, ConstructorOptionsType, RouteItemBase } from './app';
 export type {
     PluginInnerRenderType,
     PluginOuterRenderType,
