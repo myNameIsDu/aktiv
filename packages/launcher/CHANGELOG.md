@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/myNameIsDu/du-cli/compare/@aktiv/launcher@0.1.0...@aktiv/launcher@0.1.1) (2021-08-07)
+
+
+### Bug Fixes
+
+* export RouteItemBase type ([fec2568](https://github.com/myNameIsDu/du-cli/commit/fec2568191a6a5a30fb3a7f3e15a1ac246e5a92e))
+
+
+
+
+
 # 0.1.0 (2021-08-07)
 
 
