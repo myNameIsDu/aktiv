@@ -2,29 +2,29 @@ import { useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export type UseRouterReturns = {
-    redirect(path: string, params: UseRouterParams): void;
-    replace(path: string, params: UseRouterParams): void;
+    redirect(path: string, state?: UseRouterState): void;
+    replace(path: string, state?: UseRouterState): void;
 };
 
-export type UseRouterParams = Partial<Record<string, unknown>>;
+export type UseRouterState = Partial<Record<string, unknown>>;
 
 function useRouter(): UseRouterReturns {
     const navigate = useNavigate();
 
     const pushPath = useCallback(
-        (path: string, params: UseRouterParams = {}) => {
+        (path: string, state?: UseRouterState) => {
             return navigate(path, {
-                state: params,
+                state,
             });
         },
         [navigate],
     );
 
     const replacePath = useCallback(
-        (path: string, params: UseRouterParams = {}) => {
+        (path: string, state?: UseRouterState) => {
             return navigate(path, {
                 replace: true,
-                state: params,
+                state,
             });
         },
         [navigate],
