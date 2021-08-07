@@ -23,4 +23,4 @@ export type {
     ActionItem,
     PayloadType,
 } from './store';
-export { UseRouterReturns, UseRouterParams } from './hooks/use-router';
+export { UseRouterReturns, UseRouterState } from './hooks/use-router';

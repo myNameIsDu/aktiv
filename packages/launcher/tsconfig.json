@@ -16,6 +16,5 @@
     "types",
     "jest.config.js",
     "babel.config.js",
-    "jest.setup.ts"
   ]
 }
