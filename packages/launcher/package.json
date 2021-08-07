@@ -24,15 +24,8 @@
     "access": "public"
   },
   "peerDependencies": {
-    "react": "^16.8.3 || ^17"
-  },
-  "peerDependenciesMeta": {
-    "react-dom": {
-      "optional": true
-    },
-    "react-native": {
-      "optional": true
-    }
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.14.6",
