@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.1.0 (2021-08-07)
+
+
+### Bug Fixes
+
+* add useRouter declare ([1091f77](https://github.com/myNameIsDu/du-cli/commit/1091f777ad0ef8a582ef52bac1d916f418e16ff8))
+* delete comment ([b907c67](https://github.com/myNameIsDu/du-cli/commit/b907c67a3722a2cbcf3e1d0a116fcdbd5c867a03))
+* delete rollup-plugin-closure-compiler dep ([bdb5044](https://github.com/myNameIsDu/du-cli/commit/bdb50444d8533626268c90d7c0b10b1a84b3208d))
+* launcher mv react react-dom to peer ([c9624fa](https://github.com/myNameIsDu/du-cli/commit/c9624fa8a843a56d5352c4444ac85483ea5da0fd))
+* modify plugin opt.reducers => opt.reducerConfig ([d49126e](https://github.com/myNameIsDu/du-cli/commit/d49126e903fe714aedcdf8ae25b6ebe2764c69e2))
+* modify script & add terser & react react-dom => devdep ([1dfe622](https://github.com/myNameIsDu/du-cli/commit/1dfe622c8c340008d8609a390b5f837c5a5c70d3))
+* peerdep react react-dom >= 16.8 ([4495c80](https://github.com/myNameIsDu/du-cli/commit/4495c800f5dd01e373e49d8327ea1058bd9b1c23))
+* publish launcher test dep ([ceae417](https://github.com/myNameIsDu/du-cli/commit/ceae4177f5fcf46c6b73e2fa6f0dd132d02d468e))
+
+
+### Features
+
+* add gulp task for clean & copy license ([319716c](https://github.com/myNameIsDu/du-cli/commit/319716c67020885f4be65191d5ce9538f491c13f))
+* add immerEnableES5 options enable immer es5 and modify routeItem type ([3c8bdfb](https://github.com/myNameIsDu/du-cli/commit/3c8bdfb1134192ebb1a403d66f5e520949de6366))
+* add useRouter for launcher ([e8af7dc](https://github.com/myNameIsDu/du-cli/commit/e8af7dc87aebc7dc9411dc3d02f9ef55b713f087))
+* done launcher base  feature ([038b001](https://github.com/myNameIsDu/du-cli/commit/038b0017bf357df171103ff9da3dbfdc29c5d80a))
+* done plugin inner & adjust the directory ([0132eef](https://github.com/myNameIsDu/du-cli/commit/0132eef8858758ff454f21239c968581ee6b6a77))
+* laucher 修复类型 ([b5f694e](https://github.com/myNameIsDu/du-cli/commit/b5f694e4b65f49a79835c8b52f2d319786ee483b))
+* launcher add router ([07c7baa](https://github.com/myNameIsDu/du-cli/commit/07c7baabfa7a1dfd3121639c8a55b72a11109a3e))
+* launcher plugin add inner feature and outer feature and test case ([9a5ece0](https://github.com/myNameIsDu/du-cli/commit/9a5ece05dffba2c505db11dec75511005b3d0976))
+* launcher打包配置 ([2ae7800](https://github.com/myNameIsDu/du-cli/commit/2ae78001658368d78c04a56580f69e13c5b27596))
+* router add redirect and title ([23424bf](https://github.com/myNameIsDu/du-cli/commit/23424bf858ef22e565959843f169084862d6e88d))
+* summarize the ts statement file ([2e82237](https://github.com/myNameIsDu/du-cli/commit/2e82237f69950ea5506ff776c4677b7869925bb2))
+* 实现launcher路由基本渲染能力 ([45db45f](https://github.com/myNameIsDu/du-cli/commit/45db45f7e9392c04a211aac3d5c5c1545c6544cc))
+
+
+### Performance Improvements
+
+* add config for tree shaking ([01f7c4b](https://github.com/myNameIsDu/du-cli/commit/01f7c4b914519c7e852fb6bd8d1d462c6600343f))
+* add config for tree shaking ([00badf9](https://github.com/myNameIsDu/du-cli/commit/00badf9024a1c394ea016d252787987c825b47e1))
+
+
+### Reverts
+
+* revert ([2534572](https://github.com/myNameIsDu/du-cli/commit/2534572d2b74e73cde4a498c7357dac8f941c678))
+
+
+
+
+
 # [0.9.0](https://github.com/myNameIsDu/du-cli/compare/@du012/launcher@0.8.0...@du012/launcher@0.9.0) (2021-08-06)
 
 
