@@ -5,10 +5,10 @@
   "main": "./lib/index.js",
   "module": "./es/index.js",
   "types": "./es/types.d.ts",
-  "homepage": "https://github.com/myNameIsDu/du-cli/tree/master/packages/launcher",
+  "homepage": "https://github.com/myNameIsDu/aktiv/tree/master/packages/launcher",
   "repository": {
     "type": "git",
-    "url": "https://github.com/myNameIsDu/du-cli/tree/master/packages/launcher"
+    "url": "https://github.com/myNameIsDu/aktiv/tree/master/packages/launcher"
   },
   "scripts": {
     "clean": "gulp clean",
