@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@0.1.2...@aktiv/launcher@0.1.3) (2021-08-07)
+
+
+### Bug Fixes
+
+* modify launcher pakcage.json homepage and repository url ([6ebab19](https://github.com/myNameIsDu/aktiv/commit/6ebab19543c8a4abe368b5865f8a515165282e6d))
+
+
+
+
+
 ## [0.1.2](https://github.com/myNameIsDu/du-cli/compare/@aktiv/launcher@0.1.0...@aktiv/launcher@0.1.2) (2021-08-07)
 
 
