@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom';
+import { enableES5 } from 'immer';
 // import { hot } from 'react-hot-loader';
 import { createStore, initialStore } from './store';
 import WrapperInit, { pluginsRegistry, pluginReducers } from './wrapperInit';
@@ -12,31 +13,26 @@ import type { Plugin, PluginOpt } from './wrapperInit';
         NormalRouteItem
         ParentRedirectRoteItem
 */
-// interface RouteItemBase {
-//     path?: string;
-//     casessensitive?: boolean;
-//     children?: Array<RouteItem>;
-//     lazy?: boolean;
-//     title?: string;
-// }
-// export interface RedirectRouteItem extends RouteItemBase {
-//     redirect: string;
-// }
-// export interface NormalRouteItem extends RouteItemBase {
-//     component: ComponentType | (() => DynamicImportType);
-// }
-// export interface ParentRedirectRoteItem extends RouteItemBase {
-//     redirect: string;
-//     component: ComponentType | (() => DynamicImportType);
-// }
-export type DynamicImportType = Promise<{ default: ComponentType }>;
-
-export interface RouteItem {
+interface RouteItemBase {
     path?: string;
     casessensitive?: boolean;
     children?: Array<RouteItem>;
     lazy?: boolean;
     title?: string;
+}
+export interface RedirectRouteItem extends RouteItemBase {
+    redirect: string;
+}
+export interface NormalRouteItem extends RouteItemBase {
+    component: ComponentType | (() => DynamicImportType);
+}
+export interface ParentRedirectRoteItem extends RouteItemBase {
+    redirect: string;
+    component: ComponentType | (() => DynamicImportType);
+}
+export type DynamicImportType = Promise<{ default: ComponentType }>;
+
+export interface RouteItem extends RouteItemBase {
     redirect?: string;
     component?: ComponentType | (() => DynamicImportType);
     // plugin route options
@@ -48,6 +44,7 @@ export interface ConstructorOptionsType {
     routes: Array<RouteItem>;
     reducerConfig?: ReducerConfig;
     reducers?: ReducersMapObject;
+    immerEnableES5?: boolean;
 }
 
 export default class {
@@ -58,12 +55,15 @@ export default class {
     }
 
     start(): void {
-        const { hash, routes, reducerConfig, reducers } = this.options;
+        const { hash, routes, reducerConfig, reducers, immerEnableES5 } = this.options;
         // eslint-disable-next-line init-declarations
         let store: Store | null = null;
 
         if (reducerConfig || reducers || Object.keys(pluginReducers).length) {
             store = createStore({ ...reducerConfig, ...pluginReducers }, reducers);
+            if (immerEnableES5) {
+                enableES5();
+            }
 
             initialStore(store);
         }
