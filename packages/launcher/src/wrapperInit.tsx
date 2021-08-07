@@ -21,7 +21,7 @@ export interface Plugin {
 }
 export interface PluginOpt {
     pluginSortIndex?: number;
-    reducers?: ReducerConfigItem;
+    reducerConfig?: ReducerConfigItem;
     [x: string]: unknown;
 }
 interface PluginItem {
@@ -48,8 +48,8 @@ export function pluginsRegistry(item: PluginItem): void {
     plugins.push(item);
     let thisReducerConfig = reducerConfig;
 
-    if (opt.reducers) {
-        thisReducerConfig = opt.reducers;
+    if (opt.reducerConfig) {
+        thisReducerConfig = opt.reducerConfig;
     }
     if (thisReducerConfig) {
         pluginReducers[name] = thisReducerConfig;
