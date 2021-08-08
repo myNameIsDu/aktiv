@@ -51,6 +51,7 @@ interface ConstructorOptionsType {
     reducerConfig?: ReducerConfig;
     reducers?: ReducersMapObject;
     immerEnableES5?: boolean;
+    routerBasePath?: string;
 }
 ```
 ## router
@@ -59,6 +60,9 @@ interface ConstructorOptionsType {
 
 默认为browserRouter, 通过hash参数开启hashRouter
 
+### routerBasePath
+公有的路由前缀，详情查看react-router:
+https://github.com/ReactTraining/react-router/blob/dev/docs/advanced-guides/migrating-5-to-6.md#move-basename-from-router-to-routes
 ### routes
 
 静态路由配置
@@ -113,6 +117,7 @@ export interface ParentRedirectRoteItem extends RouteItemBase {
     component: ComponentType | (() => DynamicImportType);
 }
 ````
+需要注意的是，如果你的项目传入了,routerBasePath，正常情况下当你使用redirect，并传入绝对路径时应该加上前缀名，但是在这里我们已经帮您内置了，所以你可以忽略它
 
 
 ## store

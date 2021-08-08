@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation, useResolvedPath, useNavigate } from 'react-router-dom';
-
+import { globalRouterBasePath } from '../utils/globalEnv';
 interface WrapperRouteProps {
     children: JSX.Element;
     title?: string;
@@ -16,7 +16,10 @@ function WrapperRoute({ children, title, redirect }: WrapperRouteProps): JSX.Ele
             document.title = title;
         }
         if (pathname === currentRouteAbsolutePath && redirect) {
-            navigate(redirect);
+            const basePath = globalRouterBasePath.get();
+            const redirectPath = redirect.startsWith('/') ? basePath + redirect : redirect;
+
+            navigate(redirectPath);
         }
     }, [currentRouteAbsolutePath, navigate, pathname, redirect, title]);
 
