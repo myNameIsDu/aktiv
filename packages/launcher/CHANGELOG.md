@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@0.1.3...@aktiv/launcher@0.2.0) (2021-08-08)
+
+
+### Features
+
+* add basename and add basename to useRouter and redirect ([0d6923f](https://github.com/myNameIsDu/aktiv/commit/0d6923f934cf940a4207058ae4a33e42aac78306))
+
+
+
+
+
 ## [0.1.3](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@0.1.2...@aktiv/launcher@0.1.3) (2021-08-07)
 
 
