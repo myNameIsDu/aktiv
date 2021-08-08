@@ -1,11 +1,11 @@
-const isType = (s: unknown): string => {
-    return Object.prototype.toString.call(s).slice(8, -1);
-};
+import isType from 'kind-of';
+
+export { isType };
 
 export const isString = (s: unknown): boolean => {
-    return isType(s) === 'String';
+    return isType(s) === 'string';
 };
 
 export const isPromise = (s: unknown): boolean => {
-    return isType(s) === 'Promise';
+    return isType(s) === 'promise';
 };
