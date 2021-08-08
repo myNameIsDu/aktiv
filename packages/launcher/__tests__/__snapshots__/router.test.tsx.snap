@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`router test router config lazy should loading and load component 1`] = `
+exports[`router routerItem has lazy should loading and load component 1`] = `
 <body>
   <div
     data-testid="root"
@@ -11,7 +11,7 @@ exports[`router test router config lazy should loading and load component 1`] = 
 </body>
 `;
 
-exports[`router test router config lazy should loading and load component 2`] = `
+exports[`router routerItem has lazy should loading and load component 2`] = `
 <body>
   <div
     data-testid="root"
