@@ -1,8 +1,8 @@
 import Launcher, { useNavigate, Outlet } from '../src';
 import { act, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-
 import '@testing-library/jest-dom';
+
 describe('router', () => {
     describe('test router redirect', () => {
         it('Redirect Route should redirect ', () => {
@@ -13,7 +13,7 @@ describe('router', () => {
                 routes: [
                     {
                         path: '/',
-                        redirect: '/home',
+                        redirect: 'home',
                     },
                     {
                         path: '/home',
@@ -22,11 +22,11 @@ describe('router', () => {
                 ],
             });
 
-            expect(location.pathname).toBe('/');
+            expect(window.location.pathname).toBe('/');
             act(() => {
                 app.start();
             });
-            expect(location.pathname).toBe('/home');
+            expect(window.location.pathname).toBe('/home');
             expect(screen.getByTestId('root')).toContainHTML('<div>home</div>');
         });
 
@@ -82,14 +82,62 @@ describe('router', () => {
             act(() => {
                 app.start();
             });
-            expect(location.pathname).toBe('/');
+            expect(window.location.pathname).toBe('/');
             act(() => {
                 userEvent.click(screen.getByText('go home'));
             });
-            expect(location.pathname).toBe('/home/children-two');
+            expect(window.location.pathname).toBe('/home/children-two');
             expect(screen.getByTestId('root')).toContainHTML(
                 '<div>home<div>childrenTwo</div></div>',
             );
+        });
+
+        describe('use routerBasePath and redirect resolve path', () => {
+            const Home = () => {
+                return (
+                    <div>
+                        home
+                        <Outlet />
+                    </div>
+                );
+            };
+            const Children = () => {
+                return <div>children</div>;
+            };
+            const app = new Launcher({
+                routes: [
+                    {
+                        path: '/',
+                        redirect: '/home',
+                    },
+                    {
+                        path: '/home',
+                        component: Home,
+                        redirect: '/home/children',
+                        children: [
+                            {
+                                path: 'children',
+                                component: Children,
+                            },
+                        ],
+                    },
+                ],
+                routerBasePath: '/hello',
+            });
+
+            it('Should render empty, when normally loaded', () => {
+                act(() => {
+                    app.start();
+                });
+                expect(document.body.innerHTML).toBe('<div id="root" data-testid="root"></div>');
+            });
+            it('should redirect and normally render, when loaded use basePath', () => {
+                window.history.pushState({}, '', '/hello');
+                act(() => {
+                    app.start();
+                });
+                expect(window.location.pathname).toBe('/hello/home/children');
+            });
         });
     });
 
