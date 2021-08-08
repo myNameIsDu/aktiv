@@ -172,7 +172,6 @@ module.exports = {
         'no-useless-return': 'error',
         'no-var': 'error',
         'no-void': 'error',
-        'no-warning-comments': 'error',
         'nonblock-statement-body-position': 'error',
         'object-curly-newline': 'error',
         'object-curly-spacing': ['error', 'always'],
@@ -257,5 +256,9 @@ module.exports = {
         ],
         // 忽略react react-dom 因为这里是peer依赖
         'import/no-unresolved': [2, { ignore: ['react', 'react-dom'] }],
+        'no-warning-comments': [
+            'warn',
+            { terms: ['todo', 'fixme', 'any other term'], location: 'anywhere' },
+        ],
     },
 };

@@ -16,17 +16,45 @@ describe('userRouter', () => {
             <div>
                 <button
                     onClick={() => {
+                        redirect('about');
+                    }}
+                >
+                    redirect relative path
+                </button>
+                <button
+                    onClick={() => {
+                        redirect('/about');
+                    }}
+                >
+                    redirect absolute path
+                </button>
+                <button
+                    onClick={() => {
                         redirect('/about', state);
                     }}
                 >
-                    redirect
+                    redirect has params
+                </button>
+                <button
+                    onClick={() => {
+                        replace('about');
+                    }}
+                >
+                    replace relative path
+                </button>
+                <button
+                    onClick={() => {
+                        replace('/about');
+                    }}
+                >
+                    replace absolute path
                 </button>
                 <button
                     onClick={() => {
                         replace('/about', state);
                     }}
                 >
-                    replace
+                    replace has params
                 </button>
                 home
             </div>
@@ -38,7 +66,7 @@ describe('userRouter', () => {
         return <div>about</div>;
     };
 
-    it('should use push state', () => {
+    describe('there is no basePath', () => {
         const app = new Launcher({
             routes: [
                 {
@@ -51,20 +79,62 @@ describe('userRouter', () => {
                 },
             ],
         });
+        const renderAndJump = (s: string) => {
+            act(() => {
+                app.start();
+            });
 
-        act(() => {
-            app.start();
-        });
-        const beforeLength = window.history.length;
+            act(() => {
+                userEvent.click(screen.getByText(s));
+            });
+        };
 
-        act(() => {
-            userEvent.click(screen.getByText('redirect'));
+        describe('use userRouter => redirect and there is no basePath', () => {
+            it('should jump /about and history.length should added by one, when use absolute path', () => {
+                const beforeLength = window.history.length;
+
+                renderAndJump('redirect absolute path');
+                expect(window.location.pathname).toBe('/about');
+                expect(window.history.length).toBe(beforeLength + 1);
+            });
+            it('should jump /about and history.length should added by one, when use relative path', () => {
+                const beforeLength = window.history.length;
+
+                renderAndJump('redirect relative path');
+                expect(window.location.pathname).toBe('/about');
+                expect(window.history.length).toBe(beforeLength + 1);
+            });
+
+            it('should push state, when redirect have second params', () => {
+                renderAndJump('redirect has params');
+                expect(routerLocation.state).toEqual(state);
+            });
         });
-        expect(routerLocation.state).toEqual(state);
-        expect(window.history.length).toBe(beforeLength + 1);
+
+        describe('use userRouter => replace and there is no basePath', () => {
+            it('should jump /about andy history.length should not be added by one, when use absolute path', () => {
+                const beforeLength = window.history.length;
+
+                renderAndJump('replace absolute path');
+                expect(window.location.pathname).toBe('/about');
+                expect(window.history.length).toBe(beforeLength);
+            });
+            it('should jump /about and history.length should not be added by one, when use relative path', () => {
+                const beforeLength = window.history.length;
+
+                renderAndJump('replace relative path');
+                expect(window.location.pathname).toBe('/about');
+                expect(window.history.length).toBe(beforeLength);
+            });
+
+            it('should push state, when redirect have second params', () => {
+                renderAndJump('replace has params');
+                expect(routerLocation.state).toEqual(state);
+            });
+        });
     });
 
-    it('should use replace state', () => {
+    describe('use userRouter => redirect and has basePath', () => {
         const app = new Launcher({
             routes: [
                 {
@@ -76,17 +146,36 @@ describe('userRouter', () => {
                     component: About,
                 },
             ],
+            routerBasePath: '/hello',
+        });
+        const renderAndJump = (s: string) => {
+            window.history.pushState({}, '', '/hello');
+            act(() => {
+                app.start();
+            });
+
+            act(() => {
+                userEvent.click(screen.getByText(s));
+            });
+        };
+
+        it('show jump /hello/about, when use redirect relative path', () => {
+            renderAndJump('redirect relative path');
+            expect(window.location.pathname).toBe('/hello/about');
         });
 
-        act(() => {
-            app.start();
+        it('show jump /hello/about, when use redirect absolute path', () => {
+            renderAndJump('redirect absolute path');
+            expect(window.location.pathname).toBe('/hello/about');
         });
-        const beforeLength = window.history.length;
+        it('show jump /hello/about, when use replace relative path', () => {
+            renderAndJump('replace relative path');
+            expect(window.location.pathname).toBe('/hello/about');
+        });
 
-        act(() => {
-            userEvent.click(screen.getByText('replace'));
+        it('show jump /hello/about, when use replace absolute path', () => {
+            renderAndJump('replace absolute path');
+            expect(window.location.pathname).toBe('/hello/about');
         });
-        expect(routerLocation.state).toEqual(state);
-        expect(window.history.length).toBe(beforeLength);
     });
 });

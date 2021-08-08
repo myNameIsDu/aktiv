@@ -1,6 +1,7 @@
 import { BrowserRouter, HashRouter, Routes } from 'react-router-dom';
 import renderRoutes from './router/render-routers';
 import { Provider } from 'react-redux';
+import { globalRouterBasePath } from './utils/globalEnv';
 import type { RouteItem } from './app';
 import type { Store, ReducerConfig, ReducerConfigItem } from './store';
 import type { ReactElement } from 'react';
@@ -32,6 +33,7 @@ interface WrapperInitPropsType {
     hash?: boolean;
     routes: Array<RouteItem>;
     store: Store | null;
+    routerBasePath?: string;
 }
 type RouteWrapperParamsType = Omit<WrapperInitPropsType, 'store'>;
 
@@ -83,20 +85,31 @@ const pluginsWrapper = (
 const renderRoutesPluginWrapper = (wrapper: ReactElement, route: RouteItem): ReactElement =>
     pluginsWrapper('inner', wrapper, route);
 
-const routeWrapper = ({ hash, routes }: RouteWrapperParamsType): JSX.Element => {
+const routeWrapper = ({ hash, routes, routerBasePath }: RouteWrapperParamsType): JSX.Element => {
     const Router = hash ? HashRouter : BrowserRouter;
+    let basePath = '/';
+
+    if (routerBasePath) {
+        basePath = routerBasePath;
+    }
+    globalRouterBasePath.set(basePath);
 
     const APP = () => (
         <Router>
-            <Routes>{renderRoutes(routes, renderRoutesPluginWrapper)}</Routes>
+            <Routes basename={basePath}>{renderRoutes(routes, renderRoutesPluginWrapper)}</Routes>
         </Router>
     );
 
     return <APP />;
 };
 
-const WrapperInit = ({ hash, routes, store }: WrapperInitPropsType): JSX.Element => {
-    const wrapperInner = routeWrapper({ hash, routes });
+const WrapperInit = ({
+    hash,
+    routes,
+    store,
+    routerBasePath,
+}: WrapperInitPropsType): JSX.Element => {
+    const wrapperInner = routeWrapper({ hash, routes, routerBasePath });
     const wrapperOuter = pluginsWrapper('outer', wrapperInner);
 
     if (store) {

@@ -45,6 +45,8 @@ export interface ConstructorOptionsType {
     reducerConfig?: ReducerConfig;
     reducers?: ReducersMapObject;
     immerEnableES5?: boolean;
+    // When the formula is complete, go through the webpack configuration uniformly, and remove this method
+    routerBasePath?: string;
 }
 
 export default class {
@@ -55,7 +57,8 @@ export default class {
     }
 
     start(): void {
-        const { hash, routes, reducerConfig, reducers, immerEnableES5 } = this.options;
+        const { hash, routes, reducerConfig, reducers, immerEnableES5, routerBasePath } =
+            this.options;
         // eslint-disable-next-line init-declarations
         let store: Store | null = null;
 
@@ -69,7 +72,12 @@ export default class {
         }
 
         ReactDOM.render(
-            <WrapperInit store={store} hash={hash} routes={routes} />,
+            <WrapperInit
+                routerBasePath={routerBasePath}
+                store={store}
+                hash={hash}
+                routes={routes}
+            />,
             document.getElementById('root'),
         );
     }
