@@ -15,8 +15,6 @@ export default function promiseMiddleware({ dispatch }: MiddlewareAPI) {
                       .then((result: unknown) => dispatch({ ...action, payload: result }))
                       .catch((error: unknown) => {
                           dispatch({ ...action, payload: error, error: true });
-
-                          return Promise.reject(error);
                       })
                 : next(action);
         };
