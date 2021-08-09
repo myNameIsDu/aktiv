@@ -1,4 +1,4 @@
-# Launcher &middot; ![NPM](https://img.shields.io/npm/l/@aktiv/launcher)
+# Launcher &middot; ![NPM](https://img.shields.io/npm/l/@aktiv/launcher) [![Build Status](https://www.travis-ci.com/myNameIsDu/aktiv.svg?branch=master)](https://www.travis-ci.com/myNameIsDu/aktiv) [![codecov](https://codecov.io/gh/myNameIsDu/aktiv/branch/master/graph/badge.svg?token=B1XL6LCY9T)](https://codecov.io/gh/myNameIsDu/aktiv)
 一个轻量级的，配置化的启动器
 
 ## Install

@@ -15,7 +15,8 @@
     "build": "gulp && rollup -c && npm run types",
     "watch": "gulp clean && rollup -c -w",
     "test": "jest",
-    "types": "api-extractor run"
+    "types": "api-extractor run",
+    "codecov": "codecov"
   },
   "keywords": [],
   "author": "du012",

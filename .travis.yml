@@ -1,0 +1,15 @@
+language: node_js
+node_js: node
+branches:
+  only:
+    - master
+jobs:
+  include:
+    - stage: Test
+      install: npm install && npm run bootstrap
+      script:
+        - npm run test
+    - stage: Build
+      install: npm install && npm run bootstrap
+      script:
+        - npm run build
