@@ -84,7 +84,6 @@ module.exports = {
                 ignoreRegExpLiterals: true,
             },
         ],
-        'max-lines': 'error',
         'max-nested-callbacks': 'error',
         'max-statements-per-line': 'error',
         'new-cap': 'error',
