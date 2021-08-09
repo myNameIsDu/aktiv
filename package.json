@@ -6,7 +6,8 @@
     "prepare": "husky install",
     "lint": "eslint .",
     "bootstrap": "lerna bootstrap",
-    "test":"cd packages/launcher && npm run test"
+    "test":"cd packages/launcher && npm run test",
+    "build":"cd packages/launcher && npm run build"
   },
   "license": "MIT",
   "devDependencies": {
