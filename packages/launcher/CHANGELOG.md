@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@0.3.0...@aktiv/launcher@0.4.0) (2021-08-10)
+
+
+### Features
+
+* add rootNode options ([8954aea](https://github.com/myNameIsDu/aktiv/commit/8954aeab86c07226ea26f16b541a64da3854caa4))
+
+
+
+
+
 # [0.3.0](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@0.1.3...@aktiv/launcher@0.3.0) (2021-08-10)
 
 
