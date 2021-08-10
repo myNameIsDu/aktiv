@@ -47,6 +47,7 @@ export interface ConstructorOptionsType {
     immerEnableES5?: boolean;
     // When the formula is complete, go through the webpack configuration uniformly, and remove this method
     routerBasePath?: string;
+    rootNode?: string;
 }
 
 export default class {
@@ -57,8 +58,15 @@ export default class {
     }
 
     start(): void {
-        const { hash, routes, reducerConfig, reducers, immerEnableES5, routerBasePath } =
-            this.options;
+        const {
+            hash,
+            routes,
+            reducerConfig,
+            reducers,
+            immerEnableES5,
+            routerBasePath,
+            rootNode = '#root',
+        } = this.options;
         // eslint-disable-next-line init-declarations
         let store: Store | null = null;
 
@@ -78,7 +86,7 @@ export default class {
                 hash={hash}
                 routes={routes}
             />,
-            document.getElementById('root'),
+            document.querySelector(rootNode),
         );
     }
 
