@@ -52,8 +52,13 @@ interface ConstructorOptionsType {
     reducers?: ReducersMapObject;
     immerEnableES5?: boolean;
     routerBasePath?: string;
+    rootNode?: string;
 }
 ```
+
+## rootNode
+ReactDOM.render 挂载的节点
+
 ## router
 
 ### hash
