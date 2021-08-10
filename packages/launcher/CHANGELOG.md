@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@0.1.3...@aktiv/launcher@0.3.0) (2021-08-10)
+
+
+### Bug Fixes
+
+* delete promise middleware throw reject ([1235524](https://github.com/myNameIsDu/aktiv/commit/123552489a24c60937004f6532fe711b942447b2))
+* fix test suits can not pass ([be0d150](https://github.com/myNameIsDu/aktiv/commit/be0d150734cf668150c9870b1160117d726c7a31))
+
+
+### Features
+
+* add basename and add basename to useRouter and redirect ([941ed2b](https://github.com/myNameIsDu/aktiv/commit/941ed2bf2fde1013f978f541640253f396fcf605))
+* add kind-of for judge value's type and refactor test suits ([4d79e02](https://github.com/myNameIsDu/aktiv/commit/4d79e02747cf5efd3e763d9f597950f8d7f3baaa))
+
+
+
+
+
 # [0.2.0](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@0.1.3...@aktiv/launcher@0.2.0) (2021-08-08)
 
 
