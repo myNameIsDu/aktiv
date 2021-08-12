@@ -452,6 +452,43 @@ state如下
 }
 ```
 
+## hooks
+内置了一些便捷的hooks
+### useRouter
+
+```typescript
+type UseRouterReturns = {
+    redirect(path: string, state?: UseRouterState): void;
+    replace(path: string, state?: UseRouterState): void;
+};
+```
+
+redirect 仅在navigate包了一层
+```typescript
+navigate(resultPath, {
+    state,
+});
+```
+replace 同样如此
+```typescript
+navigate(resultPath, {
+    replace: true,
+    state,
+});
+```
+
+此外，它们会当你传入绝对路径时，拼接你的 routerBasePath，但是由此带来的影响是，你传入的path只能为一个string
+
+### useQuery
+
+获取当前路由的query参数
+
+example
+current location: /home?a=123
+```javascript
+const query = useQuery()
+// query: { a:123 }
+```
 
 ## 内置库
 ```
