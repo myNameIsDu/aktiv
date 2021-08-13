@@ -2,7 +2,7 @@ import { produce } from 'immer';
 import { createStore as reduxCreateStore, compose, combineReducers, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 import reduxPromise from './promiseMiddleware';
-import type { Store, ReducersMapObject, AnyAction } from 'redux';
+import type { Store, ReducersMapObject, AnyAction, Middleware } from 'redux';
 
 export type { ReducersMapObject, Store };
 // eslint-disable-next-line init-declarations
@@ -121,6 +121,7 @@ const composeEnhancers =
 export const createStore = (
     reducerConfig: ReducerConfig,
     reducer: ReducersMapObject = {},
+    reduxMiddleware: Middleware[] = [],
 ): Store => {
     const actionsReducer = createReducer(reducerConfig);
     const newReducers = {
@@ -130,6 +131,6 @@ export const createStore = (
 
     return reduxCreateStore(
         combineReducers(newReducers),
-        composeEnhancers(applyMiddleware(reduxThunk, reduxPromise)),
+        composeEnhancers(applyMiddleware(reduxThunk, reduxPromise, ...reduxMiddleware)),
     );
 };

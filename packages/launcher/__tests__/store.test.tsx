@@ -305,4 +305,53 @@ describe('store', () => {
             });
         });
     });
+
+    it('should call custom redux middleware, when pass reduxMiddleware', () => {
+        const Home = () => {
+            return <div>home</div>;
+        };
+
+        // eslint-disable-next-line init-declarations
+        let receiveAction: AnyAction;
+        const customMiddleware = () => (next: ReduxDispatch) => (action: AnyAction) => {
+            receiveAction = action;
+            next(action);
+        };
+        const actionConfig = {
+            editorA: {
+                key: 'a',
+                payload: (data: unknown) => data,
+            },
+        };
+        const reducerConfig = {
+            state1: {
+                state: {
+                    a: 'a',
+                },
+                config: actionConfig,
+            },
+        };
+
+        const app = new Launcher({
+            routes: [
+                {
+                    path: '/',
+                    component: Home,
+                },
+            ],
+            reducerConfig,
+            reduxMiddleware: [customMiddleware],
+        });
+
+        act(() => {
+            app.start();
+        });
+        const actions = createActions(actionConfig);
+
+        const newState = 1;
+
+        actions.editorA(newState);
+        // @ts-ignore  before initial
+        expect(receiveAction).toMatchObject({ type: 'editorA', stateKey: 'a', payload: newState });
+    });
 });

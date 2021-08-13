@@ -53,6 +53,7 @@ interface ConstructorOptionsType {
     immerEnableES5?: boolean;
     routerBasePath?: string;
     rootNode?: string;
+    reduxMiddleware?: Middleware[];
 }
 ```
 
@@ -294,7 +295,9 @@ const config  = {
 ```
 详细使用可以查看immer官方文档：https://immerjs.github.io/immer/current
 
-好了，这就是store的大致用法，除此之外，还有两个参数：immerEnableES5、reducers
+好了，这就是store的大致用法，除此之外，还有一些参数：immerEnableES5、reducers, reduxMiddleware
+
+reduxMiddleware: 扩展的redux 中间件数组
 
 immerEnableES5： 开启immer兼容es5，详情可查看immer官方文档:https://immerjs.github.io/immer/installation
 
