@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
-import { parse } from 'qs';
+// @ts-ignore qs.stringify includes Node Util
+import { parse } from 'qs/lib/parse';
 
 type ParseSearchProps = (search: string) => Record<string, unknown>;
 
