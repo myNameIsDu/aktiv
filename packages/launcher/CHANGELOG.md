@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@0.4.0...@aktiv/launcher@1.0.0) (2021-08-13)
+
+
+### Features
+
+* 添加 useQuery ([3be5a81](https://github.com/myNameIsDu/aktiv/commit/3be5a818ac5b7aa949cdd36ff10720aaba8fcab1))
+* support add custom reduxMiddleware ([5c9a078](https://github.com/myNameIsDu/aktiv/commit/5c9a07862fbf338b72c01467005f1a82d6a2487b))
+
+
+
+
+
 # [0.4.0](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@0.3.0...@aktiv/launcher@0.4.0) (2021-08-10)
 
 
