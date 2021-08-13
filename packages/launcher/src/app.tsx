@@ -6,6 +6,7 @@ import WrapperInit, { pluginsRegistry, pluginReducers } from './wrapperInit';
 import type { ReducerConfig, ReducersMapObject, Store } from './store';
 import type { ComponentType } from 'react';
 import type { Plugin, PluginOpt } from './wrapperInit';
+import type { Middleware } from 'redux';
 
 /*
     There are three routes:
@@ -48,6 +49,7 @@ export interface ConstructorOptionsType {
     // When the formula is complete, go through the webpack configuration uniformly, and remove this method
     routerBasePath?: string;
     rootNode?: string;
+    reduxMiddleware?: Middleware[];
 }
 
 export default class {
@@ -66,12 +68,13 @@ export default class {
             immerEnableES5,
             routerBasePath,
             rootNode = '#root',
+            reduxMiddleware,
         } = this.options;
         // eslint-disable-next-line init-declarations
         let store: Store | null = null;
 
         if (reducerConfig || reducers || Object.keys(pluginReducers).length) {
-            store = createStore({ ...reducerConfig, ...pluginReducers }, reducers);
+            store = createStore({ ...reducerConfig, ...pluginReducers }, reducers, reduxMiddleware);
             if (immerEnableES5) {
                 enableES5();
             }
