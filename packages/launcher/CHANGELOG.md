@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@1.0.0...@aktiv/launcher@1.0.2) (2021-08-13)
+
+
+### Bug Fixes
+
+* 1.0.0 publish not build ([5fb069f](https://github.com/myNameIsDu/aktiv/commit/5fb069fc1c9d9d8beb9d11d921bf3aa1b2ea69d3))
+
+
+
+
+
 # [1.0.0](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@0.4.0...@aktiv/launcher@1.0.0) (2021-08-13)
 
 
