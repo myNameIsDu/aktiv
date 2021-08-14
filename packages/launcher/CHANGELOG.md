@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@1.0.3...@aktiv/launcher@1.0.4) (2021-08-14)
+
+
+### Bug Fixes
+
+* usequery qs.parse import ([b88233c](https://github.com/myNameIsDu/aktiv/commit/b88233cff328c5c7014380dae11ed485fe00a47c))
+
+
+
+
+
 ## [1.0.3](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@1.0.2...@aktiv/launcher@1.0.3) (2021-08-13)
 
 
