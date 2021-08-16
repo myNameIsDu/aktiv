@@ -18,7 +18,23 @@
     "types": "api-extractor run",
     "codecov": "codecov"
   },
-  "keywords": [],
+  "files": [
+    "es",
+    "lib"
+  ],
+  "keywords": [    
+    "react",
+    "reactjs",
+    "redux",
+    "react",
+    "router",
+    "route",
+    "routing",
+    "history",
+    "link",
+    "aktiv",
+    "launcher"
+  ],
   "author": "du012",
   "license": "MIT",
   "publishConfig": {
