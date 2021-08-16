@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.5](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@1.0.4...@aktiv/launcher@1.0.5) (2021-08-16)
+
+
+### Bug Fixes
+
+* delete .npmignore and add package.json files keywords ([1b57678](https://github.com/myNameIsDu/aktiv/commit/1b576788031e4d8e3339a9d0a9dfdaadd4b390c9))
+
+
+
+
+
 ## [1.0.4](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@1.0.3...@aktiv/launcher@1.0.4) (2021-08-14)
 
 
