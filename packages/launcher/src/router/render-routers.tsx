@@ -3,7 +3,6 @@ import { Route, Navigate } from 'react-router-dom';
 import loadable from 'react-loadable';
 import loading from './loading';
 import WrapperRoute from './wrapper-route';
-import { globalRouterBasePath } from '../utils/globalEnv';
 import type { RouteItem, DynamicImportType } from '../app';
 import type { ComponentType } from 'react';
 import type { RouteProps } from 'react-router';
@@ -23,9 +22,7 @@ const renderRoutes = (
 
         // RedirectRouteItem
         if (!component && redirect) {
-            const basePath = globalRouterBasePath.get();
-            const redirectPath = redirect.startsWith('/') ? basePath + redirect : redirect;
-            const C = <Navigate to={redirectPath} />;
+            const C = <Navigate to={redirect} />;
 
             // eslint-disable-next-line @typescript-eslint/no-use-before-define
             return wrapperRoute({ path, element: C }, pluginRender);

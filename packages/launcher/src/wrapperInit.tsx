@@ -1,7 +1,6 @@
 import { BrowserRouter, HashRouter, Routes } from 'react-router-dom';
 import renderRoutes from './router/render-routers';
 import { Provider } from 'react-redux';
-import { globalRouterBasePath } from './utils/globalEnv';
 import type { RouteItem } from './app';
 import type { Store, ReducerConfig, ReducerConfigItem } from './store';
 import type { ReactElement } from 'react';
@@ -92,11 +91,10 @@ const routeWrapper = ({ hash, routes, routerBasePath }: RouteWrapperParamsType):
     if (routerBasePath) {
         basePath = routerBasePath;
     }
-    globalRouterBasePath.set(basePath);
 
     const APP = () => (
-        <Router>
-            <Routes basename={basePath}>{renderRoutes(routes, renderRoutesPluginWrapper)}</Routes>
+        <Router basename={basePath}>
+            <Routes>{renderRoutes(routes, renderRoutesPluginWrapper)}</Routes>
         </Router>
     );
 
