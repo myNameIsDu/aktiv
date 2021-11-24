@@ -30,4 +30,5 @@ export type {
     PayloadType,
 } from './store';
 export { UseRouterReturns, UseRouterState } from './hooks/use-router';
+export { HocProps } from './module/withRouter';
 export { withRouter };
