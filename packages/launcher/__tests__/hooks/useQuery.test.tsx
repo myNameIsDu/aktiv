@@ -1,14 +1,14 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import { useQuery } from '../../src';
-import React, { FC } from 'react';
+import React, { FC, ReactElement } from 'react';
 
 describe('useQuery', () => {
     const TestApp: FC = ({ children }) => {
         return (
             <Router initialEntries={['/about?name=useQuery']}>
                 <Routes>
-                    <Route path="/about">{children}</Route>
+                    <Route path="/about" element={children as ReactElement} />
                 </Routes>
             </Router>
         );

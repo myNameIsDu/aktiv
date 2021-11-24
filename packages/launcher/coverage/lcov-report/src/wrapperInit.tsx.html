@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">27.91% </span>
+                <span class="strong">26.83% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/43</span>
+                <span class='fraction'>11/41</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">27.91% </span>
+                <span class="strong">26.83% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/43</span>
+                <span class='fraction'>11/41</span>
             </div>
         
             
@@ -182,7 +182,6 @@
 <a name='L123'></a><a href='#L123'>123</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -273,7 +272,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -281,30 +279,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { BrowserRouter, HashRouter, Routes } from 'react-router-dom';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
 import renderRoutes from './router/render-routers';
 import { Provider } from 'react-redux';
-import { globalRouterBasePath } from './utils/globalEnv';
 import type { RouteItem } from './app';
 import type { Store, ReducerConfig, ReducerConfigItem } from './store';
 import type { ReactElement } from 'react';
@@ -395,11 +394,12 @@ const routeWrapper = <span class="fstat-no" title="function not covered" >({</sp
 <span class="cstat-no" title="statement not covered" >    if (routerBasePath) {</span>
 <span class="cstat-no" title="statement not covered" >        basePath = routerBasePath;</span>
     }
-<span class="cstat-no" title="statement not covered" >    globalRouterBasePath.set(basePath);</span>
 &nbsp;
     const APP = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =</span>&gt; (</span>
-<span class="cstat-no" title="statement not covered" >        &lt;Router&gt;</span>
-            &lt;Routes basename={basePath}&gt;{renderRoutes(routes, renderRoutesPluginWrapper)}&lt;/Routes&gt;
+<span class="cstat-no" title="statement not covered" >        &lt;Router basename={basePath}&gt;</span>
+            &lt;Routes&gt;
+                {renderRoutes(routes, renderRoutesPluginWrapper)}
+            &lt;/Routes&gt;
         &lt;/Router&gt;
     );
 &nbsp;
@@ -430,7 +430,7 @@ export default WrapperInit;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Aug 11 2021 22:33:04 GMT+0800 (China Standard Time)
+                at Thu Nov 25 2021 00:05:00 GMT+0800 (China Standard Time)
             </div>
         </div>
         <script src="../prettify.js"></script>
