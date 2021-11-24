@@ -63,11 +63,11 @@ describe('router', () => {
                     redirect: isAbsolute ? '/home/children-two' : 'children-two',
                     children: [
                         {
-                            path: '/children',
+                            path: '/home/children',
                             component: Children,
                         },
                         {
-                            path: '/children-two',
+                            path: '/home/children-two',
                             component: ChildrenTwo,
                         },
                     ],

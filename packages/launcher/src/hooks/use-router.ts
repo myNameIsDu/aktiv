@@ -1,6 +1,5 @@
 import { useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { globalRouterBasePath } from '../utils/globalEnv';
 
 export type UseRouterReturns = {
     redirect(path: string, state?: UseRouterState): void;
@@ -14,10 +13,7 @@ function useRouter(): UseRouterReturns {
 
     const pushPath = useCallback(
         (path: string, state?: UseRouterState) => {
-            const basePath = globalRouterBasePath.get();
-            const resultPath = path.startsWith('/') ? basePath + path : path;
-
-            return navigate(resultPath, {
+            return navigate(path, {
                 state,
             });
         },
@@ -26,10 +22,7 @@ function useRouter(): UseRouterReturns {
 
     const replacePath = useCallback(
         (path: string, state?: UseRouterState) => {
-            const basePath = globalRouterBasePath.get();
-            const resultPath = path.startsWith('/') ? basePath + path : path;
-
-            return navigate(resultPath, {
+            return navigate(path, {
                 replace: true,
                 state,
             });
