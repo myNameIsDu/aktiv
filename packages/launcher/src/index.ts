@@ -29,6 +29,6 @@ export type {
     ActionItem,
     PayloadType,
 } from './store';
-export { UseRouterReturns, UseRouterState } from './hooks/use-router';
-export { HocProps } from './module/withRouter';
+export type { UseRouterReturns, UseRouterState } from './hooks/use-router';
+export type { HocProps, HocExtraProps, HocShape } from './module/withRouter';
 export { withRouter };

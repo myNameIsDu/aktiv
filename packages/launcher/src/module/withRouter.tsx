@@ -6,11 +6,11 @@ import type { Params, PathMatch } from 'react-router-dom';
 import { useRouter } from '../hooks';
 import type { UseRouterReturns } from '../hooks';
 
-type HocShape<P extends Record<string, unknown> = HocProps> = {
+export type HocShape<P extends Record<string, unknown> = HocProps> = {
     (Com: ComponentType<P>): typeof Com extends Component<P> ? FC<P> : any;
 };
 
-type HocExtraProps = {
+export type HocExtraProps = {
     location: Location;
     params: Params;
     match: PathMatch;
