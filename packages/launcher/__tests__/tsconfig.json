@@ -1,7 +1,4 @@
 {
-  "compilerOptions": {
-      "experimentalDecorators": true
-  },
   "extends": "../tsconfig.json",
   "include": ["./**/*"],
   "exclude": []

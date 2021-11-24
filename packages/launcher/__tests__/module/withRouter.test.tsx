@@ -55,12 +55,6 @@ describe('withRouter', () => {
     const homeRoute = {
         path: '/',
         component: WithRouterPage,
-        // children: [
-        //     {
-        //         path: '/child',
-        //         component: ChildComponent,
-        //     },
-        // ],
     };
     const app = new Launcher({
         hash: false,

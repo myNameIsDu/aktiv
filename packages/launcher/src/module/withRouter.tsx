@@ -1,4 +1,4 @@
-import React, { Component, ComponentType, FC } from 'react';
+import React, { Component, ComponentType, FC, forwardRef, Ref } from 'react';
 import { Params, PathMatch, useLocation, useParams, useMatch } from 'react-router-dom';
 
 import { useRouter, UseRouterReturns } from '../hooks';
@@ -24,7 +24,10 @@ type HocExtraProps = {
 export type HocProps = Record<string, unknown> & HocExtraProps;
 
 const withRouter: HocShape = Com => {
-    return (props: any) => {
+    const HocComponent: FC<({ cRef: Ref<any> } & Record<string, any>) | any> = ({
+        cRef,
+        ...rest
+    }) => {
         // eslint-disable-next-line no-underscore-dangle
         const _location = useLocation();
         const params = useParams();
@@ -47,11 +50,13 @@ const withRouter: HocShape = Com => {
             params,
             location: _location,
             history: _history,
-            ...props,
+            ...rest,
         };
 
-        return <Com {...extraProps} />;
+        return <Com {...extraProps} ref={cRef} />;
     };
+
+    return forwardRef((props, ref) => <HocComponent {...props} cRef={ref} />);
 };
 
 export default withRouter;
