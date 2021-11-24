@@ -1,7 +1,10 @@
-import React, { Component, ComponentType, FC, forwardRef, Ref } from 'react';
-import { Params, PathMatch, useLocation, useParams, useMatch } from 'react-router-dom';
+import React, { Component, forwardRef } from 'react';
+import type { ComponentType, FC, Ref } from 'react';
+import { useLocation, useParams, useMatch } from 'react-router-dom';
+import type { Params, PathMatch } from 'react-router-dom';
 
-import { useRouter, UseRouterReturns } from '../hooks';
+import { useRouter } from '../hooks';
+import type { UseRouterReturns } from '../hooks';
 
 type HocShape<P extends Record<string, unknown> = HocProps> = {
     (Com: ComponentType<P>): typeof Com extends Component<P> ? FC<P> : any;

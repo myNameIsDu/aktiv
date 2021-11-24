@@ -1,4 +1,5 @@
-import React, { Component, FC } from 'react';
+import React, { Component } from 'react';
+import type { FC } from 'react';
 import withRouter from '../../src/module/withRouter';
 import Launcher from '../../src/module/app';
 import { act, screen } from '@testing-library/react';
