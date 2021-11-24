@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withRouter when render app, should can get router & query & match args 1`] = `
+<body>
+  <div
+    data-testid="root"
+    id="root"
+  >
+    <h1>
+      Test Router
+    </h1>
+    <button>
+      跳转
+    </button>
+  </div>
+</body>
+`;
+
+exports[`withRouter when render app, should can get router & query & match args 2`] = `
+<body>
+  <div
+    data-testid="root"
+    id="root"
+  >
+    <h1>
+      Test Router
+    </h1>
+    <button>
+      跳转
+    </button>
+  </div>
+</body>
+`;

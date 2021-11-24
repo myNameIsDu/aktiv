@@ -1,4 +1,4 @@
-import useRouter from './use-router';
+import useRouter, { UseRouterReturns } from './use-router';
 import useQuery from './use-query';
 
-export { useRouter, useQuery };
+export { useRouter, useQuery, UseRouterReturns };

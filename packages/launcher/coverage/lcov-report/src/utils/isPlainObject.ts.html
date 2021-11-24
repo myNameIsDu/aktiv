@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">70% </span>
+                <span class="strong">10% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/10</span>
+                <span class='fraction'>1/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.67% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/6</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">70% </span>
+                <span class="strong">10% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/10</span>
+                <span class='fraction'>1/10</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -85,46 +85,46 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
  * @param {any} obj The object to inspect.
  * @returns {boolean} True if the argument appears to be a plain object.
  */
-export default function isPlainObject(obj: unknown): boolean {
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof obj !== 'object' || obj === null) {
+export default function <span class="fstat-no" title="function not covered" >isPlainObject(</span>obj: unknown): boolean {
+<span class="cstat-no" title="statement not covered" >    if (typeof obj !== 'object' || obj === null) {</span>
 <span class="cstat-no" title="statement not covered" >        return false;</span>
     }
 &nbsp;
-    const proto = Object.getPrototypeOf(obj);
+    const proto = <span class="cstat-no" title="statement not covered" >Object.getPrototypeOf(obj);</span>
 &nbsp;
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (proto === null) {
+<span class="cstat-no" title="statement not covered" >    if (proto === null) {</span>
 <span class="cstat-no" title="statement not covered" >        return true;</span>
     }
 &nbsp;
-    let baseProto = proto;
+    let baseProto = <span class="cstat-no" title="statement not covered" >proto;</span>
 &nbsp;
-    while (Object.getPrototypeOf(baseProto) !== null) {
+<span class="cstat-no" title="statement not covered" >    while (Object.getPrototypeOf(baseProto) !== null) {</span>
 <span class="cstat-no" title="statement not covered" >        baseProto = Object.getPrototypeOf(baseProto);</span>
     }
 &nbsp;
-    return proto === baseProto;
+<span class="cstat-no" title="statement not covered" >    return proto === baseProto;</span>
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -133,7 +133,7 @@ export default function isPlainObject(obj: unknown): boolean {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Nov 25 2021 00:31:10 GMT+0800 (China Standard Time)
+                at Thu Nov 25 2021 01:26:42 GMT+0800 (China Standard Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

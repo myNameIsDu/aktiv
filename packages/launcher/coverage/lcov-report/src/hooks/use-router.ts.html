@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">30% </span>
+                <span class="strong">90% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>3/10</span>
+                <span class='fraction'>9/10</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">30% </span>
+                <span class="strong">90% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/10</span>
+                <span class='fraction'>9/10</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -110,29 +110,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -151,19 +151,19 @@ export type UseRouterReturns = {
 &nbsp;
 export type UseRouterState = Partial&lt;Record&lt;string, unknown&gt;&gt;;
 &nbsp;
-function <span class="fstat-no" title="function not covered" >useRouter(</span>): UseRouterReturns {
-    const navigate = <span class="cstat-no" title="statement not covered" >useNavigate();</span>
+function useRouter(): UseRouterReturns {
+    const navigate = useNavigate();
 &nbsp;
-    const pushPath = <span class="cstat-no" title="statement not covered" >useCallback(</span>
-<span class="fstat-no" title="function not covered" >        (p</span>ath: string, state?: UseRouterState) =&gt; {
-<span class="cstat-no" title="statement not covered" >            return navigate(path, {</span>
+    const pushPath = useCallback(
+        (path: string, state?: UseRouterState) =&gt; {
+            return navigate(path, {
                 state,
             });
         },
         [navigate],
     );
 &nbsp;
-    const replacePath = <span class="cstat-no" title="statement not covered" >useCallback(</span>
+    const replacePath = useCallback(
 <span class="fstat-no" title="function not covered" >        (p</span>ath: string, state?: UseRouterState) =&gt; {
 <span class="cstat-no" title="statement not covered" >            return navigate(path, {</span>
                 replace: true,
@@ -173,8 +173,8 @@ function <span class="fstat-no" title="function not covered" >useRouter(</span>)
         [navigate],
     );
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return useMemo(</span>
-<span class="fstat-no" title="function not covered" >        () =</span>&gt; (<span class="cstat-no" title="statement not covered" >{</span>
+    return useMemo(
+        () =&gt; ({
             redirect: pushPath,
             replace: replacePath,
         }),
@@ -190,7 +190,7 @@ export default useRouter;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Nov 25 2021 00:31:10 GMT+0800 (China Standard Time)
+                at Thu Nov 25 2021 01:26:42 GMT+0800 (China Standard Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>
