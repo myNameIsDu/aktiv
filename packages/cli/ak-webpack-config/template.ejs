@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- manifest -->
+<html lang="en" class="" <% if(htmlWebpackPlugin.files.manifest) { %> manifest="<%= htmlWebpackPlugin.files.manifest %>"<% } %>> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <!-- title -->
+  <% if (htmlWebpackPlugin.options.title) { %>
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <% } %>
+  <!-- description -->
+  <% if (htmlWebpackPlugin.options.description) { %>
+  <meta content='<%= htmlWebpackPlugin.options.description %>' name='description'>
+  <% } %>
+  <!-- keywords -->
+  <% if (htmlWebpackPlugin.options.keywords) { %>
+  <meta content='<%= htmlWebpackPlugin.options.keywords %>' name='keywords'>
+  <% } %>
+<!-- favicon -->
+  <% if (htmlWebpackPlugin.files.favicon) { %>
+  <link rel="shortcut icon" href="<%= htmlWebpackPlugin.files.favicon%>">
+  <% } %>
+  <!-- mobile -->
+  <% if (htmlWebpackPlugin.options.mobile) { %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <% } %>
+  <!-- inject css and js -->
+  <% for (var key in compilation.externalStylesheets) { %>
+    <%- compilation.externalStylesheets[key] %>
+  <% } %>
+  <% for (var key in compilation.externalScripts) { %>
+    <%- compilation.externalScripts[key] %>
+  <% } %>
+</head>
+<body>
+    <div id="root">
+    </div>
+</body>
+</html>

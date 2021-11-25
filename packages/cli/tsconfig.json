@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",                           /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
+    "allowJs": true,                             /* Allow javascript files to be compiled. */
+    "checkJs": true,                             /* Report errors in .js files. */
+    "declaration": false,                         /* Generates corresponding '.d.ts' file. */
+    "declarationMap": false,                      /* Generates a sourcemap for each corresponding '.d.ts' file. */
+    "noEmit":true,
+    "noImplicitAny":false,
+    "resolveJsonModule":true,
+    "strict": true
+  },
+}

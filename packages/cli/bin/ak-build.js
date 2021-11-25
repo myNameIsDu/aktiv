@@ -1,0 +1,90 @@
+#! /usr/bin/env node
+/* eslint-disable no-console */
+const commander = require('commander');
+const path = require('path');
+const {
+    defaultWorkDir,
+    defaultConfigFile,
+    proBuildEnv,
+    defaultTarget,
+    supperTargetList,
+    supperEnvList,
+} = require('../config/index');
+const checkRequiredFiles = require('../utils/checkRequiredFiles');
+const webpack = require('webpack');
+const akWebpackConfig = require('../ak-webpack-config/index');
+const chalk = require('chalk');
+
+const { program } = commander;
+
+/**
+ * @param {string} str path
+ * @return {string} resolve path
+ */
+const resolvePath = str => path.resolve(str);
+
+program
+    .usage('[options]')
+    .option('-d, --dir <dir>', 'set workDi', resolvePath, defaultWorkDir)
+    .option('-c, --config <config>', 'set config file', resolvePath, defaultConfigFile)
+    .option('-a, --analyze', `enable bundle analyze mode on`, false)
+    .addOption(
+        new commander.Option('-m --mode <mode>', 'set build mode')
+            .choices(supperEnvList)
+            .default(proBuildEnv),
+    )
+    .addOption(
+        new commander.Option('-t --target <type>', 'set building target')
+            .choices(supperTargetList)
+            .default(defaultTarget),
+    )
+    .parse(process.argv);
+
+const programOptions = program.opts();
+
+/** @typedef {import('../config/index').EnvListType[number]} EnvType  */
+
+/** @type {string} */
+const workDir = programOptions.dir;
+/** @type {string} */
+const configFile = programOptions.config;
+/** @type {(typeof supperTargetList)[number]} */
+const commandTarget = programOptions.target;
+/** @type {EnvType} */
+const commandMode = programOptions.mode;
+/** @type {boolean} */
+const commandAnalyze = programOptions.analyze;
+
+/* re write process env*/
+process.env.NODE_ENV = commandMode;
+
+const configFilePath = path.resolve(workDir, configFile);
+const packageFilePath = path.resolve(workDir, 'package.json');
+
+// check package.json and configFile exist
+if (!checkRequiredFiles([configFilePath, packageFilePath])) {
+    program.help();
+}
+
+const config = require(configFilePath);
+
+config.pkg = require(packageFilePath);
+config.workDir = workDir;
+config.analyze = commandAnalyze;
+
+const webpackConfig = akWebpackConfig(config, commandMode, commandTarget);
+
+webpack(webpackConfig, (error, stats) => {
+    if (error) {
+        console.error(chalk.red(error.message));
+        process.exit(1);
+    }
+    if (stats) {
+        console.log(
+            stats.toString({
+                preset: 'normal',
+                colors: true,
+            }),
+        );
+    }
+});

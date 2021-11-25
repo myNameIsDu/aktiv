@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`loader-babelLoader 默认babel配置 1`] = `
+Array [
+  Object {
+    "include": Array [
+      "/Users/du/Documents/my/my-cli/du-formula/src",
+    ],
+    "test": /\\\\\\.\\(js\\|jsx\\)\\$/,
+    "use": Array [
+      Object {
+        "loader": "babel-loader",
+        "options": Object {
+          "cacheCompression": false,
+          "cacheDirectory": true,
+          "cwd": "/Users/du/Documents/my/my-cli/du-formula/packages/cli",
+          "plugins": Array [
+            "@babel/plugin-transform-runtime",
+            Array [
+              "@babel/plugin-proposal-decorators",
+              Object {
+                "legacy": true,
+              },
+            ],
+          ],
+          "presets": Array [
+            Array [
+              "@babel/preset-env",
+              Object {
+                "bugfixes": true,
+                "corejs": Object {
+                  "proposals": true,
+                  "version": 3.18,
+                },
+                "useBuiltIns": "usage",
+              },
+            ],
+            Array [
+              "@babel/preset-react",
+              Object {
+                "runtime": "automatic",
+              },
+            ],
+          ],
+        },
+      },
+    ],
+  },
+  Object {
+    "include": Array [
+      "/Users/du/Documents/my/my-cli/du-formula/src",
+    ],
+    "test": /\\\\\\.\\(ts\\|tsx\\)\\$/,
+    "use": Array [
+      Object {
+        "loader": "babel-loader",
+        "options": Object {
+          "cacheCompression": false,
+          "cacheDirectory": true,
+          "cwd": "/Users/du/Documents/my/my-cli/du-formula/packages/cli",
+          "plugins": Array [
+            "@babel/plugin-transform-runtime",
+            Array [
+              "@babel/plugin-proposal-decorators",
+              Object {
+                "legacy": true,
+              },
+            ],
+          ],
+          "presets": Array [
+            Array [
+              "@babel/preset-env",
+              Object {
+                "bugfixes": true,
+                "corejs": Object {
+                  "proposals": true,
+                  "version": 3.18,
+                },
+                "useBuiltIns": "usage",
+              },
+            ],
+            Array [
+              "@babel/preset-react",
+              Object {
+                "runtime": "automatic",
+              },
+            ],
+            "@babel/preset-typescript",
+          ],
+        },
+      },
+    ],
+  },
+]
+`;

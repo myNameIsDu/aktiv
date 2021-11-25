@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`styleLoaders快照 extractCSS为false 1`] = `
+Array [
+  Object {
+    "test": /\\\\\\.css\\$/,
+    "use": Array [
+      "style-loader",
+      "css-loader",
+      Object {
+        "loader": "postcss-loader",
+        "options": Object {
+          "postcssOptions": Object {
+            "plugins": Array [
+              [Function],
+            ],
+          },
+        },
+      },
+    ],
+  },
+  Object {
+    "test": /\\\\\\.less\\$/,
+    "use": Array [
+      "style-loader",
+      "css-loader",
+      Object {
+        "loader": "postcss-loader",
+        "options": Object {
+          "postcssOptions": Object {
+            "plugins": Array [
+              [Function],
+            ],
+          },
+        },
+      },
+      Object {
+        "loader": "less-loader",
+        "options": Object {
+          "javascriptEnabled": true,
+        },
+      },
+    ],
+  },
+]
+`;
+
+exports[`styleLoaders快照 extractCSS为true 1`] = `
+Array [
+  Object {
+    "test": /\\\\\\.css\\$/,
+    "use": Array [
+      Object {
+        "loader": "/Users/du/Documents/my/my-cli/du-formula/node_modules/mini-css-extract-plugin/dist/loader.js",
+      },
+      "css-loader",
+      Object {
+        "loader": "postcss-loader",
+        "options": Object {
+          "postcssOptions": Object {
+            "plugins": Array [
+              [Function],
+            ],
+          },
+        },
+      },
+    ],
+  },
+  Object {
+    "test": /\\\\\\.less\\$/,
+    "use": Array [
+      Object {
+        "loader": "/Users/du/Documents/my/my-cli/du-formula/node_modules/mini-css-extract-plugin/dist/loader.js",
+      },
+      "css-loader",
+      Object {
+        "loader": "postcss-loader",
+        "options": Object {
+          "postcssOptions": Object {
+            "plugins": Array [
+              [Function],
+            ],
+          },
+        },
+      },
+      Object {
+        "loader": "less-loader",
+        "options": Object {
+          "javascriptEnabled": true,
+        },
+      },
+    ],
+  },
+]
+`;
