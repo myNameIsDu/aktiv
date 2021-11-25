@@ -1,4 +1,5 @@
-export { default } from './app';
+export { default as withRouter } from './module/withRouter';
+export { default } from './module/app';
 export { createActions } from './store';
 export * from 'react-router-dom';
 export * from 'react-router';
@@ -7,13 +8,18 @@ export * from 'redux';
 export * from 'immer';
 export * from './hooks';
 
-export type { DynamicImportType, RouteItem, ConstructorOptionsType, RouteItemBase } from './app';
+export type {
+    DynamicImportType,
+    RouteItem,
+    ConstructorOptionsType,
+    RouteItemBase,
+} from './module/app';
 export type {
     PluginInnerRenderType,
     PluginOuterRenderType,
     Plugin,
     PluginOpt,
-} from './wrapperInit';
+} from './module/wrapperInit';
 export type {
     ReducerConfig,
     ReducerConfigItem,
@@ -23,4 +29,5 @@ export type {
     ActionItem,
     PayloadType,
 } from './store';
-export { UseRouterReturns, UseRouterState } from './hooks/use-router';
+export type { UseRouterReturns, UseRouterState } from './hooks/use-router';
+export type { HocExtraProps } from './module/withRouter';

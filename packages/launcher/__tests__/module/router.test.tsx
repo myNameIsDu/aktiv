@@ -1,7 +1,7 @@
-import Launcher, { Outlet, useRouter } from '../src';
+import Launcher, { Outlet, useRouter } from '../../src';
 import { act, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import type { RouteItem } from '../src';
+import type { RouteItem } from '../../src';
 import '@testing-library/jest-dom';
 
 describe('router', () => {

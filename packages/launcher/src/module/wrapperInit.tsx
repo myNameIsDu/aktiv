@@ -1,8 +1,8 @@
 import { BrowserRouter, HashRouter, Routes } from 'react-router-dom';
-import renderRoutes from './router/render-routers';
+import renderRoutes from '../router/render-routers';
 import { Provider } from 'react-redux';
 import type { RouteItem } from './app';
-import type { Store, ReducerConfig, ReducerConfigItem } from './store';
+import type { Store, ReducerConfig, ReducerConfigItem } from '../store';
 import type { ReactElement } from 'react';
 
 export type PluginInnerRenderType = (

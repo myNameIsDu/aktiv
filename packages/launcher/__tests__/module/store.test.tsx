@@ -1,12 +1,12 @@
 import React from 'react';
 import { act, screen } from '@testing-library/react';
-import Launcher, { useSelector, createActions, useDispatch, isDraft } from '../src';
+import Launcher, { useSelector, createActions, useDispatch, isDraft } from '../../src';
 import type {
     ReducerConfig,
     AnyAction,
     Dispatch as ReduxDispatch,
     ReducersMapObject,
-} from '../src';
+} from '../../src';
 
 describe('store', () => {
     it('react-redux should not be rendered if reducer and reducerConfig are not passed in', () => {
