@@ -15,9 +15,9 @@ Array [
           "cacheDirectory": true,
           "cwd": "/Users/du/Documents/my/my-cli/du-formula/packages/cli",
           "plugins": Array [
-            "@babel/plugin-transform-runtime",
+            "/Users/du/Documents/my/my-cli/du-formula/packages/cli/node_modules/@babel/plugin-transform-runtime/lib/index.js",
             Array [
-              "@babel/plugin-proposal-decorators",
+              "/Users/du/Documents/my/my-cli/du-formula/packages/cli/node_modules/@babel/plugin-proposal-decorators/lib/index.js",
               Object {
                 "legacy": true,
               },
@@ -25,7 +25,7 @@ Array [
           ],
           "presets": Array [
             Array [
-              "@babel/preset-env",
+              "/Users/du/Documents/my/my-cli/du-formula/packages/cli/node_modules/@babel/preset-env/lib/index.js",
               Object {
                 "bugfixes": true,
                 "corejs": Object {
@@ -36,7 +36,7 @@ Array [
               },
             ],
             Array [
-              "@babel/preset-react",
+              "/Users/du/Documents/my/my-cli/du-formula/packages/cli/node_modules/@babel/preset-react/lib/index.js",
               Object {
                 "runtime": "automatic",
               },
@@ -59,9 +59,9 @@ Array [
           "cacheDirectory": true,
           "cwd": "/Users/du/Documents/my/my-cli/du-formula/packages/cli",
           "plugins": Array [
-            "@babel/plugin-transform-runtime",
+            "/Users/du/Documents/my/my-cli/du-formula/packages/cli/node_modules/@babel/plugin-transform-runtime/lib/index.js",
             Array [
-              "@babel/plugin-proposal-decorators",
+              "/Users/du/Documents/my/my-cli/du-formula/packages/cli/node_modules/@babel/plugin-proposal-decorators/lib/index.js",
               Object {
                 "legacy": true,
               },
@@ -69,7 +69,7 @@ Array [
           ],
           "presets": Array [
             Array [
-              "@babel/preset-env",
+              "/Users/du/Documents/my/my-cli/du-formula/packages/cli/node_modules/@babel/preset-env/lib/index.js",
               Object {
                 "bugfixes": true,
                 "corejs": Object {
@@ -80,12 +80,12 @@ Array [
               },
             ],
             Array [
-              "@babel/preset-react",
+              "/Users/du/Documents/my/my-cli/du-formula/packages/cli/node_modules/@babel/preset-react/lib/index.js",
               Object {
                 "runtime": "automatic",
               },
             ],
-            "@babel/preset-typescript",
+            "/Users/du/Documents/my/my-cli/du-formula/packages/cli/node_modules/@babel/preset-typescript/lib/index.js",
           ],
         },
       },

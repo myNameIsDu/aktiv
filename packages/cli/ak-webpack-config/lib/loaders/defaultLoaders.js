@@ -23,10 +23,10 @@ const generateSvgSprite = options => ({
     test: /\.svg$/,
     use: [
         {
-            loader: 'svg-sprite-loader',
+            loader: require.resolve('svg-sprite-loader'),
             options,
         },
-        'svgo-loader',
+        require.resolve('svgo-loader'),
     ],
 });
 

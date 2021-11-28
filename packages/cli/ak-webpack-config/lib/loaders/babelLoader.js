@@ -39,7 +39,7 @@ module.exports = function babelLoader(
     /** @type {any[]} */
     const babelPreset = [
         [
-            '@babel/preset-env',
+            require.resolve('@babel/preset-env'),
             {
                 useBuiltIns: 'usage',
                 corejs: {
@@ -51,14 +51,14 @@ module.exports = function babelLoader(
             },
         ],
         [
-            '@babel/preset-react',
+            require.resolve('@babel/preset-react'),
             {
                 runtime: 'automatic',
             },
         ],
     ];
 
-    const babelTsPreset = [...babelPreset, '@babel/preset-typescript'];
+    const babelTsPreset = [...babelPreset, require.resolve('@babel/preset-typescript')];
     const babelInclude = [
         path.resolve(workDir, './src'),
         ...configBabelInclude.map(v => path.resolve(workDir, v)),
@@ -66,9 +66,9 @@ module.exports = function babelLoader(
 
     /** @type {any[]} */
     const babelPlugins = [
-        '@babel/plugin-transform-runtime',
+        require.resolve('@babel/plugin-transform-runtime'),
         [
-            '@babel/plugin-proposal-decorators',
+            require.resolve('@babel/plugin-proposal-decorators'),
             {
                 legacy: true,
             },
@@ -76,12 +76,12 @@ module.exports = function babelLoader(
     ];
 
     if (isLocal && liveReload) {
-        babelPlugins.push('react-refresh/babel');
+        babelPlugins.push(require.resolve('react-refresh/babel'));
     }
 
     if (antdModuleLazyOff) {
         babelPlugins.push([
-            'import',
+            require.resolve('babel-plugin-import'),
             {
                 libraryName: 'antd',
                 libraryDirectory: 'es',
