@@ -1,18 +1,16 @@
-const { proBuildEnv, devBuildEnv, localBuildEnv } = require('../../../config/index');
-
-/** @typedef { import('../../../config/index').EnvListType[number] } EnvType */
+/** @typedef { import('../../presets/index').PresetItemType } PresetItemType */
 /** @typedef {import('webpack').Configuration['performance']} PerType*/
 
 /**
- * @param {EnvType} buildEnv buildEnv
+ * @param {PresetItemType} presets presets
  * @return {PerType} PerType
  */
-function composePerformance(buildEnv) {
-    if (buildEnv === proBuildEnv) {
+function composePerformance(presets) {
+    const { mode } = presets;
+
+    if (mode === 'production') {
         return { hints: false };
-    } else if (buildEnv === devBuildEnv) {
-        return { hints: 'warning' };
-    } else if (buildEnv === localBuildEnv) {
+    } else if (mode === 'development') {
         return { hints: 'warning' };
     }
 
