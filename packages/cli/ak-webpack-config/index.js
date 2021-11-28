@@ -107,8 +107,8 @@ const generateConfig = config => {
     const { version: pkgVersion, name: pkgName } = pkg;
     const { externalScripts, externalStylesheets, ...htmlWebpackOptions } = configHtml;
 
-    // 配置文件为true，并且未浏览器环境+不是本地开启sentry
-    const useEntry = sentry && target === browserTarget && !presets.isLocal;
+    // 配置文件为true，并且为浏览器环境+不是本地开启sentry
+    const useSentry = sentry && target === browserTarget && !presets.isLocal;
     // 设置externalLib
     const externalLibConfigs = parseExternalConfig({
         externalScripts,
@@ -208,7 +208,7 @@ const generateConfig = config => {
         });
     }
     if (presets.mode === 'production') {
-        webpackConfig.devtool = useEntry ? 'source-map' : false;
+        webpackConfig.devtool = useSentry ? 'source-map' : false;
     } else {
         webpackConfig.devtool = devtool;
     }
