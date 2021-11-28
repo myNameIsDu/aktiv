@@ -114,7 +114,7 @@ const generateConfig = (config, buildEnv, target) => {
         buildEnv,
     });
 
-    const webpackConfig = new WebpackConfig();
+    const webpackConfig = new WebpackConfig(workDir);
 
     // compose entry
     webpackConfig.entry = composeEntry(workDir, entry);

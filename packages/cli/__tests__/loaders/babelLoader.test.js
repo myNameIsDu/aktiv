@@ -50,7 +50,7 @@ describe('loader-babelLoader', () => {
 
             // @ts-ignore 测试options
             expect(element.use[0].options.plugins).toEqual(
-                expect.arrayContaining(['react-refresh/babel']),
+                expect.arrayContaining([require.resolve('react-refresh/babel')]),
             );
         }
     });
@@ -71,7 +71,7 @@ describe('loader-babelLoader', () => {
             expect(element.use[0].options.plugins).toEqual(
                 expect.arrayContaining([
                     [
-                        'import',
+                        require.resolve('babel-plugin-import'),
                         {
                             libraryName: 'antd',
                             libraryDirectory: 'es',

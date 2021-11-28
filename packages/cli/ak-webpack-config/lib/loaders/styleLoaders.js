@@ -8,10 +8,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
  */
 const normalLoaders = extractCSS => {
     return [
-        extractCSS ? { loader: MiniCssExtractPlugin.loader } : 'style-loader',
-        'css-loader',
+        extractCSS ? { loader: MiniCssExtractPlugin.loader } : require.resolve('style-loader'),
+        require.resolve('css-loader'),
         {
-            loader: 'postcss-loader',
+            loader: require.resolve('postcss-loader'),
             options: {
                 postcssOptions: {
                     plugins: [require('autoprefixer')],
@@ -34,7 +34,7 @@ const LOADERS = [
                 javascriptEnabled: true,
             };
 
-            loaders.push({ loader: 'less-loader', options: lessOptions });
+            loaders.push({ loader: require.resolve('less-loader'), options: { lessOptions } });
 
             return {
                 test: /\.less$/,

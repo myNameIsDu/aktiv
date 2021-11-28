@@ -1,13 +1,15 @@
-const path = require('path');
-
 /** @typedef  {import('webpack').Configuration} webpackOptions*/
 
 /** @implements {webpackOptions} */
 class WebpackConfig {
-    constructor() {
+    /**
+     *
+     * @param {string} workDir workDir
+     */
+    constructor(workDir) {
         // default context, make loader resolve relative to it
         /** @type {webpackOptions['context']} */
-        this.context = path.resolve(__dirname, '../../');
+        this.context = workDir;
         /** @type {webpackOptions['mode']} */
         this.mode = 'production';
         /** @type {webpackOptions['optimization']} */
