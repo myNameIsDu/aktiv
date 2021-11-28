@@ -5,18 +5,18 @@ const path = require('path');
 /**
  * @param {RegExp} test test
  * @param {string[]} include include
+ * @param {string} workDir workDir
  * @param {Record<string,unknown>} options options
  * @return {RuleSetRule} generateBabelConfig
  */
-const generateBabelConfig = (test, include, options) => {
+const generateBabelConfig = (test, include, workDir, options) => {
     return {
         test,
         include,
         use: [
             {
-                loader: 'babel-loader',
+                loader: require.resolve('babel-loader'),
                 options: {
-                    cwd: path.resolve(__dirname, '../../../'),
                     cacheDirectory: true,
                     cacheCompression: false,
                     ...options,
@@ -91,11 +91,11 @@ module.exports = function babelLoader(
     }
 
     return [
-        generateBabelConfig(/\.(js|jsx)$/, babelInclude, {
+        generateBabelConfig(/\.(js|jsx)$/, babelInclude, workDir, {
             presets: babelPreset,
             plugins: babelPlugins,
         }),
-        generateBabelConfig(/\.(ts|tsx)$/, babelInclude, {
+        generateBabelConfig(/\.(ts|tsx)$/, babelInclude, workDir, {
             presets: babelTsPreset,
             plugins: babelPlugins,
         }),

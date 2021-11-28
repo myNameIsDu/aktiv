@@ -10,7 +10,99 @@ describe('loader-babelLoader', () => {
     it('默认babel配置', () => {
         const babelLoaderOptions = babelLoader({ workDir }, {});
 
-        expect(babelLoaderOptions).toMatchSnapshot();
+        expect(babelLoaderOptions).toMatchObject([
+            {
+                include: [expect.any(String)],
+                test: /\.(js|jsx)$/,
+                use: [
+                    {
+                        loader: expect.stringMatching('babel-loader/lib/index.js'),
+                        options: {
+                            cacheCompression: false,
+                            cacheDirectory: true,
+                            plugins: [
+                                expect.stringMatching(
+                                    '@babel/plugin-transform-runtime/lib/index.js',
+                                ),
+                                [
+                                    expect.stringMatching(
+                                        '@babel/plugin-proposal-decorators/lib/index.js',
+                                    ),
+                                    {
+                                        legacy: true,
+                                    },
+                                ],
+                            ],
+                            presets: [
+                                [
+                                    expect.stringMatching('@babel/preset-env/lib/index.js'),
+                                    {
+                                        bugfixes: true,
+                                        corejs: {
+                                            proposals: true,
+                                            version: 3.18,
+                                        },
+                                        useBuiltIns: 'usage',
+                                    },
+                                ],
+                                [
+                                    expect.stringMatching('@babel/preset-react/lib/index.js'),
+                                    {
+                                        runtime: 'automatic',
+                                    },
+                                ],
+                            ],
+                        },
+                    },
+                ],
+            },
+            {
+                include: [expect.any(String)],
+                test: /\.(ts|tsx)$/,
+                use: [
+                    {
+                        loader: expect.stringMatching('babel-loader/lib/index.js'),
+                        options: {
+                            cacheCompression: false,
+                            cacheDirectory: true,
+                            plugins: [
+                                expect.stringMatching(
+                                    '@babel/plugin-transform-runtime/lib/index.js',
+                                ),
+                                [
+                                    expect.stringMatching(
+                                        '@babel/plugin-proposal-decorators/lib/index.js',
+                                    ),
+                                    {
+                                        legacy: true,
+                                    },
+                                ],
+                            ],
+                            presets: [
+                                [
+                                    expect.stringMatching('@babel/preset-env/lib/index.js'),
+                                    {
+                                        bugfixes: true,
+                                        corejs: {
+                                            proposals: true,
+                                            version: 3.18,
+                                        },
+                                        useBuiltIns: 'usage',
+                                    },
+                                ],
+                                [
+                                    expect.stringMatching('@babel/preset-react/lib/index.js'),
+                                    {
+                                        runtime: 'automatic',
+                                    },
+                                ],
+                                expect.stringMatching('@babel/preset-typescript/lib/index.js'),
+                            ],
+                        },
+                    },
+                ],
+            },
+        ]);
     });
 
     it('传入babelInclude应当包含在include配置内', () => {
