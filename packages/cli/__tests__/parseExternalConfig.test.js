@@ -1,5 +1,5 @@
 const parseExternalConfig = require('../ak-webpack-config/lib/parseExternalConfig');
-const { proBuildEnv, devBuildEnv, localBuildEnv } = require('../config/index');
+const getPreset = require('../ak-webpack-config/presets/index');
 
 const httpsRemotePath = 'https://xxxx';
 const httpRemotePath = 'http://xxxx';
@@ -24,55 +24,39 @@ const topLocalReturn = {
 };
 
 describe('parseExternalConfig', () => {
-    it('默认应该返回空', () => {
-        expect(parseExternalConfig({})).toEqual(emptyReturn);
-    });
-    it('输入buildEnv为localBuildEnv应该返回空', () => {
+    const localPreset = getPreset('local', 'browser');
+    const devPreset = getPreset('development', 'browser');
+    const proPreset = getPreset('production', 'browser');
+
+    it('输入preset为localPreset应该返回空', () => {
         expect(
             parseExternalConfig({
                 externalScripts: [httpsRemotePath],
-                buildEnv: localBuildEnv,
+                presets: localPreset,
             }),
         ).toEqual(emptyReturn);
     });
-    it('输入buildEnv为devBuildEnv应该返回空', () => {
+    it('输入preset为devPreset应该返回空', () => {
         expect(
             parseExternalConfig({
                 externalScripts: [httpsRemotePath],
-                buildEnv: devBuildEnv,
+                presets: devPreset,
             }),
         ).toEqual(emptyReturn);
     });
-    it('输入buildEnv为proBuildEnv应该返回解析数据', () => {
+    it('输入preset为ProPreset应该返回空', () => {
         expect(
             parseExternalConfig({
                 externalScripts: [httpsRemotePath],
-                buildEnv: proBuildEnv,
+                presets: proPreset,
             }),
         ).not.toEqual(emptyReturn);
-    });
-    it('输入buildEnv为其它值应该返回空', () => {
-        expect(
-            parseExternalConfig({
-                externalScripts: [httpsRemotePath],
-                // @ts-expect-error 测试输入其它值
-                buildEnv: 'xxx',
-            }),
-        ).toEqual(emptyReturn);
-    });
-
-    it('不输入buildEnv默认应该返回空', () => {
-        expect(
-            parseExternalConfig({
-                externalScripts: [httpsRemotePath],
-            }),
-        ).toEqual(emptyReturn);
     });
 
     const wrapperProEnv = v => {
         return parseExternalConfig({
             ...v,
-            buildEnv: proBuildEnv,
+            presets: proPreset,
         });
     };
 
@@ -162,23 +146,19 @@ describe('parseExternalConfig', () => {
             expect(
                 parseExternalConfig({
                     externalScripts: [wrapperItem('local', true)],
+                    presets: proPreset,
                 }),
             ).toEqual({
                 externalScripts: [returnItem('local')],
                 externalStylesheets: [],
             });
         });
-        it('不输入在默认dev环境下应该空', () => {
-            expect(
-                parseExternalConfig({
-                    externalScripts: [wrapperItem('local')],
-                }),
-            ).toEqual(emptyReturn);
-        });
+
         it('传入attr应该返回attr', () => {
             expect(
                 parseExternalConfig({
                     externalScripts: [wrapperItem('local', true, 'hello')],
+                    presets: proPreset,
                 }),
             ).toEqual({
                 externalScripts: [returnItem('local', 'hello')],

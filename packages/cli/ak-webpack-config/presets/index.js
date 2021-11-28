@@ -6,7 +6,7 @@ const { serverTarget } = require('../../config/index');
 
 /**
  * @typedef {Object} PresetItemType
- * @property {string | false} [useHash]
+ * @property {string | false} useHash
  * @property {string} env
  * @property {modeType} mode
  * @prop {boolean} isLocal
@@ -54,7 +54,8 @@ const presetFunc = (env, target) => {
     const preset = presets[env];
 
     if (target === serverTarget) {
-        delete preset.useHash;
+        preset.useHash = false;
+        preset.outputHTML = false;
     }
 
     return preset;

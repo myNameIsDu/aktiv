@@ -1,5 +1,4 @@
-const getPreset = require('./presets/index');
-const { browserTarget, proBuildEnv } = require('../config/index');
+const { browserTarget } = require('../config/index');
 const parseExternalConfig = require('./lib/parseExternalConfig');
 const WebpackConfig = require('./lib/webpackConfig');
 const babelLoader = require('./lib/loaders/babelLoader');
@@ -20,6 +19,7 @@ const {
 
 /** @typedef  {import('../config/index').TargetListType[number]} TargetType*/
 /** @typedef  {import('../config/index').EnvListType[number]} EnvType*/
+/** @typedef  {import('./presets/index').PresetItemType} PresetItemType*/
 /** @typedef  {import('webpack').Configuration} WebpackOptions*/
 /** @typedef  {import('@sentry/webpack-plugin').SentryCliPluginOptions} SentryCliPluginOptions */
 /** @typedef  {import('./lib/parseExternalConfig').URIType} URIType */
@@ -61,17 +61,16 @@ const {
  * @property {string} devtool
  * @property {any} pkg
  * @property {boolean} analyze
+ * @property {PresetItemType} presets
+ * @property {TargetType} target
  */
 
 /**
  * @param {akConfig} config  config file info
- * @param {EnvType} buildEnv  env
- * @param {TargetType} target target
  * @return {WebpackOptions} webpack config
  * @description generate webpack config
  */
-const generateConfig = (config, buildEnv, target) => {
-    const presets = getPreset(buildEnv, target);
+const generateConfig = config => {
     const {
         analyze,
         sentry = false,
@@ -101,7 +100,10 @@ const generateConfig = (config, buildEnv, target) => {
         CssMinimizerPluginOptions,
         loaderQueries,
         devtool = 'eval-cheap-module-source-map',
+        presets,
+        target,
     } = config;
+
     const { version: pkgVersion, name: pkgName } = pkg;
     const { externalScripts, externalStylesheets, ...htmlWebpackOptions } = configHtml;
 
@@ -111,7 +113,7 @@ const generateConfig = (config, buildEnv, target) => {
     const externalLibConfigs = parseExternalConfig({
         externalScripts,
         externalStylesheets,
-        buildEnv,
+        presets,
     });
 
     const webpackConfig = new WebpackConfig(workDir);
@@ -126,7 +128,7 @@ const generateConfig = (config, buildEnv, target) => {
     webpackConfig.mode = presets.mode;
 
     // compose performance
-    webpackConfig.performance = composePerformance(buildEnv);
+    webpackConfig.performance = composePerformance(presets);
 
     // compose loaders
     const loaders = babelLoader(
@@ -205,7 +207,7 @@ const generateConfig = (config, buildEnv, target) => {
             }
         });
     }
-    if (buildEnv === proBuildEnv) {
+    if (presets.mode === 'production') {
         webpackConfig.devtool = useEntry ? 'source-map' : false;
     } else {
         webpackConfig.devtool = devtool;

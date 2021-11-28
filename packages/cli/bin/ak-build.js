@@ -14,6 +14,7 @@ const checkRequiredFiles = require('../utils/checkRequiredFiles');
 const webpack = require('webpack');
 const akWebpackConfig = require('../ak-webpack-config/index');
 const chalk = require('chalk');
+const getPreset = require('../ak-webpack-config/presets/index');
 
 const { program } = commander;
 
@@ -68,11 +69,14 @@ if (!checkRequiredFiles([configFilePath, packageFilePath])) {
 
 const config = require(configFilePath);
 
+workDir && (config.workDir = workDir);
+commandAnalyze && (config.analyze = commandAnalyze);
+commandTarget && (config.target = commandTarget);
+commandMode && (config.buildEnv = commandMode);
 config.pkg = require(packageFilePath);
-config.workDir = workDir;
-config.analyze = commandAnalyze;
+config.presets = config.presets || getPreset(commandMode, commandTarget);
 
-const webpackConfig = akWebpackConfig(config, commandMode, commandTarget);
+const webpackConfig = akWebpackConfig(config);
 
 webpack(webpackConfig, (error, stats) => {
     if (error) {
