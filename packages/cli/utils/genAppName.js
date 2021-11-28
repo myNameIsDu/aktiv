@@ -1,10 +1,12 @@
+const throwError = require('./throwError');
+
 /**
  * @param {string} pkgName pkgName
  * @return {string} appName
  */
 function genAppName(pkgName) {
     if (!pkgName) {
-        throw new Error('failed to gen owl config, app name is empty');
+        throwError('failed to gen owl config, app name is empty');
     }
 
     // remove scope

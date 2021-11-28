@@ -1,13 +1,14 @@
 const isType = require('kind-of');
-
+const throwError = require('./throwError');
 /**
  * @param {{}|any[]} obj obj
  * @param {string} type type
  * @return {boolean} return isType
  */
+
 function validateObjectOrArrayValue(obj, type) {
     if (isType(type) !== 'string') {
-        throw new Error("parameter 'type' must be string");
+        throwError("parameter 'type' must be string");
     }
 
     type = type.toLowerCase();
