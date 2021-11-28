@@ -1,7 +1,8 @@
 const path = require('path');
 const baseSchema = require('../baseSchema');
-const validateObjectOrArrayValue = require('../../../utils/validateObjectOrArrayValue');
 const isType = require('kind-of');
+const throwError = require('../../../utils/throwError');
+const validateObjectOrArrayValue = require('../../../utils/validateObjectOrArrayValue');
 
 /** @typedef {import('webpack').Configuration['entry']} EnTryType*/
 
@@ -21,7 +22,7 @@ function composeEntry(workDir, inputEntry) {
     const iptType = isType(inputEntry);
 
     if (!entrySchema.type.includes(iptType)) {
-        throw new Error("input's entry is invalid.");
+        throwError("input's entry is invalid.");
     }
     /*
         这里没有使用 iptType 是因为 ts 并不能正确推断出类型，我也没有找到好的断言写法
@@ -35,14 +36,14 @@ function composeEntry(workDir, inputEntry) {
     }
     if (Array.isArray(inputEntry)) {
         if (!validateObjectOrArrayValue(inputEntry, 'string')) {
-            throw new Error('an entry must be a string[] type. ');
+            throwError('an entry must be a string[] type. ');
         }
 
         return inputEntry.map(v => path.resolve(workDir, v));
     }
     if (typeof inputEntry === 'object') {
         if (!validateObjectOrArrayValue(inputEntry, 'string')) {
-            throw new Error('an entry must be a {[x]:string}. ');
+            throwError('an entry must be a {[x]:string}. ');
         }
 
         return Object.keys(inputEntry).reduce(

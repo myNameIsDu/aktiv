@@ -1,6 +1,7 @@
 const baseSchema = require('../baseSchema.js');
 const isType = require('kind-of');
 const mergeOptions = require('../../../utils/mergeOptions');
+const throwError = require('../../../utils/throwError');
 
 /** @typedef {import('../../../config/index').TargetListType[number]} TargetType */
 /** @typedef {import('webpack').ResolveOptions} ResolveType*/
@@ -24,7 +25,7 @@ function composeResolveFactory(target, workDir, receiveConfig) {
     }
 
     if (isType(receiveConfig) !== 'object') {
-        throw new Error(`${target} config must be object`);
+        throwError(`akConfig error:  ${target} config must be object`);
     }
 
     Object.keys(receiveConfig).forEach(key => {

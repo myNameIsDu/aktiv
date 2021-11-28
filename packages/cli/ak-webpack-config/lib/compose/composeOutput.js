@@ -2,6 +2,7 @@ const baseSchema = require('../baseSchema');
 const path = require('path');
 const { serverTarget } = require('../../../config/index');
 const isType = require('kind-of');
+const throwError = require('../../../utils/throwError');
 
 /** @typedef {import('../../../config/index').TargetListType[number]} TargetType*/
 /** @typedef {import('../../presets/index').PresetItemType} PresetItemType*/
@@ -35,7 +36,7 @@ function composeOutput(inputOutput, target, presets, workDir) {
     const inputType = isType(inputOutput);
 
     if (!outputSchema.type.includes(inputType)) {
-        throw new Error("option's 'output' is invalid.");
+        throwError("option's 'output' is invalid.");
     }
 
     if (inputType === 'string') {
