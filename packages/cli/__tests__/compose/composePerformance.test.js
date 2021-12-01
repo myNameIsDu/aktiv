@@ -10,7 +10,7 @@ describe('composePerformance', () => {
         const performance = composePerformance(proPreset);
 
         expect(performance).toMatchObject({
-            hints: false,
+            hints: 'warning',
         });
     });
 
@@ -18,7 +18,7 @@ describe('composePerformance', () => {
         const performance = composePerformance(devPreset);
 
         expect(performance).toMatchObject({
-            hints: 'warning',
+            hints: false,
         });
     });
 
@@ -26,7 +26,7 @@ describe('composePerformance', () => {
         const performance = composePerformance(localPreset);
 
         expect(performance).toMatchObject({
-            hints: 'warning',
+            hints: false,
         });
     });
 

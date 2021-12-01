@@ -9,9 +9,9 @@ function composePerformance(presets) {
     const { mode } = presets;
 
     if (mode === 'production') {
-        return { hints: false };
-    } else if (mode === 'development') {
         return { hints: 'warning' };
+    } else if (mode === 'development') {
+        return { hints: false };
     }
 
     return { hints: 'warning' };
