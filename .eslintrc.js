@@ -72,7 +72,7 @@ module.exports = {
         'linebreak-style': 'error',
         'lines-around-directive': 'error',
         'lines-between-class-members': 'error',
-        'max-classes-per-file': 'error',
+        'max-classes-per-file': 2,
         'max-depth': 'error',
         'max-len': [
             'error',

@@ -1,4 +1,4 @@
-import withRouter from './module/withRouter';
+export { default as withRouter } from './module/withRouter';
 export { default } from './module/app';
 export { createActions } from './store';
 export * from 'react-router-dom';
@@ -30,5 +30,4 @@ export type {
     PayloadType,
 } from './store';
 export type { UseRouterReturns, UseRouterState } from './hooks/use-router';
-export type { HocProps, HocExtraProps, HocShape } from './module/withRouter';
-export { withRouter };
+export type { HocExtraProps } from './module/withRouter';

@@ -1,28 +1,22 @@
 // eslint-disable-next-line max-classes-per-file
-import React, { Component } from 'react';
-import type { FC } from 'react';
-import withRouter from '../../src/module/withRouter';
-import Launcher from '../../src/module/app';
+import { Component, useRef } from 'react';
 import { act, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-// important: should import jest-dom to use expect dom method，eg: toHaveTextContent
+import type { FC } from 'react';
 import '@testing-library/jest-dom/extend-expect';
+import type { HocExtraProps } from '../../src';
+import withRouter from '../../src/module/withRouter';
+import Launcher from '../../src/module/app';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const spyPageRenderTime = jest.fn(() => {});
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const spyChildRenderTime = jest.fn(() => {});
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-class DemoPage extends Component<any, any> {
-    // eslint-disable-next-line no-useless-constructor
-    constructor() {
-        // eslint-disable-next-line prefer-rest-params,@typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        // eslint-disable-next-line prefer-rest-params
-        super(...Array.from(arguments));
-    }
-
+interface DemoPagePropsType {
+    a: string;
+}
+class DemoPage extends Component<DemoPagePropsType & HocExtraProps, unknown> {
     handleClick = () => {
         // eslint-disable-next-line no-invalid-this
         this.props?.history.push('/child');
@@ -46,10 +40,17 @@ class DemoPage extends Component<any, any> {
         );
     }
 }
+const WithRouterPage = withRouter<DemoPagePropsType, DemoPage>(DemoPage);
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-const WithRouterPage = withRouter(DemoPage);
+function RoteCom() {
+    const DemoRef = useRef<DemoPage>(null);
+
+    // 查看类型是否复合预期
+    // eslint-disable-next-line no-console
+    console.log(DemoRef.current?.handleClick);
+
+    return <WithRouterPage ref={DemoRef} a="123" />;
+}
 
 const ChildComponent: FC = () => {
     spyChildRenderTime();
@@ -57,49 +58,33 @@ const ChildComponent: FC = () => {
     return <h1>child</h1>;
 };
 
-class RouterChildComponent extends Component<any, any> {
-    constructor() {
-        // eslint-disable-next-line prefer-rest-params,@typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        // eslint-disable-next-line prefer-rest-params
-        super(...Array.from(arguments));
-    }
-
+class QueryClassicComponent extends Component<any, any> {
     render() {
-        spyPageRenderTime();
-
-        return (
-            <>
-                <h1>{this.props.query?.name || '测试'}</h1>
-            </>
-        );
+        return <h1>{this.props.query?.name || '测试'}</h1>;
     }
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-const WithRouertChild = withRouter(RouterChildComponent);
+const WithQueryComponent = withRouter(QueryClassicComponent);
 
 describe('withRouter', () => {
     afterAll(() => {
         jest.clearAllMocks();
     });
 
-    const homeRoute = {
-        path: '/',
-        component: WithRouterPage,
-    };
     const app = new Launcher({
         hash: false,
         routes: [
-            homeRoute,
+            {
+                path: '/',
+                component: RoteCom,
+            },
             {
                 path: '/child',
                 component: ChildComponent,
             },
             {
                 path: '/query-child',
-                component: WithRouertChild,
+                component: WithQueryComponent,
             },
         ],
     });
