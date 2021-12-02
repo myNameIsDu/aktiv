@@ -129,7 +129,7 @@ function defaultPlugins(options) {
                 patterns: [
                     {
                         from: fromPath,
-                        to: path.resolve(workDir, toCopyPath),
+                        to: toCopyPath,
                     },
                 ],
             }),
