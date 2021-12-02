@@ -3,7 +3,7 @@ import type { ComponentType, FC, Ref } from 'react';
 import { useLocation, useParams, useMatch } from 'react-router-dom';
 import type { Params, PathMatch } from 'react-router-dom';
 
-import { useRouter } from '../hooks';
+import { useRouter, useQuery } from '../hooks';
 import type { UseRouterReturns } from '../hooks';
 
 export type HocShape<P extends Record<string, unknown> = HocProps> = {
@@ -35,6 +35,7 @@ const withRouter: HocShape = Com => {
         const _location = useLocation();
         const params = useParams();
         const router = useRouter();
+        const query = useQuery();
 
         const match = useMatch({ path: '/*' });
 
@@ -51,6 +52,7 @@ const withRouter: HocShape = Com => {
         const extraProps = {
             match,
             params,
+            query,
             location: _location,
             history: _history,
             ...rest,
