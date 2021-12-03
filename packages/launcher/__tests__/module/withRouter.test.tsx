@@ -1,12 +1,10 @@
 // eslint-disable-next-line max-classes-per-file
-import { Component, useRef } from 'react';
+import { Component, useRef, type FC } from 'react';
 import { act, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import type { FC } from 'react';
-import '@testing-library/jest-dom/extend-expect';
-import type { HocExtraProps } from '../../src';
-import withRouter from '../../src/module/withRouter';
+import withRouter, { type HocExtraProps } from '../../src/module/withRouter';
 import Launcher from '../../src/module/app';
+import userEvent from '@testing-library/user-event';
+import '@testing-library/jest-dom/extend-expect';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const spyPageRenderTime = jest.fn(() => {});
