@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import { useRouter } from '../hooks';
+import { useRouter, useQuery } from '../hooks';
 import type { Params } from 'react-router-dom';
 import type { Location } from 'react-router';
 import type { UseRouterReturns } from '../hooks';
@@ -31,6 +31,7 @@ function withRouter<CProps, R>(
         const routerLocation = useLocation();
         const params = useParams();
         const router = useRouter();
+        const query = useQuery();
         const wrapperHistory = {
             go: window.history.go,
             goBack: window.history.back,
@@ -41,6 +42,7 @@ function withRouter<CProps, R>(
         };
         const extraProps = {
             params,
+            query,
             location: routerLocation,
             history: wrapperHistory,
             ...props,

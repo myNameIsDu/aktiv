@@ -1,10 +1,10 @@
-import { Component, useRef } from 'react';
-import withRouter from '../../src/module/withRouter';
-import Launcher from '../../src/module/app';
+// eslint-disable-next-line max-classes-per-file
+import { Component, useRef, type FC } from 'react';
 import { act, screen } from '@testing-library/react';
+import withRouter, { type HocExtraProps } from '../../src/module/withRouter';
+import Launcher from '../../src/module/app';
 import userEvent from '@testing-library/user-event';
-import type { FC } from 'react';
-import type { HocExtraProps } from '../../src/module/withRouter';
+import '@testing-library/jest-dom/extend-expect';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const spyPageRenderTime = jest.fn(() => {});
@@ -20,6 +20,11 @@ class DemoPage extends Component<DemoPagePropsType & HocExtraProps, unknown> {
         this.props?.history.push('/child');
     };
 
+    handleQueryClick = () => {
+        // eslint-disable-next-line no-invalid-this
+        this.props?.history.push('/query-child?name="张三"');
+    };
+
     // eslint-disable-next-line class-methods-use-this
     render() {
         spyPageRenderTime();
@@ -28,6 +33,7 @@ class DemoPage extends Component<DemoPagePropsType & HocExtraProps, unknown> {
             <>
                 <h1>Test Router</h1>
                 <button onClick={this.handleClick}>跳转</button>
+                <button onClick={this.handleQueryClick}>Query</button>
             </>
         );
     }
@@ -50,6 +56,14 @@ const ChildComponent: FC = () => {
     return <h1>child</h1>;
 };
 
+class QueryClassicComponent extends Component<any, any> {
+    render() {
+        return <h1>{this.props.query?.name || '测试'}</h1>;
+    }
+}
+
+const WithQueryComponent = withRouter(QueryClassicComponent);
+
 describe('withRouter', () => {
     afterAll(() => {
         jest.clearAllMocks();
@@ -66,6 +80,10 @@ describe('withRouter', () => {
                 path: '/child',
                 component: ChildComponent,
             },
+            {
+                path: '/query-child',
+                component: WithQueryComponent,
+            },
         ],
     });
 
@@ -78,5 +96,16 @@ describe('withRouter', () => {
             userEvent.click(screen.getByText('跳转'));
         });
         expect(spyChildRenderTime).toHaveBeenCalledTimes(1);
+    });
+
+    it('when render app, should can get query args', () => {
+        act(() => {
+            app.start();
+        });
+        act(() => {
+            userEvent.click(screen.getByText('Query'));
+        });
+
+        expect(screen.getByRole('heading')).toHaveTextContent('张三');
     });
 });
