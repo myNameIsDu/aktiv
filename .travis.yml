@@ -6,10 +6,12 @@ branches:
 jobs:
   include:
     - stage: Test
-      install: npm install && npm run bootstrap
+      install: npm install
+      # bootstrap: npm run bootstrap
       script:
         - cd packages/launcher && npm run test -- --collectCoverage && npm run codecov
     - stage: Build
-      install: npm install && npm run bootstrap
+      install: npm install
+      # bootstrap: npm run bootstrap
       script:
         - cd packages/launcher && npm run build
