@@ -7,6 +7,6 @@ const packInfo = require('../package.json');
 program
     .version(packInfo.version)
     .usage('<command> [options]')
-    // .command('dev', 'run live-reloaded dev server', { isDefault: true })
+    .command('dev', 'run live-reloaded dev server', { isDefault: true })
     .command('build', 'build project')
     .parse();

@@ -131,7 +131,7 @@ describe('loader-babelLoader', () => {
         const babelLoaderConfig = babelLoader(
             {
                 workDir,
-                liveReload: true,
+                hotReplace: true,
             },
             localPreset,
         );

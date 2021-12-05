@@ -72,7 +72,6 @@ const config = require(configFilePath);
 workDir && (config.workDir = workDir);
 commandAnalyze && (config.analyze = commandAnalyze);
 commandTarget && (config.target = commandTarget);
-commandMode && (config.buildEnv = commandMode);
 config.pkg = require(packageFilePath);
 config.presets = config.presets || getPreset(commandMode, commandTarget);
 

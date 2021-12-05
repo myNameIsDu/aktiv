@@ -63,7 +63,7 @@ function composeHtmlWebpackPlugin(htmlOptions, plugins, mode) {
  * @param {string} options.workDir workDir
  * @param {TargetType} options.target target
  * @param {PresetItemType} options.presets PresetItemType
- * @param {boolean} options.liveReload liveReload
+ * @param {boolean} options.hotReplace hotReplace
  * @param {ExternalLibConfigs} options.externalLibConfigs externalLibConfigs
  * @param {boolean} options.analyze analyze
  * @return {PluginsType} return
@@ -81,7 +81,7 @@ function defaultPlugins(options) {
         workDir,
         target,
         presets,
-        liveReload,
+        hotReplace,
         externalLibConfigs,
         analyze,
     } = options;
@@ -177,7 +177,7 @@ function defaultPlugins(options) {
         // 强制区分大小写
         plugins.push(new CaseSensitivePathsPlugin());
     }
-    if (isLocal && liveReload) {
+    if (isLocal && hotReplace) {
         plugins.push(new ReactRefreshWebpackPlugin());
     }
     if (analyze) {

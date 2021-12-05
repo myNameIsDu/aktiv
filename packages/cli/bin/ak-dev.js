@@ -3,19 +3,21 @@
 const commander = require('commander');
 const path = require('path');
 const chalk = require('chalk');
-// const DevServer = require('@aktiv/dev-server');
 const akWebpackConfig = require('../ak-webpack-config/index');
 const {
     defaultWorkDir,
     defaultConfigFile,
     defaultProt,
     localBuildEnv,
-    defaultTarget,
-    supperTargetList,
+    browserTarget,
 } = require('../config/index');
 const getPreset = require('../ak-webpack-config/presets/index');
-
+const selectPortIsOccupied = require('../utils/selectPortIsOccupied');
 const checkRequiredFiles = require('../utils/checkRequiredFiles');
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const prepareUrl = require('../utils/prepareUrl');
+const openBrowser = require('../utils/openBrowser');
 
 const { program } = commander;
 
@@ -30,30 +32,25 @@ program
     .option('-d, --dir <path>', 'set workDi', resolvePath, defaultWorkDir)
     .option('-c, --config <path>', 'set config file', resolvePath, defaultConfigFile)
     .option('-p, --port <port>', 'set dev server port', String(defaultProt))
-    .option('--no-liveReload', 'set the livereload off')
-    .addOption(
-        new commander.Option('-t --target <type>', 'set building target')
-            .choices(supperTargetList)
-            .default(defaultTarget),
-    );
+    .option('--no-hotReplace', 'set the livereload off');
+// TODO: 增加examples
+// program.addHelpText('after', () => {
+//     return `
+//   Examples:
 
-program.addHelpText('after', () => {
-    return `
-  Examples: 
+//   ${chalk.gray('# run ak dev server width special workDir, default is process.cwd()')}
+//   $ ak dev ../
 
-  ${chalk.gray('# run ak dev server width special workDir, default is process.cwd()')}
-  $ ak dev ../
+//   ${chalk.gray('# run ak dev server with special config file')}
+//   $ ak dev -c ./config.js
 
-  ${chalk.gray('# run ak dev server with special config file')}
-  $ ak dev -c ./config.js
+//   ${chalk.gray('# run ak dev server width special port')}
+//   $ ak dev -p 8888
 
-  ${chalk.gray('# run ak dev server width special port')}
-  $ ak dev -p 8888
-
-  ${chalk.gray('# run ak dev server with specified building target')}
-  $ ak dev -t node
-`;
-});
+//   ${chalk.gray('# run ak dev server with specified building target')}
+//   $ ak dev -t node
+// `;
+// });
 program.parse(process.argv);
 
 const programOptions = program.opts();
@@ -64,25 +61,13 @@ const workDir = programOptions.dir;
 const configFile = programOptions.config;
 /** @type {string} */
 const commandPort = programOptions.port;
-/** @type {(typeof supperTargetList)[number]} */
-const commandTarget = programOptions.target;
 /** @type {boolean} */
-const commandLiveReload = programOptions.liveReload;
+const commandHotReplace = programOptions.hotReplace;
 
-const preset = getPreset(localBuildEnv, commandTarget);
+const presets = getPreset(localBuildEnv, browserTarget);
 
 /* re write process env*/
-process.env.NODE_ENV = preset.env;
-
-// check port is number
-const numPort = parseInt(commandPort, 10);
-
-if (isNaN(numPort)) {
-    console.error(chalk.red(`argument 'port': ${numPort}, is invalid.`));
-    console.log();
-    program.help();
-}
-
+process.env.NODE_ENV = presets.env;
 const configFilePath = path.resolve(workDir, configFile);
 const packageFilePath = path.resolve(workDir, 'package.json');
 
@@ -92,45 +77,63 @@ if (!checkRequiredFiles([configFilePath, packageFilePath])) {
 }
 const config = require(configFilePath);
 
+workDir && (config.workDir = workDir);
+commandHotReplace && (config.hotReplace = commandHotReplace);
+
 config.pkg = require(packageFilePath);
-config.workDir = workDir;
-config.liveReload = commandLiveReload;
+config.presets = presets;
+config.target = browserTarget;
 
-const webpack = require('webpack');
+/** @typedef {import('webpack-dev-server').Configuration} DevServerConfigType*/
+/** @type {DevServerConfigType} */
+const devServerConfig = config.server || {};
+const { output: { publicPath = '/' } = {} } = config;
 
-const webpackConfig = akWebpackConfig(config, localBuildEnv, commandTarget);
+let { host } = devServerConfig;
+const { server, https } = devServerConfig;
+// check port is number
+const numPort = parseInt(commandPort, 10);
 
-// webpack(webpackConfig, (error, stats) => {
-//     console.log('my callback');
-//     if (error) {
-//         console.error(chalk.red(error.message));
-//         process.exit(1);
-//     }
-// if (stats) {
-//     console.log(stats,'-------------stats')
-//     const info = stats.toJson();
+if (isNaN(numPort)) {
+    console.error(chalk.red(`argument 'port': ${numPort}, is invalid.`));
+    console.log();
+    program.help();
+}
+selectPortIsOccupied(numPort)
+    .then(newPort => {
+        const compiler = webpack(akWebpackConfig(config));
+        // eslint-disable-next-line no-nested-ternary
+        const protocol = server === 'https' ? 'https' : https ? 'https' : 'http';
 
-//     // console.log(info, '----');
-//     if (stats.hasErrors()) {
-//         console.log('error,=================');
-//         console.error(info.errors);
-//     }
+        host = host || '0.0.0.0';
 
-//     if (stats.hasWarnings()) {
-//         console.log('stat warn---------');
-//         console.warn(info.warnings);
-//     }
-//     console.log(
-//         stats.toString({
-//             modules: false,
-//             chunks: false,
-//             children: false,
-//             colors: true,
-//         }),
-//     );
-// }
-// });
-// selectPortIsOccupied(numPort).then(newPort => {
-//     config.server = { ...config.server, port: newPort };
-//     const server = new DevServer(config);
-// });
+        const url = prepareUrl(protocol, host, newPort, publicPath);
+
+        const devServer = new WebpackDevServer(
+            {
+                compress: true,
+                historyApiFallback: true,
+                hot: commandHotReplace,
+                ...devServerConfig,
+                host,
+                port: newPort,
+            },
+            compiler,
+        );
+
+        devServer.startCallback(() => {
+            openBrowser(url);
+        });
+        ['SIGINT', 'SIGTERM'].forEach(sig => {
+            process.on(sig, () => {
+                devServer.stop();
+                process.exit();
+            });
+        });
+    })
+    .catch(err => {
+        if (err && err.message) {
+            console.log(err.message);
+        }
+        process.exit(1);
+    });

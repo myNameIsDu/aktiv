@@ -30,7 +30,7 @@ module.exports = function babelLoader(
     {
         babelInclude: configBabelInclude = [],
         antdModuleLazyOff = false,
-        liveReload = false,
+        hotReplace = false,
         workDir,
     },
     presets,
@@ -75,7 +75,7 @@ module.exports = function babelLoader(
         ],
     ];
 
-    if (isLocal && liveReload) {
+    if (isLocal && hotReplace) {
         babelPlugins.push(require.resolve('react-refresh/babel'));
     }
 

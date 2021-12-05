@@ -11,6 +11,8 @@ function selectPortIsOccupied(defaultPort) {
         return new Promise(resolve => {
             if (newPort === defaultPort) {
                 resolve(defaultPort);
+
+                return;
             }
             if (process.platform !== 'win32' && defaultPort < 1024 && !isRoot()) {
                 // eslint-disable-next-line no-console

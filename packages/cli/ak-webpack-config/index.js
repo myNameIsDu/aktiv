@@ -51,7 +51,7 @@ const {
  * @property {Record<string,any>} definitions
  * @property {string} staticSourcePath
  * @property {string} toCopyPath
- * @property {boolean} liveReload
+ * @property {boolean} hotReplace
  * @property {plugins} plugins
  * @property {Array<string> | string} splitChunksVendor
  * @property {Record<string,any>} splitChunksCacheGroups
@@ -92,7 +92,7 @@ const generateConfig = config => {
         staticSourcePath = './static',
         toCopyPath = './static',
         pkg,
-        liveReload,
+        hotReplace,
         plugins: configPlugins,
         splitChunksVendor,
         splitChunksCacheGroups,
@@ -135,7 +135,7 @@ const generateConfig = config => {
         {
             babelInclude,
             antdModuleLazyOff,
-            liveReload,
+            hotReplace,
             workDir,
         },
         presets,
@@ -175,7 +175,7 @@ const generateConfig = config => {
             workDir,
             target,
             presets,
-            liveReload,
+            hotReplace,
             externalLibConfigs,
             analyze,
         }),
