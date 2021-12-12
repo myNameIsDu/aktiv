@@ -71,7 +71,7 @@ function composeOptimization(
             name: entrypoint => `runtime-${entrypoint.name}`,
         };
         optimization.minimizer = [
-            // 删除注释，默认会提取
+            // Remove the comment as it is extracted by default
             new TerserPlugin({
                 terserOptions: {
                     format: {
