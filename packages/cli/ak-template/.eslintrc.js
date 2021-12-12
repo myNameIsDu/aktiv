@@ -247,8 +247,6 @@ module.exports = {
                 minimumDescriptionLength: 3,
             },
         ],
-        // 忽略react react-dom 因为这里是peer依赖
-        'import/no-unresolved': [2, { ignore: ['react', 'react-dom'] }],
         'no-warning-comments': [
             'warn',
             { terms: ['todo', 'fixme', 'any other term'], location: 'anywhere' },
