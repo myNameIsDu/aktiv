@@ -124,7 +124,10 @@ selectPortIsOccupied(numPort)
         devServer.startCallback(() => {
             openBrowser(url);
         });
-        ['SIGINT', 'SIGTERM'].forEach(sig => {
+
+        const sigs = /** @type {const} */ (['SIGINT', 'SIGTERM']);
+
+        sigs.forEach(sig => {
             process.on(sig, () => {
                 devServer.stop();
                 process.exit();
