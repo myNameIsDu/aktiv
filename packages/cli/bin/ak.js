@@ -9,4 +9,5 @@ program
     .usage('<command> [options]')
     .command('dev', 'run live-reloaded dev server', { isDefault: true })
     .command('build', 'build project')
+    .command('init', 'init a project')
     .parse();
