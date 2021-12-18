@@ -45,6 +45,10 @@ module.exports = {
                     src: path.resolve(workDir, 'src/'),
                 },
                 extensions: ['.js', '.jsx', '.ts', '.tsx'],
+                modules: [
+                    'node_modules',
+                    path.resolve(__dirname, '../../node_modules'), // some babel helpers in this project
+                ],
             };
 
             return resolve;
@@ -55,10 +59,7 @@ module.exports = {
         default() {
             /** @type {ResolveType} */
             const resolveLoader = {
-                modules: [
-                    'node_modules',
-                    path.resolve(__dirname, '../../node_modules'), // for customized loader installed in project
-                ],
+                modules: ['node_modules'],
             };
 
             return resolveLoader;
