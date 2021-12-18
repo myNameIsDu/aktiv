@@ -21,9 +21,14 @@ describe('loader-babelLoader', () => {
                             cacheCompression: false,
                             cacheDirectory: true,
                             plugins: [
-                                expect.stringMatching(
-                                    '@babel/plugin-transform-runtime/lib/index.js',
-                                ),
+                                [
+                                    expect.stringMatching(
+                                        '@babel/plugin-transform-runtime/lib/index.js',
+                                    ),
+                                    {
+                                        absoluteRuntime: expect.stringMatching('@babel/runtime'),
+                                    },
+                                ],
                                 [
                                     expect.stringMatching(
                                         '@babel/plugin-proposal-decorators/lib/index.js',
@@ -66,9 +71,14 @@ describe('loader-babelLoader', () => {
                             cacheCompression: false,
                             cacheDirectory: true,
                             plugins: [
-                                expect.stringMatching(
-                                    '@babel/plugin-transform-runtime/lib/index.js',
-                                ),
+                                [
+                                    expect.stringMatching(
+                                        '@babel/plugin-transform-runtime/lib/index.js',
+                                    ),
+                                    {
+                                        absoluteRuntime: expect.stringMatching('@babel/runtime'),
+                                    },
+                                ],
                                 [
                                     expect.stringMatching(
                                         '@babel/plugin-proposal-decorators/lib/index.js',

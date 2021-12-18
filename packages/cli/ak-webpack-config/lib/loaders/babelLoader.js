@@ -66,7 +66,12 @@ module.exports = function babelLoader(
 
     /** @type {any[]} */
     const babelPlugins = [
-        require.resolve('@babel/plugin-transform-runtime'),
+        [
+            require.resolve('@babel/plugin-transform-runtime'),
+            {
+                absoluteRuntime: path.dirname(require.resolve('@babel/runtime/package.json')),
+            },
+        ],
         [
             require.resolve('@babel/plugin-proposal-decorators'),
             {
