@@ -236,7 +236,7 @@ module.exports = {
         '@typescript-eslint/no-non-null-assertion': 0,
         'react/jsx-uses-react': 'error',
         'react/jsx-uses-vars': 'error',
-        // 使用@ts-<directive> 时需要声明描述
+        // using @ts-<directive> requires comments
         '@typescript-eslint/ban-ts-comment': [
             'error',
             {

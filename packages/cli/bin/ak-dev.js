@@ -33,24 +33,24 @@ program
     .option('-c, --config <path>', 'set config file', resolvePath, defaultConfigFile)
     .option('-p, --port <port>', 'set dev server port', String(defaultProt))
     .option('--no-hotReplace', 'set the livereload off');
-// TODO: 增加examples
-// program.addHelpText('after', () => {
-//     return `
-//   Examples:
 
-//   ${chalk.gray('# run ak dev server width special workDir, default is process.cwd()')}
-//   $ ak dev ../
+program.addHelpText('after', () => {
+    return `
+  Examples:
 
-//   ${chalk.gray('# run ak dev server with special config file')}
-//   $ ak dev -c ./config.js
+  ${chalk.gray('# run ak dev server width special workDir, default is process.cwd()')}
+  $ ak dev ../
 
-//   ${chalk.gray('# run ak dev server width special port')}
-//   $ ak dev -p 8888
+  ${chalk.gray('# run ak dev server with special config file')}
+  $ ak dev -c ./config.js
 
-//   ${chalk.gray('# run ak dev server with specified building target')}
-//   $ ak dev -t node
-// `;
-// });
+  ${chalk.gray('# run ak dev server width special port')}
+  $ ak dev -p 8888
+
+  ${chalk.gray('# run ak dev server without HMR')}
+  $ ak dev --no-hotReplace
+  `;
+});
 program.parse(process.argv);
 
 const programOptions = program.opts();
