@@ -51,6 +51,6 @@
     "yorkie": "^2.0.0"
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": "eslint --cache --fix"
+    "*.{js,ts,tsx}": "eslint --cache"
   }
 }
