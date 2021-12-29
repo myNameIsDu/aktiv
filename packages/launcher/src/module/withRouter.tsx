@@ -24,6 +24,27 @@ export type HocExtraProps = {
     };
 };
 
+const globalHistory = window.history;
+
+export type AktivHistory = {
+    go(): void;
+    go(delta?: number): void;
+    goBack(): void;
+    goForward(): void;
+};
+
+const aktivHistory: AktivHistory = {
+    go(delta?: number) {
+        return globalHistory.go(delta);
+    },
+    goBack() {
+        return globalHistory.back();
+    },
+    goForward() {
+        return globalHistory.forward();
+    },
+};
+
 function withRouter<CProps, R>(
     Com: ComponentType<CProps & HocExtraProps>,
 ): ForwardRefExoticComponent<PropsWithoutRef<CProps> & RefAttributes<R>> {
@@ -33,9 +54,7 @@ function withRouter<CProps, R>(
         const router = useRouter();
         const query = useQuery();
         const wrapperHistory = {
-            go: window.history.go,
-            goBack: window.history.back,
-            goForward: window.history.forward,
+            ...aktivHistory,
             push: router.redirect,
             replace: router.replace,
             location: routerLocation,
