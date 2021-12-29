@@ -31,7 +31,7 @@ export type AktivHistory = {
     go(delta?: number): void;
     goBack(): void;
     goForward(): void;
-}
+};
 
 const aktivHistory: AktivHistory = {
     go(delta?: number) {
@@ -42,7 +42,7 @@ const aktivHistory: AktivHistory = {
     },
     goForward() {
         return globalHistory.forward();
-    }
+    },
 };
 
 function withRouter<CProps, R>(
