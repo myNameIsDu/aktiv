@@ -8,7 +8,10 @@ const { getExternals } = require('./bundle-util');
 
 const extensions = ['js', 'jsx', 'ts', 'tsx'];
 
-const external = getExternals({ extraExternals: ['react/jsx-runtime', 'react', 'react-dom'] });
+const external = getExternals({
+    extraExternals: ['react/jsx-runtime', 'react', 'react-dom'],
+    needFilterPkg: false,
+});
 
 export default {
     input: './src/index.ts',
