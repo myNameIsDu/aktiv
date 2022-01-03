@@ -20,5 +20,6 @@ describe('useQuery', () => {
         });
 
         expect(result.current.name).toEqual('useQuery');
+        expect(result.current.age).toEqual(undefined);
     });
 });

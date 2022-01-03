@@ -1,19 +1,39 @@
-import { useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
-// @ts-ignore qs.stringify includes Node Util
-import parse from 'qs/lib/parse';
+import { useMemo, useRef, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
-type ParseSearchProps = (search: string) => Record<string, unknown>;
-
-const parseSearch: ParseSearchProps = search => {
-    // of course can use search.slice(1, -1) to get search at location
-    return search ? parse(search.charAt(0) === '?' ? search.substring(1) : search) : {};
+export type ProxyRef = {
+    (target: any, object: ProxyHandler<never>): Record<string, any>;
 };
 
 function useQuery(): Record<string, unknown> {
-    const { search } = useLocation();
+    const proxyRef = useRef<ProxyRef>(
+        (target: any, object: ProxyHandler<never>) => new Proxy(target, object),
+    );
 
-    return useMemo(() => parseSearch(search), [search]);
+    const proxyTarget = useRef({});
+    const [searchParams] = useSearchParams();
+
+    const paramsHandler = useMemo(
+        () => ({
+            get(target: any, prop: string) {
+                return searchParams.get(prop) || undefined;
+            },
+        }),
+        [searchParams],
+    );
+
+    useEffect(() => {
+        return () => {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            proxyRef.current = null;
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            proxyTarget.current = null;
+        };
+    }, []);
+
+    return proxyRef.current(proxyTarget.current, paramsHandler);
 }
 
 export default useQuery;
