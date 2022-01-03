@@ -97,15 +97,4 @@ describe('withRouter', () => {
         });
         expect(spyChildRenderTime).toHaveBeenCalledTimes(1);
     });
-
-    it('when render app, should can get query args', () => {
-        act(() => {
-            app.start();
-        });
-        act(() => {
-            userEvent.click(screen.getByText('Query'));
-        });
-
-        expect(screen.getByRole('heading')).toHaveTextContent('张三');
-    });
 });
