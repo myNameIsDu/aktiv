@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import { useRouter, useQuery } from '../hooks';
+import { useRouter } from '../hooks';
 import type { Params } from 'react-router-dom';
 import type { Location } from 'react-router';
 import type { UseRouterReturns } from '../hooks';
@@ -52,7 +52,6 @@ function withRouter<CProps, R>(
         const routerLocation = useLocation();
         const params = useParams();
         const router = useRouter();
-        const query = useQuery();
         const wrapperHistory = {
             ...aktivHistory,
             push: router.redirect,
@@ -61,7 +60,6 @@ function withRouter<CProps, R>(
         };
         const extraProps = {
             params,
-            query,
             location: routerLocation,
             history: wrapperHistory,
             ...props,
