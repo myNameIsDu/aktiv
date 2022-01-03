@@ -52,7 +52,7 @@ export interface ConstructorOptionsType {
     reduxMiddleware?: Middleware[];
 }
 
-export default class {
+class Launcher {
     options: ConstructorOptionsType;
 
     constructor(params: ConstructorOptionsType) {
@@ -102,3 +102,5 @@ export default class {
     }
     /* eslint-enable class-methods-use-this*/
 }
+
+export default Launcher;
