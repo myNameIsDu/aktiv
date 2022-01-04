@@ -1,6 +1,6 @@
 {
   "packages": [
-    "packages/*"
+    "packages/launcher/"
   ],
   "ignoreChanges": [
     "**/package-lock.json",
