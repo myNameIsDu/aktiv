@@ -7,7 +7,7 @@ export type LauncherContextProps = {
 export const LauncherContext = createContext<LauncherContextProps>({});
 
 export type LauncherProviderProps = {
-    value: Record<string, any>;
+    value: Record<string, unknown>;
 };
 
 const LauncherProvider: FC<LauncherProviderProps> = ({ children, value }) => {
