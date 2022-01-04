@@ -51,7 +51,6 @@ export interface ConstructorOptionsType {
     routerBasePath?: string;
     rootNode?: string;
     reduxMiddleware?: Middleware[];
-    basename?: string;
 }
 
 class Launcher {
