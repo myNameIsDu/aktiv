@@ -1,10 +1,9 @@
-import { ReactElement, ReactNode } from 'react';
 import { Route, Navigate } from 'react-router-dom';
 import loadable from 'react-loadable';
 import loading from './loading';
 import WrapperRoute from './wrapper-route';
 import type { RouteItem, DynamicImportType } from '../module/app';
-import type { ComponentType } from 'react';
+import type { ComponentType, ReactElement, ReactNode } from 'react';
 import type { RouteProps } from 'react-router';
 
 type PluginRenderType = (w: ReactElement, r: RouteItem) => ReactElement;
