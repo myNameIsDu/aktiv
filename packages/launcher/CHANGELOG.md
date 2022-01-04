@@ -6,35 +6,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 # [1.3.0](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@1.0.5...@aktiv/launcher@1.3.0) (2022-01-04)
 
 
-### Bug Fixes
-
-* 删除 launcher script test jest's 参数 updateSnapshot ([aebf6a6](https://github.com/myNameIsDu/aktiv/commit/aebf6a6c1cc64510a367666666b556d35a1f910b))
-* 修复withRouter类型,删除match,合并导出 ([4fa85ee](https://github.com/myNameIsDu/aktiv/commit/4fa85ee2278b3c695281bc192b96269f0370c1ed))
-* 增加版本号 跳过 launcher 1.1.0 cli 0.2.0 ([8aecf2b](https://github.com/myNameIsDu/aktiv/commit/8aecf2b934546505c9a07b727ae791f2083531ea))
-* del withRouter's test with useQuery ([1d96862](https://github.com/myNameIsDu/aktiv/commit/1d96862132b2f00fbecd9b83d684b3a38172ec29))
-* fix declare file not found ([ae8daec](https://github.com/myNameIsDu/aktiv/commit/ae8daece1267709aeb72d498f6e6ffc058c0e0ea))
-* fix file not found ([091d7ef](https://github.com/myNameIsDu/aktiv/commit/091d7ef386ae0031c4fb4e1ab7bc9bf00c966e81))
-* fix lint ([dcc5e24](https://github.com/myNameIsDu/aktiv/commit/dcc5e24faf6e3127ef5725b4e6c0ed17919fc10e))
-* fix withRouter history can't find context bug ([9306895](https://github.com/myNameIsDu/aktiv/commit/9306895d0ece59f0598be14bf8c2a0e49076b9b9))
-* handle conflict ([4c64415](https://github.com/myNameIsDu/aktiv/commit/4c6441599597067f8bea69ea6990b8d24b86dd11))
-* **launcher:** @types/kind-of 为dev依赖 ([10af0a7](https://github.com/myNameIsDu/aktiv/commit/10af0a7981fdc624e7d1de9f5deeb8406435ddd0))
-* resolve code review request ([d63f997](https://github.com/myNameIsDu/aktiv/commit/d63f99713ae5f79a1f37a19aef9aaad31e1d59f5))
-* update package's script test command with --updateSnapshot to update snapshot ([3c89f0a](https://github.com/myNameIsDu/aktiv/commit/3c89f0a1af13eb5d7a40285ab74d21fbb5568e8e))
-
-
-### Features
-
-* 介入文档 ([68538ba](https://github.com/myNameIsDu/aktiv/commit/68538baaa911cbacc00022c49842868c946a06b0))
-* 删除相对路径&升级 react-router 包版本 ([bcf760f](https://github.com/myNameIsDu/aktiv/commit/bcf760ff71e2a994d6a33f265cf9fce387d7a82e))
-* 增加cli ([b28632d](https://github.com/myNameIsDu/aktiv/commit/b28632de294d0bb6082ce2ebd873c750df350ed7))
-* add query params for withRouter and add some test ([d33785e](https://github.com/myNameIsDu/aktiv/commit/d33785e11e9064714410d1466265f7db810aa59a))
-* add withRouter hoc for classic component & test: add some tests for withRouter ([3eac16e](https://github.com/myNameIsDu/aktiv/commit/3eac16eeac0484dfaa16ed163d29e73fb867c378))
-* discard useQuery, anyone can use useSearchParams ([0a016f5](https://github.com/myNameIsDu/aktiv/commit/0a016f5757271e2ddbdf9ad1bf050dd0aabd54cc))
-
-
 ### Performance Improvements
 
-* withRouter add ref forward ([822573f](https://github.com/myNameIsDu/aktiv/commit/822573f48c8d7b4818452291777a95abffc69403))
+* refactor: refactor routerBasePath code with context and provider to consume ([e0ea818](https://github.com/myNameIsDu/aktiv/pull/53))
 
 
 
