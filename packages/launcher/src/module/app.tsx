@@ -3,6 +3,7 @@ import { enableES5 } from 'immer';
 // import { hot } from 'react-hot-loader';
 import { createStore, initialStore } from '../store';
 import WrapperInit, { pluginsRegistry, pluginReducers } from './wrapperInit';
+import LauncherProvider from './launcherProvider';
 import type { ReducerConfig, ReducersMapObject, Store } from '../store';
 import type { ComponentType } from 'react';
 import type { Plugin, PluginOpt } from './wrapperInit';
@@ -50,6 +51,7 @@ export interface ConstructorOptionsType {
     routerBasePath?: string;
     rootNode?: string;
     reduxMiddleware?: Middleware[];
+    basename?: string;
 }
 
 class Launcher {
@@ -83,12 +85,13 @@ class Launcher {
         }
 
         ReactDOM.render(
-            <WrapperInit
-                routerBasePath={routerBasePath}
-                store={store}
-                hash={hash}
-                routes={routes}
-            />,
+            <LauncherProvider
+                value={{
+                    basename: routerBasePath,
+                }}
+            >
+                <WrapperInit store={store} hash={hash} routes={routes} />
+            </LauncherProvider>,
             document.querySelector(rootNode),
         );
     }
