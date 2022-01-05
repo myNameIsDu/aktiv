@@ -1,26 +1,28 @@
 {
   "name": "root",
   "private": true,
+  "engines": {
+    "node": ">=16.0.0",
+    "npm":">=7.0.0"  
+  },
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
-    "deploy": "npm run docs:build && npm run docs:deploy",
+    "deploy": "pnpm run docs:build && pnpm run docs:deploy",
     "publish": "lerna publish --yes --conventional-commits",
     "prepare": "husky install",
     "lint": "eslint .",
     "bootstrap": "lerna bootstrap",
     "test": "jest",
-    "build": "cd packages/launcher && npm run build"
+    "build": "cd packages/launcher && pnpm run build",
+    "preinstall": "npx -y only-allow pnpm"
   },
   "jest": {
     "projects": [
       "<rootDir>/packages/*"
     ]
   },
-  "workspaces": [
-    "./packages/*"
-  ],
   "license": "MIT",
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",

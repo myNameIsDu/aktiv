@@ -12,7 +12,7 @@
   },
   "scripts": {
     "clean": "gulp clean",
-    "build": "gulp && rollup -c && npm run types",
+    "build": "gulp && rollup -c && pnpm run types",
     "watch": "gulp clean && rollup -c -w",
     "test": "jest",
     "types": "api-extractor run",
