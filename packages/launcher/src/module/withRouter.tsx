@@ -1,8 +1,7 @@
 import React from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { useRouter } from '../hooks';
-import type { Params } from 'react-router-dom';
-import type { Location } from 'react-router';
+import type { Params, Location } from 'react-router-dom';
 import type { UseRouterReturns } from '../hooks';
 import type {
     ComponentType,

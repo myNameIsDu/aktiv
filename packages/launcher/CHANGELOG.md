@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@1.0.5...@aktiv/launcher@1.3.0) (2022-01-04)
+
+
+### Performance Improvements
+
+* refactor: refactor routerBasePath code with context and provider to consume ([e0ea818](https://github.com/myNameIsDu/aktiv/pull/53))
+
+
+
+
+
 # [1.2.0](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@1.0.5...@aktiv/launcher@1.2.0) (2022-01-03)
 
 
