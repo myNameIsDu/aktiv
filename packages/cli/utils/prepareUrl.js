@@ -9,7 +9,7 @@ const url = require('url');
  */
 function prepareUrls(protocol, host, port, pathname = '/') {
     const formatUrl = hostname => {
-        const baseUrl = `${protocol}//${hostname}${port}/`;
+        const baseUrl = `${protocol}//${hostname}:${port}/`;
 
         return new url.URL(pathname, baseUrl).href;
     };
