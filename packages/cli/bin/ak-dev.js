@@ -7,7 +7,7 @@ const akWebpackConfig = require('../ak-webpack-config/index');
 const {
     defaultWorkDir,
     defaultConfigFile,
-    defaultProt,
+    defaultPort,
     localBuildEnv,
     browserTarget,
 } = require('../config/index');
@@ -31,7 +31,7 @@ program
     .usage('[options]')
     .option('-d, --dir <path>', 'set workDi', resolvePath, defaultWorkDir)
     .option('-c, --config <path>', 'set config file', resolvePath, defaultConfigFile)
-    .option('-p, --port <port>', 'set dev server port', String(defaultProt))
+    .option('-p, --port <port>', 'set dev server port', String(defaultPort))
     .option('--no-hotReplace', 'set the livereload off');
 
 program.addHelpText('after', () => {
