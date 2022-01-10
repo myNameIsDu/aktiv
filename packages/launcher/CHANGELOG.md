@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@1.3.0...@aktiv/launcher@1.3.1) (2022-01-10)
+
+
+### Bug Fixes
+
+* **launcher:** 修复 launcher@1.3.0 change-log ([167d385](https://github.com/myNameIsDu/aktiv/commit/167d38518a3a88e93c679d1c9fd076ff0c8dc961))
+
+
+
+
+
 # [1.3.0](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@1.0.5...@aktiv/launcher@1.3.0) (2022-01-04)
 
 
