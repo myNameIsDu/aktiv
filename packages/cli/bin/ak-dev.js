@@ -103,7 +103,7 @@ selectPortIsOccupied(numPort)
     .then(newPort => {
         const compiler = webpack(akWebpackConfig(config));
         // eslint-disable-next-line no-nested-ternary
-        const protocol = server === 'https' ? 'https' : https ? 'https' : 'http';
+        const protocol = server === 'https' ? 'https://' : https ? 'https://' : 'http://';
 
         host = host || '0.0.0.0';
 
