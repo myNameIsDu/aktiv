@@ -28,7 +28,7 @@ module.exports = {
         'import/ignore': ['react', 'react-dom'],
         'import/resolver': {
             node: {
-                extensions: ['.js', 'jsx', '.ts', '.tsx'],
+                extensions: ['.js', '.jsx', '.ts', '.tsx'],
             },
         },
     },
