@@ -83,10 +83,10 @@ const transReducers = (initialState: StateType, handles: HandlesType) => {
             /*
                 immer: https://immerjs.github.io/immer/return
                 use handle not return anything
-                default return state
             */
             handles[action.type](state, action);
         } else {
+            // default return state
             return state;
         }
     });
@@ -121,13 +121,13 @@ const composeEnhancers =
 
 export const createStore = (
     reducerConfig: ReducerConfig,
-    reducer: ReducersMapObject = {},
+    reducers: ReducersMapObject = {},
     reduxMiddleware: Middleware[] = [],
 ): Store => {
     const actionsReducer = createReducer(reducerConfig);
     const newReducers = {
         ...actionsReducer,
-        ...reducer,
+        ...reducers,
     };
 
     return reduxCreateStore(
