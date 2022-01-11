@@ -73,6 +73,7 @@ describe('plugin store', () => {
     it("show use store when plugin have opt's reducer", () => {
         const app = createApp();
 
+        app.use(plugin, { reducerConfig: pluginReducer });
         act(() => {
             app.start();
         });
