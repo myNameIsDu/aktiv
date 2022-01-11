@@ -10,9 +10,6 @@ import type {
 
 describe('store', () => {
     it('react-redux should not be rendered if reducer and reducerConfig are not passed in', () => {
-        /* eslint-disable*/
-        const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
-        /* eslint-enable */
         let errorMessage = '';
 
         type PropsType = unknown;
