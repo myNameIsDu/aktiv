@@ -113,8 +113,9 @@ const composeEnhancers =
     process.env.NODE_ENV !== 'production' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ 
      //@ts-ignore
         ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-            
-          })
+            // Enable capture of stack traces for dispatched Redux actions
+            trace:true
+        })
         : compose;
 /* eslint-enable */
 
