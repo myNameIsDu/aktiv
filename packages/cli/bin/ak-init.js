@@ -5,7 +5,7 @@ const path = require('path');
 const chalk = require('chalk');
 const fse = require('fs-extra');
 const inquirer = require('inquirer');
-const { spawnSync } = require('child_process');
+const { spawnSync, spawn } = require('child_process');
 
 class AkInit {
     constructor() {
@@ -54,7 +54,20 @@ class AkInit {
     install() {
         console.log();
         console.log(chalk.yellow('Installing packages. This might take a couple of minutes.'));
-        spawnSync(this.packageManager, ['install'], { stdio: 'inherit' });
+
+        return /** @type {Promise<void>} */ (
+            new Promise(resolve => {
+                const child = spawn(this.packageManager, ['install'], { stdio: 'inherit' });
+
+                child.on('close', code => {
+                    if (code === 0) {
+                        resolve();
+                    } else {
+                        console.log(chalk.red('Aborting installation'));
+                    }
+                });
+            })
+        );
     }
 
     // eslint-disable-next-line class-methods-use-this
@@ -66,9 +79,10 @@ class AkInit {
         this.makeProject();
         process.chdir(this.fullPath);
         this.gitInit();
-        this.install();
-        process.chdir(this.originalDirectory);
-        this.successfulLog();
+        this.install().then(() => {
+            process.chdir(this.originalDirectory);
+            this.successfulLog();
+        });
     }
 
     successfulLog() {
