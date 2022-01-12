@@ -18,6 +18,7 @@ const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const prepareUrl = require('../utils/prepareUrl');
 const openBrowser = require('../utils/openBrowser');
+const CertEngine = require('../utils/createCaCertificate');
 
 const { program } = commander;
 
@@ -90,6 +91,9 @@ const devServerConfig = config.server || {};
 const { output: { publicPath = '/' } = {} } = config;
 
 let { host } = devServerConfig;
+
+const ce = new CertEngine(host);
+
 const { server, https } = devServerConfig;
 // check port is number
 const numPort = parseInt(commandPort, 10);
@@ -109,6 +113,18 @@ selectPortIsOccupied(numPort)
 
         const url = prepareUrl(protocol, host, newPort, publicPath);
 
+        const httpsCaInfo =
+            protocol === 'https:'
+                ? {
+                      server: {
+                          type: 'https',
+                          options: {
+                              ...ce.createCertificate(),
+                          },
+                      },
+                  }
+                : {};
+
         const devServer = new WebpackDevServer(
             {
                 compress: true,
@@ -117,6 +133,7 @@ selectPortIsOccupied(numPort)
                 ...devServerConfig,
                 host,
                 port: newPort,
+                ...httpsCaInfo,
             },
             compiler,
         );
