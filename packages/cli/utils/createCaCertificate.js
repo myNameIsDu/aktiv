@@ -61,14 +61,12 @@ class CertFs {
         });
     }
 
-    // 检测域名是否存在于域名列表
     checkExistDomain(domain) {
         this.readDomain();
 
         return this.WIPDomain.indexOf(domain) > -1;
     }
 
-    // 删除文件夹下所有文件
     deleteAll() {
         errInstance.autoCatchErrToPrint(() => {
             let files = [];
