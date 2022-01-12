@@ -145,9 +145,9 @@ importers:
       postcss: 8.4.5
       postcss-loader: 5.3.0_postcss@8.4.5+webpack@5.65.0
       react-refresh: 0.10.0
-      svg-sprite-loader: 6.0.9
       shelljs: 0.8.5
-      style-loader: 3.3.1_webpack@5.65.0
+      style-loader: 3.3.0_webpack@5.65.0
+      svg-sprite-loader: 6.0.9
       svgo-loader: 3.0.0
       terser-webpack-plugin: 5.3.0_webpack@5.65.0
       webpack: 5.65.0
@@ -9979,6 +9979,7 @@ packages:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
     engines: {node: '>= 4.0'}
     os: [darwin]
+    deprecated: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
