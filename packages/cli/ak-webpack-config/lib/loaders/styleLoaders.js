@@ -14,7 +14,7 @@ const normalLoaders = extractCSS => {
             loader: require.resolve('postcss-loader'),
             options: {
                 postcssOptions: {
-                    plugins: [require('autoprefixer')],
+                    plugins: [require(require.resolve('autoprefixer'))],
                 },
             },
         },
