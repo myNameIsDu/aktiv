@@ -113,10 +113,10 @@ selectPortIsOccupied(numPort)
         const fromHttpsProtocol = https ? 'https:' : 'http:';
 
         /** @type {http|https|spdy|undefined} */
-        const fromServerProtocolBoolean = isPlainObject(server) ? server.type : server;
+        const fromServerProtocolType = isPlainObject(server) ? server.type : server;
 
         /** @type {'http:'|'https:'} */
-        const protocol = fromServerProtocolBoolean === 'https' ? 'https:' : fromHttpsProtocol;
+        const protocol = fromServerProtocolType === 'https' ? 'https:' : fromHttpsProtocol;
 
         host = host || '0.0.0.0';
 
