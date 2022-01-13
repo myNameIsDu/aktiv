@@ -20,6 +20,8 @@ const prepareUrl = require('../utils/prepareUrl');
 const openBrowser = require('../utils/openBrowser');
 const CertEngine = require('../utils/createCaCertificate');
 
+const isPlainObject = require('../utils/isPlainObject');
+
 const { program } = commander;
 
 /**
@@ -106,8 +108,15 @@ if (isNaN(numPort)) {
 selectPortIsOccupied(numPort)
     .then(newPort => {
         const compiler = webpack(akWebpackConfig(config));
-        // eslint-disable-next-line no-nested-ternary
-        const protocol = server === 'https' ? 'https:' : https ? 'https:' : 'http:';
+
+        /** @type {'http:'|'https:'} */
+        const fromHttpsProtocol = https ? 'https:' : 'http:';
+
+        /** @type {http|https|spdy|undefined} */
+        const fromServerProtocolBoolean = isPlainObject(server) ? server.type : server;
+
+        /** @type {'http:'|'https:'} */
+        const protocol = fromServerProtocolBoolean === 'https' ? 'https:' : fromHttpsProtocol;
 
         host = host || '0.0.0.0';
 
@@ -118,8 +127,10 @@ selectPortIsOccupied(numPort)
                 ? {
                       server: {
                           type: 'https',
+                          ...(server || {}),
                           options: {
                               ...ce.createCertificate(),
+                              ...((server || {}).options || {}),
                           },
                       },
                   }

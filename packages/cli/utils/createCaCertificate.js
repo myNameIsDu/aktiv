@@ -21,7 +21,11 @@ class CertFs {
         this.rootDir = rootDir;
     }
 
-    // eslint-disable-next-line class-methods-use-this
+    /**
+     * @desc check if file exist
+     * @param {string} [path=this.domainPath] domainPath
+     * @returns {boolean} isExists
+     */
     checkFileExist(path = this.domainPath) {
         if (!path) {
             errInstance.printIn('FilePath is empty!');
@@ -36,17 +40,27 @@ class CertFs {
         }
     }
 
+    /**
+     * @desc create domainFile and write domain in file
+     * @param {string} domain domain eg: 0.0.0.0 localhost
+     * @returns {void}
+     */
     createDomain(domain) {
         errInstance.autoCatchErrToPrint(() => {
             if (this.checkFileExist()) {
                 this.appendDomain(domain);
 
-                return;
+                return 0;
             }
             fs.writeFileSync(this.domainPath, domain, {});
         });
     }
 
+    /**
+     * @desc append domain in domain file
+     * @param {string} domain domain
+     * @returns {void}
+     */
     appendDomain(domain) {
         errInstance.autoCatchErrToPrint(() => {
             if (!this.checkExistDomain(domain)) {
@@ -55,18 +69,31 @@ class CertFs {
         });
     }
 
+    /**
+     * @desc program inside read Domain file
+     * @returns {void}
+     */
     readDomain() {
         errInstance.autoCatchErrToPrint(() => {
             this.WIPDomain = fs.readFileSync(this.domainPath);
         });
     }
 
+    /**
+     * @desc check domain had existed in file list
+     * @param {string} domain domain
+     * @returns {boolean} result
+     */
     checkExistDomain(domain) {
         this.readDomain();
 
         return this.WIPDomain.indexOf(domain) > -1;
     }
 
+    /**
+     * @desc when program meet error，auto delete all file in aktiv cert dir
+     * @returns {void}
+     */
     deleteAll() {
         errInstance.autoCatchErrToPrint(() => {
             let files = [];
@@ -132,18 +159,23 @@ class CertEngine {
         errInstance.checkErrorToPrint(shellRes, 'Created a new local CA Fail💥\n');
     }
 
+    /**
+     * @desc create ca config
+     * @returns {{cert: string, key: string}} ca config for webpack5 https
+     */
     createCertificate() {
         this.mkdirCertHomeDir();
         this.checkHasMKCert();
         this.createLocalCA();
         this.fs.createDomain(this.domain);
-        const isHad = this.fs.checkExistDomain(this.domain);
+
+        const isExisted = this.fs.checkExistDomain(this.domain);
 
         const hasCA =
             this.fs.checkFileExist(CertEngine.CA_KEY_FILE_PATH) &&
             this.fs.checkFileExist(CertEngine.CA_CERT_FILE_PATH);
 
-        if (!isHad || !hasCA) {
+        if (!isExisted || !hasCA) {
             const shellRes = shelljs.exec(
                 // eslint-disable-next-line max-len
                 `mkcert -key-file ${CertEngine.CA_KEY_FILE_PATH} -cert-file ${CertEngine.CA_CERT_FILE_PATH} ${this.domain}`,
