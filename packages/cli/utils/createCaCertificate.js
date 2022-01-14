@@ -135,7 +135,7 @@ class CertEngine {
 
     constructor(domain) {
         this.fs = new CertFs(CertEngine.CA_DOMAIN_FILE_PATH, CertEngine.AK_CA_CERT_ROOT_DIR_PATH);
-        this.domain = domain || `localhost 127.0.0.1 ::1`;
+        this.domain = domain ? `${domain} localhost 127.0.0.1 ::1` : 'localhost 127.0.0.1 ::1';
     }
 
     mkdirCertHomeDir() {
