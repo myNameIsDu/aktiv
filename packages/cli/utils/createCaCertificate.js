@@ -71,12 +71,14 @@ class CertFs {
 
     /**
      * @desc program inside read Domain file
-     * @returns {void}
+     * @returns {string|Buffer} all domain
      */
     readDomain() {
         errInstance.autoCatchErrToPrint(() => {
-            this.WIPDomain = fs.readFileSync(this.domainPath);
+            this.WIPDomain = /** @type { string | Buffer } */ (fs.readFileSync(this.domainPath));
         });
+
+        return this.WIPDomain.toString('utf-8');
     }
 
     /**
@@ -176,9 +178,11 @@ class CertEngine {
             this.fs.checkFileExist(CertEngine.CA_CERT_FILE_PATH);
 
         if (!isExisted || !hasCA) {
+            const currentDomainList = this.fs.readDomain();
+
             const shellRes = shelljs.exec(
                 // eslint-disable-next-line max-len
-                `mkcert -key-file ${CertEngine.CA_KEY_FILE_PATH} -cert-file ${CertEngine.CA_CERT_FILE_PATH} ${this.domain}`,
+                `mkcert -key-file ${CertEngine.CA_KEY_FILE_PATH} -cert-file ${CertEngine.CA_CERT_FILE_PATH} ${currentDomainList}`,
             );
 
             errInstance.checkErrorToPrint(shellRes, 'Created a new certificate Fail 📜\n', () => {

@@ -94,8 +94,6 @@ const { output: { publicPath = '/' } = {} } = config;
 
 let { host } = devServerConfig;
 
-const ce = new CertEngine(host);
-
 const { server, https } = devServerConfig;
 // check port is number
 const numPort = parseInt(commandPort, 10);
@@ -129,7 +127,7 @@ selectPortIsOccupied(numPort)
                           type: 'https',
                           ...(server || {}),
                           options: {
-                              ...ce.createCertificate(),
+                              ...new CertEngine(host).createCertificate(),
                               ...((server || {}).options || {}),
                           },
                       },
