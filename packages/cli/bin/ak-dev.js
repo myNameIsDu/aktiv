@@ -92,6 +92,8 @@ config.target = browserTarget;
 const devServerConfig = config.server || {};
 const { output: { publicPath = '/' } = {} } = config;
 
+const certWriteList = ['0.0.0.0', '127.0.0.1', 'localhost'];
+
 let { host } = devServerConfig;
 
 const { server, https } = devServerConfig;
@@ -127,7 +129,9 @@ selectPortIsOccupied(numPort)
                           type: 'https',
                           ...(server || {}),
                           options: {
-                              ...new CertEngine(host).createCertificate(),
+                              ...new CertEngine(
+                                  certWriteList.includes(host) ? undefined : host,
+                              ).createCertificate(),
                               ...((server || {}).options || {}),
                           },
                       },
