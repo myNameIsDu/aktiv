@@ -99,6 +99,7 @@ importers:
       postcss: ^8.3.11
       postcss-loader: ^5.3.0
       react-refresh: ^0.10.0
+      shelljs: ^0.8.5
       style-loader: ^3.3.0
       svg-sprite-loader: ^6.0.9
       svgo-loader: ^3.0.0
@@ -144,6 +145,7 @@ importers:
       postcss: 8.4.5
       postcss-loader: 5.3.0_postcss@8.4.5+webpack@5.65.0
       react-refresh: 0.10.0
+      shelljs: 0.8.5
       style-loader: 3.3.0_webpack@5.65.0
       svg-sprite-loader: 6.0.9
       svgo-loader: 3.0.0
@@ -9977,6 +9979,7 @@ packages:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
     engines: {node: '>= 4.0'}
     os: [darwin]
+    deprecated: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
@@ -11185,7 +11188,6 @@ packages:
   /interpret/1.4.0:
     resolution: {integrity: sha512-agE4QfB2Lkp9uICn7BAqoscw4SZP9kTE2hxiFI3jBPmXJfdqiahTbUuKGsMoN2GtqL9AxhYioAcVvgsb1HvRbA==}
     engines: {node: '>= 0.10'}
-    dev: true
 
   /invariant/2.2.4:
     resolution: {integrity: sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==}
@@ -16771,7 +16773,6 @@ packages:
     engines: {node: '>= 0.10'}
     dependencies:
       resolve: 1.20.0
-    dev: true
 
   /redent/3.0.0:
     resolution: {integrity: sha512-6tDA8g98We0zd0GvVeMT9arEOnTw9qM03L9cJXaCjrip1OO764RDBLBfrB4cwzNGDj5OA5ioymC9GkizgWJDUg==}
@@ -17627,6 +17628,16 @@ packages:
   /shebang-regex/3.0.0:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
+
+  /shelljs/0.8.5:
+    resolution: {integrity: sha512-TiwcRcrkhHvbrZbnRcFYMLl30Dfov3HKqzp5tO5b4pt6G/SezKcYhmDg15zXVBswHmctSAQKznqNW2LO5tTDow==}
+    engines: {node: '>=4'}
+    hasBin: true
+    dependencies:
+      glob: 7.1.6
+      interpret: 1.4.0
+      rechoir: 0.6.2
+    dev: false
 
   /shellwords/0.1.1:
     resolution: {integrity: sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==}
