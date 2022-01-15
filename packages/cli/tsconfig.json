@@ -10,8 +10,5 @@
     "noImplicitAny":false,
     "resolveJsonModule":true,
     "strict": true
-  },
-    "exclude": [
-        "bin/ak-dev.js"
-    ]
+  }
 }

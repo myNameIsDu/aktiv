@@ -20,8 +20,6 @@ const prepareUrl = require('../utils/prepareUrl');
 const openBrowser = require('../utils/openBrowser');
 const CertEngine = require('../utils/createCaCertificate');
 
-const isPlainObject = require('../utils/isPlainObject');
-
 const { program } = commander;
 
 /**
@@ -86,7 +84,8 @@ commandHotReplace && (config.hotReplace = commandHotReplace);
 config.pkg = require(packageFilePath);
 config.presets = presets;
 config.target = browserTarget;
-
+/** @typedef {import ('https').ServerOptions} httpsServerOptions*/
+/** @typedef {import('webpack-dev-server').ServerType} ServerType*/
 /** @typedef {import('webpack-dev-server').Configuration} DevServerConfigType*/
 /** @type {DevServerConfigType} */
 const devServerConfig = config.server || {};
@@ -112,8 +111,11 @@ selectPortIsOccupied(numPort)
         /** @type {'http:'|'https:'} */
         const fromHttpsProtocol = https ? 'https:' : 'http:';
 
-        /** @type {http|https|spdy|undefined} */
-        const fromServerProtocolType = isPlainObject(server) ? server.type : server;
+        /** @type {{ type?: ServerType|string; options?: httpsServerOptions }} */
+        const serverNormal = typeof server === 'object' ? server : { type: server, options: {} };
+
+        /** @type {string|undefined} */
+        const fromServerProtocolType = serverNormal.type;
 
         /** @type {'http:'|'https:'} */
         const protocol = fromServerProtocolType === 'https' ? 'https:' : fromHttpsProtocol;
@@ -122,21 +124,22 @@ selectPortIsOccupied(numPort)
 
         const url = prepareUrl(protocol, host, newPort, publicPath);
 
-        const httpsCaInfo =
-            protocol === 'https:'
-                ? {
-                      server: {
-                          type: 'https',
-                          ...(server || {}),
-                          options: {
-                              ...new CertEngine(
-                                  certWriteList.includes(host) ? undefined : host,
-                              ).createCertificate(),
-                              ...((server || {}).options || {}),
-                          },
-                      },
-                  }
-                : {};
+        /** @type {{server?:{ type?: ServerType; options?: httpsServerOptions }}}*/
+        let httpsCaInfo = {};
+
+        if (protocol === 'https:') {
+            httpsCaInfo = {
+                server: {
+                    type: 'https',
+                    options: {
+                        ...new CertEngine(
+                            certWriteList.includes(host) ? undefined : host,
+                        ).createCertificate(),
+                        ...serverNormal.options,
+                    },
+                },
+            };
+        }
 
         const devServer = new WebpackDevServer(
             {
