@@ -52,7 +52,7 @@ class CertFs {
 
                 return 0;
             }
-            fs.writeFileSync(this.domainPath, domain, {});
+            fs.writeFileSync(this.domainPath, domain);
         });
     }
 
@@ -75,10 +75,10 @@ class CertFs {
      */
     readDomain() {
         errInstance.autoCatchErrToPrint(() => {
-            this.WIPDomain = /** @type { string | Buffer } */ (fs.readFileSync(this.domainPath));
+            this.WIPDomain = /** @type { string } */ (fs.readFileSync(this.domainPath, 'utf-8'));
         });
 
-        return this.WIPDomain.toString('utf-8');
+        return this.WIPDomain;
     }
 
     /**
@@ -87,9 +87,7 @@ class CertFs {
      * @returns {boolean} result
      */
     checkExistDomain(domain) {
-        this.readDomain();
-
-        return this.WIPDomain.indexOf(domain) > -1;
+        return this.readDomain().indexOf(domain) > -1;
     }
 
     /**
