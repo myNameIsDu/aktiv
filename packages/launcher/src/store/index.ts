@@ -21,12 +21,14 @@ export type PayloadType = unknown;
 
 export type ActionItem = {
     key: string;
-    payload: (...arg: unknown[]) => unknown;
+    payload: (...arg: any[]) => any;
     handle?: (s: StateType, p: PayloadType) => unknown;
 };
 export type ActionsConfig = Record<string, ActionItem>;
 
-export type ResultActionTypes = Record<string, (...arg: unknown[]) => unknown>;
+export type ResultActionTypes<T extends ActionsConfig> = {
+    [P in keyof T]: T[P]['payload'];
+};
 
 export type ReducerConfigItem = {
     state: StateType;
@@ -40,15 +42,15 @@ interface HandleType {
 }
 type HandlesType = Record<string, HandleType>;
 
-export const createActions = (actionsConfig: ActionsConfig): ResultActionTypes => {
-    const result: ResultActionTypes = {};
+export const createActions = <T extends ActionsConfig>(actionsConfig: T) => {
+    const result: ResultActionTypes<T> = {} as ResultActionTypes<T>;
 
     for (const key in actionsConfig) {
         if (Object.prototype.hasOwnProperty.call(actionsConfig, key)) {
             const element = actionsConfig[key];
 
             // eslint-disable-next-line no-loop-func
-            result[key] = (...arg) => {
+            result[key] = (...arg: unknown[]): unknown => {
                 const { payload, handle, key: stateKey } = element;
                 const resPayload = payload(...arg);
 

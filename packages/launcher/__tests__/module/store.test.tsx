@@ -28,7 +28,7 @@ describe('store', () => {
                 };
             }
 
-            static getDerivedStateFromError(error: any) {
+            static getDerivedStateFromError(error: Error) {
                 errorMessage = error.message;
 
                 return { hasError: true };
@@ -68,7 +68,7 @@ describe('store', () => {
         const state1Config = {
             editorState1A: {
                 key: 'a',
-                payload: (data: any) => data,
+                payload: (data: number) => data,
             },
         };
 
@@ -105,9 +105,9 @@ describe('store', () => {
         const startRender = (
             reducerConfig: ReducerConfig,
             customReducers?: ReducersMapObject,
-        ): ((s: any) => void) => {
+        ): ((s: unknown) => void) => {
             // eslint-disable-next-line init-declarations
-            let dispatch: (s: any) => void;
+            let dispatch: (s: unknown) => void;
 
             const Home = () => {
                 const shouldState = useSelector(state => state);
