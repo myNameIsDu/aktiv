@@ -95,14 +95,12 @@ class Launcher {
         );
     }
 
-    /* eslint-disable class-methods-use-this*/
     use(plugin: Plugin, opt?: PluginOpt): void {
         pluginsRegistry({
             plugin,
             opt,
         });
     }
-    /* eslint-enable class-methods-use-this*/
 }
 
 export default Launcher;
