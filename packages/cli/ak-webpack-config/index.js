@@ -208,7 +208,7 @@ const generateConfig = config => {
         });
     }
     if (presets.mode === 'production') {
-        webpackConfig.devtool = useSentry ? 'source-map' : false;
+        webpackConfig.devtool = useSentry ? 'hidden-source-map' : false;
     } else {
         webpackConfig.devtool = devtool;
     }

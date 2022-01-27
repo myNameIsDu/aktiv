@@ -16,9 +16,9 @@ jobs:
       install: pnpm install
       # bootstrap: npm run bootstrap
       script:
-        - cd packages/launcher && pnpm run test -- --collectCoverage && pnpm run codecov
+        - pnpm test -- --projects packages/launcher --collectCoverage && pnpm codecov --filter launcher
     - stage: Build
       install: pnpm install
       # bootstrap: npm run bootstrap
       script:
-        - cd packages/launcher && pnpm run build
+        - pnpm build --filter packages/launcher
