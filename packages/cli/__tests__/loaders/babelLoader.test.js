@@ -29,14 +29,6 @@ describe('loader-babelLoader', () => {
                                         absoluteRuntime: expect.stringMatching('@babel/runtime'),
                                     },
                                 ],
-                                [
-                                    expect.stringMatching(
-                                        '@babel/plugin-proposal-decorators/lib/index.js',
-                                    ),
-                                    {
-                                        legacy: true,
-                                    },
-                                ],
                             ],
                             presets: [
                                 [
@@ -77,14 +69,6 @@ describe('loader-babelLoader', () => {
                                     ),
                                     {
                                         absoluteRuntime: expect.stringMatching('@babel/runtime'),
-                                    },
-                                ],
-                                [
-                                    expect.stringMatching(
-                                        '@babel/plugin-proposal-decorators/lib/index.js',
-                                    ),
-                                    {
-                                        legacy: true,
                                     },
                                 ],
                             ],
