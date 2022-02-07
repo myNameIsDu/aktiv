@@ -1,5 +1,5 @@
 import { produce } from 'immer';
-import { createStore as reduxCreateStore, compose, combineReducers, applyMiddleware } from 'redux';
+import { createStore as createReduxStore, compose, combineReducers, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 import reduxPromise from './promiseMiddleware';
 import type { Store, ReducersMapObject, AnyAction, Middleware } from 'redux';
@@ -110,10 +110,10 @@ const createReducer = (reducerConfig: ReducerConfig) => {
 /*eslint-disable */
 const composeEnhancers =
     //@ts-ignore
-    process.env.NODE_ENV !== 'production' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ 
+    process.env.NODE_ENV !== 'production' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
      //@ts-ignore
         ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-            
+
           })
         : compose;
 /* eslint-enable */
@@ -123,13 +123,13 @@ export const createStore = (
     reducer: ReducersMapObject = {},
     reduxMiddleware: Middleware[] = [],
 ): Store => {
-    const actionsReducer = createReducer(reducerConfig);
+    const actionReducers = createReducer(reducerConfig);
     const newReducers = {
-        ...actionsReducer,
+        ...actionReducers,
         ...reducer,
     };
 
-    return reduxCreateStore(
+    return createReduxStore(
         combineReducers(newReducers),
         composeEnhancers(applyMiddleware(reduxThunk, reduxPromise, ...reduxMiddleware)),
     );
