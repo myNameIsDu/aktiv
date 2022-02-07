@@ -112,7 +112,7 @@ const createReducer = (reducerConfig: ReducerConfig) => {
 /*eslint-disable */
 const composeEnhancers =
     //@ts-ignore
-    process.env.NODE_ENV !== 'production' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ 
+    process.env.NODE_ENV !== 'production' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
      //@ts-ignore
         ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
             // Enable capture of stack traces for dispatched Redux actions
@@ -126,9 +126,9 @@ export const createStore = (
     reducers: ReducersMapObject = {},
     reduxMiddleware: Middleware[] = [],
 ): Store => {
-    const actionsReducer = createReducer(reducerConfig);
+    const actionReducers = createReducer(reducerConfig);
     const newReducers = {
-        ...actionsReducer,
+        ...actionReducers,
         ...reducers,
     };
 
