@@ -5,8 +5,7 @@ export * from 'react-redux';
 export * from 'redux';
 export * from 'immer';
 export * from './hooks';
-import Launcher from './module/app';
-export default Launcher;
+export { default } from './module/app';
 
 export type {
     DynamicImportType,

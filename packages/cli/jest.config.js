@@ -6,4 +6,7 @@ module.exports = {
     coverageDirectory: 'coverage',
     collectCoverageFrom: ['./utils/**', './ak-webpack-config/**'],
     // setupFilesAfterEnv: ['./__tests__/jest.setup.ts'],
+    transform: {
+        '^.+\\.(t|j)sx?$': ['@swc/jest'],
+    },
 };

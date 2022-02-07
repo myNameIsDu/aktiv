@@ -1,5 +1,5 @@
 import { produce } from 'immer';
-import { createStore as createReduxStore, compose, combineReducers, applyMiddleware } from 'redux';
+import { createStore as reduxCreateStore, compose, combineReducers, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 import reduxPromise from './promiseMiddleware';
 import type { Store, ReducersMapObject, AnyAction, Middleware } from 'redux';
@@ -21,12 +21,14 @@ export type PayloadType = unknown;
 
 export type ActionItem = {
     key: string;
-    payload: (...arg: unknown[]) => unknown;
+    payload: (...arg: any[]) => any;
     handle?: (s: StateType, p: PayloadType) => unknown;
 };
 export type ActionsConfig = Record<string, ActionItem>;
 
-export type ResultActionTypes = Record<string, (...arg: unknown[]) => unknown>;
+export type ResultActionTypes<T extends ActionsConfig> = {
+    [P in keyof T]: T[P]['payload'];
+};
 
 export type ReducerConfigItem = {
     state: StateType;
@@ -40,15 +42,15 @@ interface HandleType {
 }
 type HandlesType = Record<string, HandleType>;
 
-export const createActions = (actionsConfig: ActionsConfig): ResultActionTypes => {
-    const result: ResultActionTypes = {};
+export const createActions = <T extends ActionsConfig>(actionsConfig: T) => {
+    const result: ResultActionTypes<T> = {} as ResultActionTypes<T>;
 
     for (const key in actionsConfig) {
         if (Object.prototype.hasOwnProperty.call(actionsConfig, key)) {
             const element = actionsConfig[key];
 
             // eslint-disable-next-line no-loop-func
-            result[key] = (...arg) => {
+            result[key] = (...arg: unknown[]): unknown => {
                 const { payload, handle, key: stateKey } = element;
                 const resPayload = payload(...arg);
 
@@ -83,10 +85,10 @@ const transReducers = (initialState: StateType, handles: HandlesType) => {
             /*
                 immer: https://immerjs.github.io/immer/return
                 use handle not return anything
-                default return state
             */
             handles[action.type](state, action);
         } else {
+            // default return state
             return state;
         }
     });
@@ -113,23 +115,24 @@ const composeEnhancers =
     process.env.NODE_ENV !== 'production' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
      //@ts-ignore
         ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-
-          })
+            // Enable capture of stack traces for dispatched Redux actions
+            trace:true
+        })
         : compose;
 /* eslint-enable */
 
 export const createStore = (
     reducerConfig: ReducerConfig,
-    reducer: ReducersMapObject = {},
+    reducers: ReducersMapObject = {},
     reduxMiddleware: Middleware[] = [],
 ): Store => {
     const actionReducers = createReducer(reducerConfig);
     const newReducers = {
         ...actionReducers,
-        ...reducer,
+        ...reducers,
     };
 
-    return createReduxStore(
+    return reduxCreateStore(
         combineReducers(newReducers),
         composeEnhancers(applyMiddleware(reduxThunk, reduxPromise, ...reduxMiddleware)),
     );

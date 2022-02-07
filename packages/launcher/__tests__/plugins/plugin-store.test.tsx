@@ -3,33 +3,12 @@ import type { ReactElement } from 'react';
 import { act } from '@testing-library/react';
 
 describe('plugin store', () => {
-    it('show use store when plugin have reducer', () => {
-        interface InnerComponentPropsType {
-            children: ReactElement;
-        }
-        const InnerComponent = ({ children }: InnerComponentPropsType) => {
-            return <div>{children}</div>;
-        };
-        const actionConfig = {
-            editorPluginAction: {
-                key: 'a',
-                payload: (s: any) => s,
-            },
-        };
-        const pluginReducer = {
-            state: {
-                a: 'a',
-            },
-            config: actionConfig,
-        };
-        const plugin = {
-            name: 'testPlugin',
-            inner: (children: ReactElement) => {
-                return <InnerComponent>{children}</InnerComponent>;
-            },
-            reducerConfig: pluginReducer,
-        };
-        let shouldState: any = null;
+    let shouldState: unknown = null;
+
+    afterEach(() => {
+        shouldState = null;
+    });
+    const createApp = () => {
         const Home = () => {
             useSelector(s => {
                 shouldState = s;
@@ -47,6 +26,38 @@ describe('plugin store', () => {
                 },
             ],
         });
+
+        return app;
+    };
+
+    interface InnerComponentPropsType {
+        children: ReactElement;
+    }
+    const InnerComponent = ({ children }: InnerComponentPropsType) => {
+        return <div>{children}</div>;
+    };
+    const actionConfig = {
+        editorPluginAction: {
+            key: 'a',
+            payload: (s: any) => s,
+        },
+    };
+    const pluginReducer = {
+        state: {
+            a: 'a',
+        },
+        config: actionConfig,
+    };
+    const plugin = {
+        name: 'testPlugin',
+        inner: (children: ReactElement) => {
+            return <InnerComponent>{children}</InnerComponent>;
+        },
+        reducerConfig: pluginReducer,
+    };
+
+    it('show use store when plugin have reducer', () => {
+        const app = createApp();
 
         app.use(plugin);
         act(() => {
@@ -60,48 +71,7 @@ describe('plugin store', () => {
     });
 
     it("show use store when plugin have opt's reducer", () => {
-        interface InnerComponentPropsType {
-            children: ReactElement;
-        }
-        const InnerComponent = ({ children }: InnerComponentPropsType) => {
-            return <div>{children}</div>;
-        };
-        const actionConfig = {
-            editorPluginAction: {
-                key: 'a',
-                payload: (s: any) => s,
-            },
-        };
-        const pluginReducer = {
-            state: {
-                a: 'a',
-            },
-            config: actionConfig,
-        };
-        const plugin = {
-            name: 'testPlugin',
-            inner: (children: ReactElement) => {
-                return <InnerComponent>{children}</InnerComponent>;
-            },
-        };
-        let shouldState: any = null;
-        const Home = () => {
-            useSelector(s => {
-                shouldState = s;
-
-                return s;
-            });
-
-            return <div>home</div>;
-        };
-        const app = new Launcher({
-            routes: [
-                {
-                    path: '/',
-                    component: Home,
-                },
-            ],
-        });
+        const app = createApp();
 
         app.use(plugin, { reducerConfig: pluginReducer });
         act(() => {
