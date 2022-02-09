@@ -1,4 +1,5 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
+
 import { BrowserRouter, HashRouter, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import renderRoutes from '../router/render-routers';
