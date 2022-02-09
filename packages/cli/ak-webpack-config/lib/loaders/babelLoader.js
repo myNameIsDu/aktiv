@@ -72,12 +72,6 @@ module.exports = function babelLoader(
                 absoluteRuntime: path.dirname(require.resolve('@babel/runtime/package.json')),
             },
         ],
-        [
-            require.resolve('@babel/plugin-proposal-decorators'),
-            {
-                legacy: true,
-            },
-        ],
     ];
 
     if (isLocal && hotReplace) {
