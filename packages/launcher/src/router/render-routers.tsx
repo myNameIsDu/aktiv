@@ -1,3 +1,4 @@
+import React from 'react';
 import { Route, Navigate, type RouteProps } from 'react-router-dom';
 import loadable from 'react-loadable';
 import loading from './loading';
