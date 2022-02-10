@@ -1,4 +1,3 @@
-import React from 'react';
 import { act, screen } from '@testing-library/react';
 import Launcher from '../../src';
 import { useAktivSelector } from '../../src/hooks';
@@ -6,7 +5,7 @@ import { useAktivSelector } from '../../src/hooks';
 describe('useSelector', () => {
     it('when use aktivSelector, should return truly result', () => {
         const Home = () => {
-            const state = useAktivSelector<string>('state1.a');
+            const state = useAktivSelector<Record<string, unknown>, string>('state1.a');
 
             return (
                 <div>
@@ -50,7 +49,7 @@ describe('useSelector', () => {
 
     it('when use aktivSelector, path is one level, should return truly result', () => {
         const Home = () => {
-            const state = useAktivSelector<{ a: string }>('state1');
+            const state = useAktivSelector<{ a: string }, { a: string }>('state1');
 
             return (
                 <div>
@@ -94,7 +93,9 @@ describe('useSelector', () => {
 
     it('when use aktivSelector, selector is function, should return truly result', () => {
         const Home = () => {
-            const state = useAktivSelector<{ state1: { a: string } }>(s => s);
+            const state = useAktivSelector<{ state1: { a: string } }, { state1: { a: string } }>(
+                s => s,
+            );
 
             return (
                 <div>

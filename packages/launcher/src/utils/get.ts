@@ -1,3 +1,5 @@
+import { isType } from './isType';
+
 function basePath(path: string[] | string): string[] {
     // 若是数组，则直接返回
     if (Array.isArray(path)) {
@@ -9,7 +11,7 @@ function basePath(path: string[] | string): string[] {
 
 export function get(object: unknown, path: string | string[], defaultValue?: unknown): unknown {
     // 判断 object 是否是数组或者对象，否则直接返回默认值 defaultValue
-    if (typeof object !== 'object') {
+    if (typeof object !== 'object' || isType(object) === null) {
         return defaultValue;
     }
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import { enableES5 } from 'immer';
 // import { hot } from 'react-hot-loader';
