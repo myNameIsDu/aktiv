@@ -162,7 +162,7 @@ const generateConfig = config => {
         webpackConfig.externals = configExternals;
     }
     if (configExternalTye) {
-        webpackConfig.externalsType = configExternalTye;
+        webpackConfig.externalsType = configExternalsType;
     }
 
     // default plugins
