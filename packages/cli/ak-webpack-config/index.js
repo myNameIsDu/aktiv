@@ -161,7 +161,7 @@ const generateConfig = config => {
     if (configExternals) {
         webpackConfig.externals = configExternals;
     }
-    if (configExternalTye) {
+    if (configExternalsType) {
         webpackConfig.externalsType = configExternalsType;
     }
 
