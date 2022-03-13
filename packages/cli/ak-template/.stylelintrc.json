@@ -1,6 +1,6 @@
 {
-    "extends": "stylelint-config-standard",
+    "extends": ["stylelint-config-standard", "stylelint-prettier/recommended"],
     "rules": {
-        "indentation": "tab"
+        "prettier/prettier": true
     }
 }
