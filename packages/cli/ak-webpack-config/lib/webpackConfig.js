@@ -30,6 +30,8 @@ class WebpackConfig {
         this.plugins = undefined;
         /** @type {webpackOptions['externals']} */
         this.externals = {};
+        /** @type {webpackOptions['externalsType']} */
+        this.externalsType = undefined;
         /** @type {webpackOptions['performance']} */
         this.performance = {};
     }
