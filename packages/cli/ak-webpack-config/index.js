@@ -28,7 +28,8 @@ const {
 /** @typedef  {import('webpack').RuleSetRule} RuleSetRule*/
 /** @typedef  {import('webpack').Configuration['resolve']} ResolveOptions*/
 /** @typedef  {import('webpack').Configuration['externals']} Externals */
-/** @typedef  {import('webpack').Configuration['plugins']} plugins*/
+/** @typedef  {import('webpack').Configuration['plugins']} Plugins*/
+/** @typedef  {import('webpack').Configuration['externalsType']} ExternalsType*/
 
 /**
  * @typedef  {Object} akConfig
@@ -52,7 +53,7 @@ const {
  * @property {string} staticSourcePath
  * @property {string} toCopyPath
  * @property {boolean} hotReplace
- * @property {plugins} plugins
+ * @property {Plugins} plugins
  * @property {Array<string> | string} splitChunksVendor
  * @property {Record<string,any>} splitChunksCacheGroups
  * @property {Record<string,any>}  terserPluginOptions
@@ -63,6 +64,7 @@ const {
  * @property {boolean} analyze
  * @property {PresetItemType} presets
  * @property {TargetType} target
+ * @property {ExternalsType} externalsType
  */
 
 /**
@@ -87,6 +89,7 @@ const generateConfig = config => {
         resolve: configResolve,
         resolveLoader: configResolveLoader,
         externals: configExternals,
+        externalsType: configExternalTye,
         appName,
         definitions,
         staticSourcePath = './static',
@@ -157,6 +160,9 @@ const generateConfig = config => {
     // use config's externals
     if (configExternals) {
         webpackConfig.externals = configExternals;
+    }
+    if (configExternalTye) {
+        webpackConfig.externalsType = configExternalTye;
     }
 
     // default plugins
