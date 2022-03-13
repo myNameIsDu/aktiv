@@ -30,6 +30,8 @@ const {
 /** @typedef  {import('webpack').Configuration['externals']} Externals */
 /** @typedef  {import('webpack').Configuration['plugins']} Plugins*/
 /** @typedef  {import('webpack').Configuration['externalsType']} ExternalsType*/
+// eslint-disable-next-line max-len
+/** @typedef  {import('@pmmmwh/react-refresh-webpack-plugin/types/lib/types').ReactRefreshPluginOptions} ReactRefreshPluginOptions*/
 
 /**
  * @typedef  {Object} akConfig
@@ -65,6 +67,7 @@ const {
  * @property {PresetItemType} presets
  * @property {TargetType} target
  * @property {ExternalsType} externalsType
+ * @property {ReactRefreshPluginOptions} reactRefreshPluginOptions
  */
 
 /**
@@ -105,6 +108,7 @@ const generateConfig = config => {
         devtool = 'eval-cheap-module-source-map',
         presets,
         target,
+        reactRefreshPluginOptions,
     } = config;
 
     const { version: pkgVersion, name: pkgName } = pkg;
@@ -184,6 +188,7 @@ const generateConfig = config => {
             hotReplace,
             externalLibConfigs,
             analyze,
+            reactRefreshPluginOptions,
         }),
     );
     if (configPlugins) {
