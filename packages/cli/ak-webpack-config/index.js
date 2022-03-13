@@ -89,7 +89,7 @@ const generateConfig = config => {
         resolve: configResolve,
         resolveLoader: configResolveLoader,
         externals: configExternals,
-        externalsType: configExternalTye,
+        externalsType: configExternalsType,
         appName,
         definitions,
         staticSourcePath = './static',
