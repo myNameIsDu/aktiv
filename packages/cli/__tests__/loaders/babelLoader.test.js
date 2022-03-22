@@ -1,8 +1,7 @@
-const babelLoader = require('../../ak-webpack-config/lib/loaders/babelLoader');
-const { localBuildEnv, browserTarget } = require('../../config/index');
-const getPresets = require('../../ak-webpack-config/presets/index.js');
-
 const path = require('path');
+const babelLoader = require('../../ak-webpack-config/lib/loaders/babelLoader');
+const getPresets = require('../../ak-webpack-config/presets/index.js');
+const { localBuildEnv, browserTarget } = require('../../config/index');
 
 describe('loader-babelLoader', () => {
     const workDir = './';

@@ -1,8 +1,8 @@
-import Launcher, { Outlet, useRouter } from '../../src';
+import '@testing-library/jest-dom';
 import { act, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import Launcher, { Outlet, useRouter } from '../../src';
 import type { RouteItem } from '../../src';
-import '@testing-library/jest-dom';
 
 describe('router', () => {
     describe('routeItem has redirect', () => {

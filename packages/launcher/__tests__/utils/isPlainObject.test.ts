@@ -1,5 +1,5 @@
-import isPlainObject from '../../src/utils/isPlainObject';
 import vm from 'vm';
+import isPlainObject from '../../src/utils/isPlainObject';
 class Test {}
 describe('isPlainObject', () => {
     it('returns true only if plain object', () => {

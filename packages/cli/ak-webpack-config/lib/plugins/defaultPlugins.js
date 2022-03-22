@@ -1,18 +1,18 @@
 const fs = require('fs');
 const path = require('path');
-const webpack = require('webpack');
-const CopyPlugin = require('copy-webpack-plugin');
-const genAppName = require('../../../utils/genAppName');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { browserTarget } = require('../../../config/index');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MintCssExtractWebpackPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const Webpack = require('webpackbar');
 const ExternalScriptsPlugin = require('./ExternalScriptsPlugin');
-const MintCssExtractWebpackPlugin = require('mini-css-extract-plugin');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('./WatchMissingNodeModulesPlugin');
-const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const { browserTarget } = require('../../../config/index');
+const genAppName = require('../../../utils/genAppName');
 
 function composeHtmlWebpackPlugin(htmlOptions, plugins, mode) {
     const isDevMode = mode === 'development';

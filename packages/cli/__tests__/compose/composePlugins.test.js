@@ -1,5 +1,5 @@
-const composePlugins = require('../../ak-webpack-config/lib/compose/composePlugins');
 const schema = require('../../ak-webpack-config/lib/baseSchema.js');
+const composePlugins = require('../../ak-webpack-config/lib/compose/composePlugins');
 
 describe('composePlugins', () => {
     const pluginSchema = schema.plugins;

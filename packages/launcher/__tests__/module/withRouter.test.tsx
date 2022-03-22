@@ -1,9 +1,9 @@
 // eslint-disable-next-line max-classes-per-file
 import { Component, useRef, type FC } from 'react';
 import { act, screen } from '@testing-library/react';
-import withRouter, { type HocExtraProps } from '../../src/module/withRouter';
-import Launcher from '../../src/module/app';
 import userEvent from '@testing-library/user-event';
+import Launcher from '../../src/module/app';
+import withRouter, { type HocExtraProps } from '../../src/module/withRouter';
 import '@testing-library/jest-dom/extend-expect';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function

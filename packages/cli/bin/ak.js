@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 // @ts-ignore two different file
 const { program } = require('commander');
-
 const packInfo = require('../package.json');
 
 program

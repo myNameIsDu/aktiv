@@ -1,6 +1,5 @@
 import isFSA from '../utils/isFSA';
 import { isPromise } from '../utils/isType';
-
 import type { Dispatch as ReduxDispatch, AnyAction, MiddlewareAPI } from 'redux';
 
 export default function promiseMiddleware({ dispatch }: MiddlewareAPI) {

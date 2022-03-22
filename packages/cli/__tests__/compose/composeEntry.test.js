@@ -1,6 +1,6 @@
-const { composeEntry } = require('../../ak-webpack-config/lib/compose/index');
-const schema = require('../../ak-webpack-config/lib/baseSchema');
 const path = require('path');
+const schema = require('../../ak-webpack-config/lib/baseSchema');
+const { composeEntry } = require('../../ak-webpack-config/lib/compose/index');
 
 describe('composeEntry', () => {
     const workDir = './';

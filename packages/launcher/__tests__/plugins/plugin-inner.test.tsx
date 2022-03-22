@@ -1,8 +1,8 @@
-import Launcher, { Outlet, useNavigate } from '../../src';
-import userEvent from '@testing-library/user-event';
-import { act, screen } from '@testing-library/react';
-import type { RouteItem } from '../../src';
 import { ReactElement } from 'react';
+import { act, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import Launcher, { Outlet, useNavigate } from '../../src';
+import type { RouteItem } from '../../src';
 
 describe('plugin inner with router', () => {
     it('should inner wrap the route component and receive opt and route', () => {

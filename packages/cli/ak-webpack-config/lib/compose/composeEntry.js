@@ -1,8 +1,8 @@
 const path = require('path');
-const baseSchema = require('../baseSchema');
 const isType = require('kind-of');
 const throwError = require('../../../utils/throwError');
 const validateObjectOrArrayValue = require('../../../utils/validateObjectOrArrayValue');
+const baseSchema = require('../baseSchema');
 
 /** @typedef {import('webpack').Configuration['entry']} EnTryType*/
 

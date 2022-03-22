@@ -1,7 +1,7 @@
-const baseSchema = require('../baseSchema.js');
 const isType = require('kind-of');
 const mergeOptions = require('../../../utils/mergeOptions');
 const throwError = require('../../../utils/throwError');
+const baseSchema = require('../baseSchema.js');
 
 /** @typedef {import('../../../config/index').TargetListType[number]} TargetType */
 /** @typedef {import('webpack').ResolveOptions} ResolveType*/

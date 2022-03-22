@@ -1,6 +1,6 @@
+const baseSchema = require('../../ak-webpack-config/lib/baseSchema');
 const { composeResolveFactory } = require('../../ak-webpack-config/lib/compose');
 const { composeResolve, composeResolveLoader } = composeResolveFactory;
-const baseSchema = require('../../ak-webpack-config/lib/baseSchema');
 
 const workDir = './';
 

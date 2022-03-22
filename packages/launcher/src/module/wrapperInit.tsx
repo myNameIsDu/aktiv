@@ -1,12 +1,10 @@
-import React, { useContext } from 'react';
-
-import { BrowserRouter, HashRouter, Routes } from 'react-router-dom';
+import React, { useContext, type ReactElement } from 'react';
 import { Provider } from 'react-redux';
-import renderRoutes from '../router/render-routers';
+import { BrowserRouter, HashRouter, Routes } from 'react-router-dom';
 import { LauncherContext } from './launcherProvider';
-import type { RouteItem } from './app';
+import renderRoutes from '../router/render-routers';
 import type { Store, ReducerConfig, ReducerConfigItem } from '../store';
-import type { ReactElement } from 'react';
+import type { RouteItem } from './app';
 
 export type PluginInnerRenderType = (
     children: ReactElement,
