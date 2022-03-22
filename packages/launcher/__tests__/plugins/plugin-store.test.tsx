@@ -1,6 +1,6 @@
-import Launcher, { useSelector, createActions } from '../../src';
 import type { ReactElement } from 'react';
 import { act } from '@testing-library/react';
+import Launcher, { useSelector, createActions } from '../../src';
 
 describe('plugin store', () => {
     let shouldState: unknown = null;

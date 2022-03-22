@@ -248,6 +248,45 @@ module.exports = {
         ],
         // 忽略react react-dom 因为这里是peer依赖
         'import/no-unresolved': [2, { ignore: ['react', 'react-dom'] }],
+        // 配置导入顺序
+        'import/order': [
+            'error',
+            {
+                groups: [
+                    'builtin',
+                    'external',
+                    'internal',
+                    ['sibling', 'index'],
+                    'parent',
+                    'object',
+                    'type',
+                    'unknown',
+                ],
+                pathGroups: [
+                    {
+                        pattern: 'react',
+                        group: 'external',
+                        position: 'before',
+                    },
+                    {
+                        pattern: 'react-dom',
+                        group: 'external',
+                        position: 'before',
+                    },
+                    {
+                        pattern: '@testing-library/jest-dom/extend-expect',
+                        group: 'unknown',
+                    },
+                ],
+                pathGroupsExcludedImportTypes: ['react', 'react-dom', 'unknown'],
+                'newlines-between': 'never',
+                alphabetize: {
+                    order: 'asc',
+                    caseInsensitive: true,
+                },
+                warnOnUnassignedImports: true,
+            },
+        ],
         'no-warning-comments': [
             'warn',
             { terms: ['todo', 'fixme', 'any other term'], location: 'anywhere' },

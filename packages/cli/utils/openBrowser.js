@@ -1,7 +1,7 @@
 const { execSync, spawn } = require('child_process');
-const open = require('open');
-const isWsl = require('is-wsl');
 const chalk = require('chalk');
+const isWsl = require('is-wsl');
+const open = require('open');
 
 /**
  * @param {string} url url

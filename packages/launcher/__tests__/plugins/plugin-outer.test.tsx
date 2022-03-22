@@ -1,7 +1,7 @@
-import Launcher, { Outlet, useNavigate } from '../../src';
-import userEvent from '@testing-library/user-event';
-import { act, screen } from '@testing-library/react';
 import { ReactElement } from 'react';
+import { act, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import Launcher, { Outlet, useNavigate } from '../../src';
 
 describe('plugin outer with router', () => {
     it('should outer wrap router component and receive opt', () => {

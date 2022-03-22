@@ -1,14 +1,14 @@
 import React from 'react';
-import { useLocation, useParams } from 'react-router-dom';
-import { useRouter } from '../hooks';
-import type { Params, Location } from 'react-router-dom';
-import type { UseRouterReturns } from '../hooks';
 import type {
     ComponentType,
     PropsWithoutRef,
     ForwardRefExoticComponent,
     RefAttributes,
 } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
+import { useRouter } from '../hooks';
+import type { UseRouterReturns } from '../hooks';
+import type { Params, Location } from 'react-router-dom';
 
 export type HocExtraProps = {
     location: Location;

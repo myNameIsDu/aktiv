@@ -1,12 +1,12 @@
 const composeEntry = require('./composeEntry');
+const composeLoaders = require('./composeLoaders');
+const composeOptimization = require('./composeOptimization');
 const composeOutput = require('./composeOutput');
 const composePerformance = require('./composePerformance');
-const composeLoaders = require('./composeLoaders');
-const composeResolveFactory = require('./composeResolveFactory');
-const { composeResolve, composeResolveLoader } = composeResolveFactory;
 const composePlugins = require('./composePlugins');
-const composeOptimization = require('./composeOptimization');
+const composeResolveFactory = require('./composeResolveFactory');
 const composeRulesOptions = require('./composeRulesOptions');
+const { composeResolve, composeResolveLoader } = composeResolveFactory;
 
 module.exports = {
     composeEntry,

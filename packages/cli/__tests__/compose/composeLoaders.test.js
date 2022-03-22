@@ -1,5 +1,5 @@
-const composeLoaders = require('../../ak-webpack-config/lib/compose/composeLoaders');
 const schema = require('../../ak-webpack-config/lib/baseSchema');
+const composeLoaders = require('../../ak-webpack-config/lib/compose/composeLoaders');
 
 describe('composeLoaders', () => {
     it('module为undefined，receiveLoaders为undefined应该返回defaultModule', () => {

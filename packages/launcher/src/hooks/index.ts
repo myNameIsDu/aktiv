@@ -1,7 +1,7 @@
-import useRouter from './use-router';
 import useAktivSelector from './use-aktiv-selector';
-import type { UseRouterReturns, UseRouterState } from './use-router';
+import useRouter from './use-router';
 import type { OriginSelectorType, OriginEqualFnType, SelectorTypes } from './use-aktiv-selector';
+import type { UseRouterReturns, UseRouterState } from './use-router';
 
 export { useRouter, useAktivSelector };
 export type {

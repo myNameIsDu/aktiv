@@ -1,4 +1,7 @@
+const path = require('path');
+const schema = require('../../ak-webpack-config/lib/baseSchema');
 const { composeOutput } = require('../../ak-webpack-config/lib/compose/index');
+const getPresets = require('../../ak-webpack-config/presets/index');
 const {
     proBuildEnv,
     devBuildEnv,
@@ -6,9 +9,6 @@ const {
     browserTarget,
     serverTarget,
 } = require('../../config/index');
-const getPresets = require('../../ak-webpack-config/presets/index');
-const schema = require('../../ak-webpack-config/lib/baseSchema');
-const path = require('path');
 
 describe('composeOutput', () => {
     const localPreset = getPresets(localBuildEnv, browserTarget);

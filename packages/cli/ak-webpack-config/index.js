@@ -1,10 +1,3 @@
-const { browserTarget } = require('../config/index');
-const parseExternalConfig = require('./lib/parseExternalConfig');
-const WebpackConfig = require('./lib/webpackConfig');
-const babelLoader = require('./lib/loaders/babelLoader');
-const defaultLoaders = require('./lib/loaders/defaultLoaders');
-const styleLoaders = require('./lib/loaders/styleLoaders');
-const defaultPlugins = require('./lib/plugins/defaultPlugins');
 const {
     composeEntry,
     composeOutput,
@@ -16,6 +9,13 @@ const {
     composeOptimization,
     composeRulesOptions,
 } = require('./lib/compose/index');
+const babelLoader = require('./lib/loaders/babelLoader');
+const defaultLoaders = require('./lib/loaders/defaultLoaders');
+const styleLoaders = require('./lib/loaders/styleLoaders');
+const parseExternalConfig = require('./lib/parseExternalConfig');
+const defaultPlugins = require('./lib/plugins/defaultPlugins');
+const WebpackConfig = require('./lib/webpackConfig');
+const { browserTarget } = require('../config/index');
 
 /** @typedef  {import('../config/index').TargetListType[number]} TargetType*/
 /** @typedef  {import('../config/index').EnvListType[number]} EnvType*/

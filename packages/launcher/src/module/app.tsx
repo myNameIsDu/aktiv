@@ -1,11 +1,11 @@
+import type { ComponentType } from 'react';
 import ReactDOM from 'react-dom';
 import { enableES5 } from 'immer';
 // import { hot } from 'react-hot-loader';
-import { createStore, initialStore } from '../store';
-import WrapperInit, { pluginsRegistry, pluginReducers } from './wrapperInit';
 import LauncherProvider from './launcherProvider';
+import WrapperInit, { pluginsRegistry, pluginReducers } from './wrapperInit';
+import { createStore, initialStore } from '../store';
 import type { ReducerConfig, ReducersMapObject, Store } from '../store';
-import type { ComponentType } from 'react';
 import type { Plugin, PluginOpt } from './wrapperInit';
 import type { Middleware } from 'redux';
 

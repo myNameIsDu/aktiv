@@ -1,7 +1,7 @@
-const checkRequiredFiles = require('../../utils/checkRequiredFiles');
-const chalk = require('chalk');
 const fs = require('fs');
 const path = require('path');
+const chalk = require('chalk');
+const checkRequiredFiles = require('../../utils/checkRequiredFiles');
 
 const filePath = path.resolve(__dirname, './testFile.js');
 

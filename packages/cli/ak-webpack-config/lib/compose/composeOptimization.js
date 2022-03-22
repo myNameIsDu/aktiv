@@ -1,6 +1,6 @@
-const { browserTarget } = require('../../../config/index');
-const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const { browserTarget } = require('../../../config/index');
 
 const defaultVendorPaths = [
     'react',

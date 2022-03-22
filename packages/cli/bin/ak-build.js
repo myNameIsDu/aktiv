@@ -1,7 +1,11 @@
 #! /usr/bin/env node
 /* eslint-disable no-console */
-const commander = require('commander');
 const path = require('path');
+const chalk = require('chalk');
+const commander = require('commander');
+const webpack = require('webpack');
+const akWebpackConfig = require('../ak-webpack-config/index');
+const getPreset = require('../ak-webpack-config/presets/index');
 const {
     defaultWorkDir,
     defaultConfigFile,
@@ -11,10 +15,6 @@ const {
     supperEnvList,
 } = require('../config/index');
 const checkRequiredFiles = require('../utils/checkRequiredFiles');
-const webpack = require('webpack');
-const akWebpackConfig = require('../ak-webpack-config/index');
-const chalk = require('chalk');
-const getPreset = require('../ak-webpack-config/presets/index');
 
 const { program } = commander;
 
