@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@1.3.1...@aktiv/launcher@1.4.0) (2022-03-29)
+
+
+### Bug Fixes
+
+* 修复plugin-store test ([b327cb7](https://github.com/myNameIsDu/aktiv/commit/b327cb70415b6ba192b1fd54711957a6e902d2e0))
+
+
+### Features
+
+* **launcher:** add new useAktivSelector for launcher ([a1f3fed](https://github.com/myNameIsDu/aktiv/commit/a1f3fed114e282e0a747bf5a4c3493a0f91dd346))
+
+
+### Performance Improvements
+
+* 优化plugin store test code ([f9ea5d2](https://github.com/myNameIsDu/aktiv/commit/f9ea5d260b10d7bc251f6dad3b54aa4e510e85e2))
+* **launcher-store:** 优化变量名 ([3e1cbec](https://github.com/myNameIsDu/aktiv/commit/3e1cbec8a7aebbc1e4ac4cb40966d869104bf1ac))
+* **launcher:** 优化createActions类型 ([37b4834](https://github.com/myNameIsDu/aktiv/commit/37b4834adcf24cb9c51e4b570626885c2025677d))
+* **launcher:** perf code ([c63cc3a](https://github.com/myNameIsDu/aktiv/commit/c63cc3a154c134c71bedfab35e8b9040f0375d92))
+* **launcher:** support unit test case ([e23dfca](https://github.com/myNameIsDu/aktiv/commit/e23dfcaee96a1d638c7416e68751f29605ff2a76))
+* **launcher:** use type predicates ([a14a848](https://github.com/myNameIsDu/aktiv/commit/a14a8483f777c2efb5df597b6b41f84346698db2))
+* **store:** redux-devtool enable trace ([da1ae0d](https://github.com/myNameIsDu/aktiv/commit/da1ae0d38cf5f02e2128af856b062832929b2502))
+
+
+
+
+
 ## [1.3.1](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@1.3.0...@aktiv/launcher@1.3.1) (2022-01-10)
 
 
