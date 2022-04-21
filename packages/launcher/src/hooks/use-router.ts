@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
 import qs from 'qs';
+import { useNavigate } from 'react-router-dom';
 
 export type UseRouterReturns = {
     redirect(path: string, params?: Record<string, unknown>, state?: unknown): void;
