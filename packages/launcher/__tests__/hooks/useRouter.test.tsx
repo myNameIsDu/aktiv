@@ -1,7 +1,7 @@
-import Launcher, { useRouter, useLocation } from '../../src';
-import type { Location } from 'react-router-dom';
 import { act, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import Launcher, { useRouter, useLocation } from '../../src';
+import type { Location } from 'react-router-dom';
 
 describe('userRouter', () => {
     const state = { a: 1 };

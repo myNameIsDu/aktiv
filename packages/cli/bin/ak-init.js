@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
-const { program } = require('commander');
+const { spawnSync, spawn } = require('child_process');
 const path = require('path');
 const chalk = require('chalk');
+const { program } = require('commander');
 const fse = require('fs-extra');
 const inquirer = require('inquirer');
-const { spawnSync, spawn } = require('child_process');
 
 class AkInit {
     constructor() {

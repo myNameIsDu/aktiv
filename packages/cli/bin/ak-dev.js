@@ -1,9 +1,12 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
-const commander = require('commander');
 const path = require('path');
 const chalk = require('chalk');
+const commander = require('commander');
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
 const akWebpackConfig = require('../ak-webpack-config/index');
+const getPreset = require('../ak-webpack-config/presets/index');
 const {
     defaultWorkDir,
     defaultConfigFile,
@@ -11,14 +14,11 @@ const {
     localBuildEnv,
     browserTarget,
 } = require('../config/index');
-const getPreset = require('../ak-webpack-config/presets/index');
-const selectPortIsOccupied = require('../utils/selectPortIsOccupied');
 const checkRequiredFiles = require('../utils/checkRequiredFiles');
-const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
-const prepareUrl = require('../utils/prepareUrl');
-const openBrowser = require('../utils/openBrowser');
 const CertEngine = require('../utils/createCaCertificate');
+const openBrowser = require('../utils/openBrowser');
+const prepareUrl = require('../utils/prepareUrl');
+const selectPortIsOccupied = require('../utils/selectPortIsOccupied');
 
 const { program } = commander;
 
@@ -33,7 +33,7 @@ program
     .option('-d, --dir <path>', 'set workDi', resolvePath, defaultWorkDir)
     .option('-c, --config <path>', 'set config file', resolvePath, defaultConfigFile)
     .option('-p, --port <port>', 'set dev server port', String(defaultPort))
-    .option('--no-hotReplace', 'set the livereload off');
+    .option('--no-hot-replace', 'set the livereload off');
 
 program.addHelpText('after', () => {
     return `
@@ -49,7 +49,7 @@ program.addHelpText('after', () => {
   $ ak dev -p 8888
 
   ${chalk.gray('# run ak dev server without HMR')}
-  $ ak dev --no-hotReplace
+  $ ak dev --no-hot-replace
   `;
 });
 program.parse(process.argv);

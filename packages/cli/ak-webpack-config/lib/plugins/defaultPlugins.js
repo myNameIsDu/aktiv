@@ -1,18 +1,18 @@
 const fs = require('fs');
 const path = require('path');
-const webpack = require('webpack');
-const CopyPlugin = require('copy-webpack-plugin');
-const genAppName = require('../../../utils/genAppName');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { browserTarget } = require('../../../config/index');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MintCssExtractWebpackPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const Webpack = require('webpackbar');
 const ExternalScriptsPlugin = require('./ExternalScriptsPlugin');
-const MintCssExtractWebpackPlugin = require('mini-css-extract-plugin');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('./WatchMissingNodeModulesPlugin');
-const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const { browserTarget } = require('../../../config/index');
+const genAppName = require('../../../utils/genAppName');
 
 function composeHtmlWebpackPlugin(htmlOptions, plugins, mode) {
     const isDevMode = mode === 'development';
@@ -48,6 +48,8 @@ function composeHtmlWebpackPlugin(htmlOptions, plugins, mode) {
 /** @typedef {import('html-webpack-plugin').Options} HtmlWebpackPluginOptions */
 /** @typedef {import('moment-timezone-data-webpack-plugin').Options} MiniMomentTimezoneOptions */
 /** @typedef {{ externalScripts:ParseResult[], externalStylesheets: ParseResult[] }}  ExternalLibConfigs*/
+// eslint-disable-next-line max-len
+/** @typedef  {import('@pmmmwh/react-refresh-webpack-plugin/types/lib/types').ReactRefreshPluginOptions} ReactRefreshPluginOptions*/
 
 /**
  * @param {Object} options options
@@ -66,6 +68,7 @@ function composeHtmlWebpackPlugin(htmlOptions, plugins, mode) {
  * @param {boolean} options.hotReplace hotReplace
  * @param {ExternalLibConfigs} options.externalLibConfigs externalLibConfigs
  * @param {boolean} options.analyze analyze
+ * @param {ReactRefreshPluginOptions} options.reactRefreshPluginOptions reactRefreshPluginOptions
  * @return {PluginsType} return
  */
 function defaultPlugins(options) {
@@ -84,6 +87,7 @@ function defaultPlugins(options) {
         hotReplace,
         externalLibConfigs,
         analyze,
+        reactRefreshPluginOptions,
     } = options;
     let { appName } = options;
     const { isLocal, outputHTML, mode, extractCSS } = presets;
@@ -178,7 +182,7 @@ function defaultPlugins(options) {
         plugins.push(new CaseSensitivePathsPlugin());
     }
     if (isLocal && hotReplace) {
-        plugins.push(new ReactRefreshWebpackPlugin());
+        plugins.push(new ReactRefreshWebpackPlugin({ ...reactRefreshPluginOptions }));
     }
     if (analyze) {
         plugins.push(new BundleAnalyzerPlugin());

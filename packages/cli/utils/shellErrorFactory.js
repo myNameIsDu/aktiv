@@ -1,5 +1,5 @@
-const shelljs = require('shelljs');
 const chalk = require('chalk');
+const shelljs = require('shelljs');
 
 class ErrorUtil {
     /**

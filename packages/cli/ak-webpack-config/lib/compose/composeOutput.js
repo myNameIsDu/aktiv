@@ -1,8 +1,8 @@
-const baseSchema = require('../baseSchema');
 const path = require('path');
-const { serverTarget } = require('../../../config/index');
 const isType = require('kind-of');
+const { serverTarget } = require('../../../config/index');
 const throwError = require('../../../utils/throwError');
+const baseSchema = require('../baseSchema');
 
 /** @typedef {import('../../../config/index').TargetListType[number]} TargetType*/
 /** @typedef {import('../../presets/index').PresetItemType} PresetItemType*/

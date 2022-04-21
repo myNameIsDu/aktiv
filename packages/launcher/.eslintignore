@@ -2,3 +2,5 @@ lib
 types
 node_modules
 docs
+es
+coverage

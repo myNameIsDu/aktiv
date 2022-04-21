@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { isString } from '../utils/isType';
 import { get } from '../utils/get';
+import { isString } from '../utils/isType';
 
 export type OriginSelectorType<S, T> = (state: S) => T;
 

@@ -2,7 +2,6 @@
 const fs = require('fs');
 const os = require('os');
 const shelljs = require('shelljs');
-
 const ErrorUtil = require('./shellErrorFactory');
 
 const HOME_DIR = os.homedir();

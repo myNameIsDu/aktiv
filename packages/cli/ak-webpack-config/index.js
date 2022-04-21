@@ -1,10 +1,3 @@
-const { browserTarget } = require('../config/index');
-const parseExternalConfig = require('./lib/parseExternalConfig');
-const WebpackConfig = require('./lib/webpackConfig');
-const babelLoader = require('./lib/loaders/babelLoader');
-const defaultLoaders = require('./lib/loaders/defaultLoaders');
-const styleLoaders = require('./lib/loaders/styleLoaders');
-const defaultPlugins = require('./lib/plugins/defaultPlugins');
 const {
     composeEntry,
     composeOutput,
@@ -16,6 +9,13 @@ const {
     composeOptimization,
     composeRulesOptions,
 } = require('./lib/compose/index');
+const babelLoader = require('./lib/loaders/babelLoader');
+const defaultLoaders = require('./lib/loaders/defaultLoaders');
+const styleLoaders = require('./lib/loaders/styleLoaders');
+const parseExternalConfig = require('./lib/parseExternalConfig');
+const defaultPlugins = require('./lib/plugins/defaultPlugins');
+const WebpackConfig = require('./lib/webpackConfig');
+const { browserTarget } = require('../config/index');
 
 /** @typedef  {import('../config/index').TargetListType[number]} TargetType*/
 /** @typedef  {import('../config/index').EnvListType[number]} EnvType*/
@@ -28,7 +28,10 @@ const {
 /** @typedef  {import('webpack').RuleSetRule} RuleSetRule*/
 /** @typedef  {import('webpack').Configuration['resolve']} ResolveOptions*/
 /** @typedef  {import('webpack').Configuration['externals']} Externals */
-/** @typedef  {import('webpack').Configuration['plugins']} plugins*/
+/** @typedef  {import('webpack').Configuration['plugins']} Plugins*/
+/** @typedef  {import('webpack').Configuration['externalsType']} ExternalsType*/
+// eslint-disable-next-line max-len
+/** @typedef  {import('@pmmmwh/react-refresh-webpack-plugin/types/lib/types').ReactRefreshPluginOptions} ReactRefreshPluginOptions*/
 
 /**
  * @typedef  {Object} akConfig
@@ -52,7 +55,7 @@ const {
  * @property {string} staticSourcePath
  * @property {string} toCopyPath
  * @property {boolean} hotReplace
- * @property {plugins} plugins
+ * @property {Plugins} plugins
  * @property {Array<string> | string} splitChunksVendor
  * @property {Record<string,any>} splitChunksCacheGroups
  * @property {Record<string,any>}  terserPluginOptions
@@ -63,6 +66,8 @@ const {
  * @property {boolean} analyze
  * @property {PresetItemType} presets
  * @property {TargetType} target
+ * @property {ExternalsType} externalsType
+ * @property {ReactRefreshPluginOptions} reactRefreshPluginOptions
  */
 
 /**
@@ -87,6 +92,7 @@ const generateConfig = config => {
         resolve: configResolve,
         resolveLoader: configResolveLoader,
         externals: configExternals,
+        externalsType: configExternalsType,
         appName,
         definitions,
         staticSourcePath = './static',
@@ -102,6 +108,7 @@ const generateConfig = config => {
         devtool = 'eval-cheap-module-source-map',
         presets,
         target,
+        reactRefreshPluginOptions,
     } = config;
 
     const { version: pkgVersion, name: pkgName } = pkg;
@@ -158,6 +165,9 @@ const generateConfig = config => {
     if (configExternals) {
         webpackConfig.externals = configExternals;
     }
+    if (configExternalsType) {
+        webpackConfig.externalsType = configExternalsType;
+    }
 
     // default plugins
     webpackConfig.plugins = composePlugins(
@@ -178,6 +188,7 @@ const generateConfig = config => {
             hotReplace,
             externalLibConfigs,
             analyze,
+            reactRefreshPluginOptions,
         }),
     );
     if (configPlugins) {
