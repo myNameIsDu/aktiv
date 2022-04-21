@@ -16,22 +16,28 @@ const useEffectRouter = (): UseEffectRouterReturns => {
 
     const redirect = useCallback(
         search => {
-            router.redirect(pathname, {
+            router.redirect(
+                pathname,
+                {
+                    ...params,
+                    ...search,
+                },
                 state,
-                ...params,
-                ...search,
-            });
+            );
         },
         [params, pathname, router, state],
     );
 
     const replace = useCallback(
         search => {
-            router.replace(pathname, {
+            router.replace(
+                pathname,
+                {
+                    ...params,
+                    ...search,
+                },
                 state,
-                ...params,
-                ...search,
-            });
+            );
         },
         [params, pathname, router, state],
     );
