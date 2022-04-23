@@ -1,5 +1,5 @@
 language: node_js
-node_js: 
+node_js:
   - 16
 branches:
   only:
@@ -14,10 +14,10 @@ before_install:
 jobs:
   include:
     - stage: Test
-      install: pnpm install
+      install: pnpm install --force
       script:
         - pnpm test -- --projects ./packages/launcher --collectCoverage && pnpm codecov --filter launcher
     - stage: Build
-      install: pnpm install
+      install: pnpm install --force
       script:
         - pnpm build --filter ./packages/launcher
