@@ -14,10 +14,10 @@ before_install:
 jobs:
   include:
     - stage: Test
-      install: pnpm install --force
+      install: pnpm install
       script:
         - pnpm test -- --projects ./packages/launcher --collectCoverage && pnpm codecov --filter launcher
     - stage: Build
-      install: pnpm install --force
+      install: pnpm install
       script:
         - pnpm build --filter ./packages/launcher

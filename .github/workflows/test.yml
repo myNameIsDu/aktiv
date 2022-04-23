@@ -26,7 +26,7 @@ jobs:
 
 
       - name: install dep
-        run: pnpm i --force
+        run: pnpm i
 
       - name: run test
         run: pnpm test

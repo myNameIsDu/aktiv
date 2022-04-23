@@ -7,7 +7,6 @@ importers:
       '@commitlint/cli': ^12.1.4
       '@commitlint/config-conventional': ^12.1.4
       '@swc/core': ^1.2.133
-      '@swc/core-darwin-x64': ^1.2.171
       '@swc/jest': ^0.2.17
       '@types/jest': ^26.0.24
       '@typescript-eslint/eslint-plugin': ^5.6.0
@@ -33,8 +32,6 @@ importers:
       ts-jest: ^26.5.6
       typescript: ^4.5.2
       yorkie: ^2.0.0
-    dependencies:
-      '@swc/core-darwin-x64': 1.2.171
     devDependencies:
       '@commitlint/cli': 12.1.4
       '@commitlint/config-conventional': 12.1.4
@@ -5859,13 +5856,6 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
-
-  /@swc/core-darwin-x64/1.2.171:
-    resolution: {integrity: sha512-Geb3e9/o0h4VCky6dvQmHXwG+wpq0B4M0pkYySUMC3wVsqdun3rP2dF3i1FWG7F3t92sDOl3ba42JUweTtC2eA==}
-    engines: {node: '>=10'}
-    cpu: [x64]
-    os: [darwin]
-    dev: false
 
   /@swc/core-freebsd-x64/1.2.133:
     resolution: {integrity: sha512-eFYkZLyAghY90w7CfwHsQ7/doJ46QSlmMGA9qR9NEuPt9MthM84ZXE6d20BvOid0zeib2o6HdFzfaAkS09/hvA==}

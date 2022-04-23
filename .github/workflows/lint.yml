@@ -25,7 +25,7 @@ jobs:
           node-version: 16.x
 
       - name: install dep
-        run: pnpm i --force
+        run: pnpm i
 
       - name: run lint
         run: pnpm run lint
