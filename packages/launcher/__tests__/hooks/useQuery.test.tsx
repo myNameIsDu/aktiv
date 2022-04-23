@@ -1,11 +1,11 @@
 import { act, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Launcher, { useRouter, useEffectRouter } from '../../src';
+import Launcher, { useRouter, useQuery } from '../../src';
 
 describe('useEffectRouter', () => {
     const Home = () => {
-        const { redirectEffect, replaceEffect } = useEffectRouter();
         const { redirect } = useRouter();
+        const query = useQuery();
 
         return (
             <div>
@@ -16,20 +16,7 @@ describe('useEffectRouter', () => {
                 >
                     redirect self
                 </button>
-                <button
-                    onClick={() => {
-                        redirectEffect({ index: 1 });
-                    }}
-                >
-                    redirect effect self
-                </button>
-                <button
-                    onClick={() => {
-                        replaceEffect({ index: 11 });
-                    }}
-                >
-                    replace relative path
-                </button>
+                <span>{query?.name}</span>
                 home
             </div>
         );
@@ -61,16 +48,10 @@ describe('useEffectRouter', () => {
             });
         };
 
-        it('should get truly path', () => {
+        it('should get truly query', () => {
             renderAndJump('redirect self');
-            renderAndJump('redirect effect self');
-            expect(window.location.search).toBe('?name=root&index=1');
-        });
 
-        it('should get truly path', () => {
-            renderAndJump('redirect self');
-            renderAndJump('replace relative path');
-            expect(window.location.search).toBe('?name=root&index=11');
+            expect(screen.findByText('root')).toBeTruthy();
         });
     });
 });

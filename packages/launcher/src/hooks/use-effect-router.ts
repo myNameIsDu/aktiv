@@ -1,53 +1,54 @@
 import { useCallback, useMemo } from 'react';
-import { useSearchParams, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import useQuery from './use-query';
 import useRouter from './use-router';
 
 export type SearchProps = Partial<Record<string, unknown>>;
 
 export type UseEffectRouterReturns = {
-    redirect(search?: SearchProps): void;
-    replace(search?: SearchProps): void;
+    redirectEffect(search?: SearchProps): void;
+    replaceEffect(search?: SearchProps): void;
 };
 
 const useEffectRouter = (): UseEffectRouterReturns => {
     const { pathname, state } = useLocation();
     const router = useRouter();
-    const params = useSearchParams();
+    const query = useQuery();
 
-    const redirect = useCallback(
+    const redirectEffect = useCallback(
         search => {
             router.redirect(
                 pathname,
                 {
-                    ...params,
+                    ...query,
                     ...search,
                 },
                 state,
             );
         },
-        [params, pathname, router, state],
+        [query, pathname, router, state],
     );
 
-    const replace = useCallback(
+    const replaceEffect = useCallback(
         search => {
             router.replace(
                 pathname,
                 {
-                    ...params,
+                    ...query,
                     ...search,
                 },
                 state,
             );
         },
-        [params, pathname, router, state],
+        [query, pathname, router, state],
     );
 
     return useMemo(
         () => ({
-            redirect,
-            replace,
+            redirectEffect,
+            replaceEffect,
         }),
-        [redirect, replace],
+        [redirectEffect, replaceEffect],
     );
 };
 
