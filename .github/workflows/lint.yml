@@ -12,20 +12,20 @@ jobs:
   lint:
     name: lint check
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2.0.1
         with:
           version: 6.x
-      
+
       - name: Set up Node
         uses: actions/setup-node@v1
         with:
           node-version: 16.x
 
       - name: install dep
-        run: pnpm i
-      
+        run: pnpm i --force
+
       - name: run lint
         run: pnpm run lint
