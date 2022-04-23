@@ -1,5 +1,6 @@
 language: node_js
-node_js: node
+node_js: 
+  - 16
 branches:
   only:
     - master
@@ -14,11 +15,9 @@ jobs:
   include:
     - stage: Test
       install: pnpm install
-      # bootstrap: npm run bootstrap
       script:
         - pnpm test -- --projects ./packages/launcher --collectCoverage && pnpm codecov --filter launcher
     - stage: Build
       install: pnpm install
-      # bootstrap: npm run bootstrap
       script:
         - pnpm build --filter ./packages/launcher
