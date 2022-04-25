@@ -1,9 +1,10 @@
 import { useCallback, useMemo } from 'react';
+import qs from 'qs';
 import { useNavigate } from 'react-router-dom';
 
 export type UseRouterReturns = {
-    redirect(path: string, state?: UseRouterState): void;
-    replace(path: string, state?: UseRouterState): void;
+    redirect(path: string, params?: Record<string, unknown>, state?: unknown): void;
+    replace(path: string, params?: Record<string, unknown>, state?: unknown): void;
 };
 
 export type UseRouterState = Partial<Record<string, unknown>>;
@@ -11,18 +12,30 @@ export type UseRouterState = Partial<Record<string, unknown>>;
 function useRouter(): UseRouterReturns {
     const navigate = useNavigate();
 
-    const pushPath = useCallback(
-        (path: string, state?: UseRouterState) => {
-            return navigate(path, {
+    const redirect = useCallback(
+        (path: string, params?: Record<string, unknown>, state?: UseRouterState) => {
+            const [noSearchPath, search] = path?.split('?') || [];
+
+            const originQuery = qs.parse(search, { ignoreQueryPrefix: true });
+            const mergedQuery = { ...originQuery, ...(params || {}) };
+            const finalSearch = qs.stringify(mergedQuery, { addQueryPrefix: true });
+
+            return navigate(`${noSearchPath}${finalSearch}`, {
                 state,
             });
         },
         [navigate],
     );
 
-    const replacePath = useCallback(
-        (path: string, state?: UseRouterState) => {
-            return navigate(path, {
+    const replace = useCallback(
+        (path: string, params?: Record<string, unknown>, state?: UseRouterState) => {
+            const [noSearchPath, search] = path?.split('?') || [];
+
+            const originQuery = qs.parse(search, { ignoreQueryPrefix: true });
+            const mergedQuery = { ...originQuery, ...(params || {}) };
+            const finalSearch = qs.stringify(mergedQuery, { addQueryPrefix: true });
+
+            return navigate(`${noSearchPath}${finalSearch}`, {
                 replace: true,
                 state,
             });
@@ -32,10 +45,10 @@ function useRouter(): UseRouterReturns {
 
     return useMemo(
         () => ({
-            redirect: pushPath,
-            replace: replacePath,
+            redirect,
+            replace,
         }),
-        [pushPath, replacePath],
+        [redirect, replace],
     );
 }
 

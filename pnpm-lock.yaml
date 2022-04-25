@@ -178,6 +178,7 @@ importers:
       '@testing-library/react-hooks': ^7.0.1
       '@testing-library/user-event': ^13.2.0
       '@types/kind-of': ^6.0.0
+      '@types/qs': ^6.9.7
       '@types/react': ^17.0.14
       '@types/react-dom': ^17.0.9
       '@types/react-loadable': ^5.5.6
@@ -186,6 +187,7 @@ importers:
       gulp: ^4.0.2
       immer: ^9.0.5
       kind-of: ^6.0.3
+      qs: ^6.10.3
       react: ^17.0.2
       react-dom: ^17.0.2
       react-hot-loader: ^4.13.0
@@ -200,6 +202,7 @@ importers:
       '@babel/runtime': 7.16.3
       immer: 9.0.5
       kind-of: 6.0.3
+      qs: 6.10.3
       react-hot-loader: 4.13.0_a1bbe17b69ce74ad68a61ee76e049e19
       react-loadable: 5.5.0_react@17.0.2
       react-redux: 7.2.4_react-dom@17.0.2+react@17.0.2
@@ -221,6 +224,7 @@ importers:
       '@testing-library/react-hooks': 7.0.1_react-dom@17.0.2+react@17.0.2
       '@testing-library/user-event': 13.2.0
       '@types/kind-of': 6.0.0
+      '@types/qs': 6.9.7
       '@types/react': 17.0.16
       '@types/react-dom': 17.0.11
       '@types/react-loadable': 5.5.6
@@ -15582,7 +15586,6 @@ packages:
 
   /object-inspect/1.11.0:
     resolution: {integrity: sha512-jp7ikS6Sd3GxQfZJPyH3cjcbJF6GZPClgdV+EFygjFLQ5FmW/dRUnTd9PQ9k0JhoNDabWFbpF1yCdSWCC6gexg==}
-    dev: true
 
   /object-is/1.1.5:
     resolution: {integrity: sha512-3cyDsyHgtmi7I7DfSSI2LDp6SK2lwvtbg0p0R1e0RvTqF5ceGx+K2dfSjm1bKDMVCFEDAQvy+o8c6a7VujOddw==}
@@ -17601,6 +17604,13 @@ packages:
       side-channel: 1.0.4
     dev: true
 
+  /qs/6.10.3:
+    resolution: {integrity: sha512-wr7M2E0OFRfIfJZjKGieI8lBKb7fRCH4Fv5KNPEs7gJ8jadvotdsS08PzOKR7opXhZ/Xkjtt3WF9g38drmyRqQ==}
+    engines: {node: '>=0.6'}
+    dependencies:
+      side-channel: 1.0.4
+    dev: false
+
   /qs/6.5.2:
     resolution: {integrity: sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==}
     engines: {node: '>=0.6'}
@@ -19140,7 +19150,6 @@ packages:
       call-bind: 1.0.2
       get-intrinsic: 1.1.1
       object-inspect: 1.11.0
-    dev: true
 
   /signal-exit/3.0.3:
     resolution: {integrity: sha512-VUJ49FC8U1OxwZLxIbTTrDvLnf/6TDgxZcK8wxR8zs13xpx7xbG60ndBlhNrFi2EMuFRoeDoJO7wthSLq42EjA==}

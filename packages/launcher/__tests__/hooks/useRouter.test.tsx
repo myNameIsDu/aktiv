@@ -30,7 +30,7 @@ describe('userRouter', () => {
                 </button>
                 <button
                     onClick={() => {
-                        redirect('/about', state);
+                        redirect('/about', {}, state);
                     }}
                 >
                     redirect has params
@@ -51,7 +51,7 @@ describe('userRouter', () => {
                 </button>
                 <button
                     onClick={() => {
-                        replace('/about', state);
+                        replace('/about', {}, state);
                     }}
                 >
                     replace has params

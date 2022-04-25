@@ -12,13 +12,13 @@ jobs:
   test:
     name: Test Suite
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2.0.1
         with:
           version: 6.x
-      
+
       - name: Set up Node
         uses: actions/setup-node@v1
         with:
@@ -27,6 +27,6 @@ jobs:
 
       - name: install dep
         run: pnpm i
-      
+
       - name: run test
         run: pnpm test
