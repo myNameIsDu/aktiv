@@ -11,36 +11,28 @@ export type UseEffectRouterReturns = {
 };
 
 const useEffectRouter = (): UseEffectRouterReturns => {
-    const { pathname, state } = useLocation();
+    const { pathname } = useLocation();
     const router = useRouter();
     const query = useQuery();
 
     const redirectEffect = useCallback(
         search => {
-            router.redirect(
-                pathname,
-                {
-                    ...query,
-                    ...search,
-                },
-                state,
-            );
+            router.redirect(pathname, {
+                ...query,
+                ...search,
+            });
         },
-        [query, pathname, router, state],
+        [query, pathname, router],
     );
 
     const replaceEffect = useCallback(
         search => {
-            router.replace(
-                pathname,
-                {
-                    ...query,
-                    ...search,
-                },
-                state,
-            );
+            router.replace(pathname, {
+                ...query,
+                ...search,
+            });
         },
-        [query, pathname, router, state],
+        [query, pathname, router],
     );
 
     return useMemo(

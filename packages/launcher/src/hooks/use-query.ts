@@ -6,8 +6,8 @@ const useQuery = (): Record<string, any> => {
     const location = useLocation();
 
     return useMemo(() => {
-        return qs.parse(location.search || {}, { ignoreQueryPrefix: true });
-    }, [location.search]);
+        return qs.parse(location?.search, { ignoreQueryPrefix: true });
+    }, [location?.search]);
 };
 
 export default useQuery;
