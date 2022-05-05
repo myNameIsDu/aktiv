@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
-const { spawnSync, spawn } = require('child_process');
 const path = require('path');
 const chalk = require('chalk');
 const { program } = require('commander');
+const { sync, spawn } = require('cross-spawn');
 const fse = require('fs-extra');
 const inquirer = require('inquirer');
 
@@ -72,7 +72,7 @@ class AkInit {
 
     // eslint-disable-next-line class-methods-use-this
     gitInit() {
-        spawnSync('git', ['init']);
+        sync('git', ['init']);
     }
 
     start() {
