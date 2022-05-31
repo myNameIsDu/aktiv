@@ -92,9 +92,7 @@ describe('withRouter', () => {
             app.start();
         });
         expect(spyPageRenderTime).toHaveBeenCalledTimes(1);
-        act(() => {
-            userEvent.click(screen.getByText('跳转'));
-        });
+        userEvent.click(screen.getByText('跳转'));
         expect(spyChildRenderTime).toHaveBeenCalledTimes(1);
     });
 });

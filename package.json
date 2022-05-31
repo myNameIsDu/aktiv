@@ -41,6 +41,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-testing-library": "^5.5.1",
     "father-build": "^1.17.2",
     "gh-pages": "^3.0.0",
     "husky": "^7.0.1",

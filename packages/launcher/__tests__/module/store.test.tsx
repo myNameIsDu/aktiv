@@ -102,7 +102,7 @@ describe('store', () => {
                 return state;
             },
         };
-        const startRender = (
+        const start = (
             reducerConfig: ReducerConfig,
             customReducers?: ReducersMapObject,
         ): ((s: unknown) => void) => {
@@ -147,7 +147,7 @@ describe('store', () => {
 
         describe('receive reducers reducerConfig and initial state', () => {
             it('should initial state use reducerConfig', () => {
-                startRender({
+                start({
                     state1: {
                         state: state1,
                         config: {},
@@ -160,13 +160,13 @@ describe('store', () => {
                 expect(selectState()).toEqual({ state1, state2 });
             });
             it('should initial state use reducers', () => {
-                startRender({}, reducers);
+                start({}, reducers);
                 expect(selectState()).toEqual({
                     list: 'reducer-list',
                 });
             });
             it('should initial state use reducers and reducerConfig', () => {
-                startRender(
+                start(
                     {
                         state1: {
                             state: state1,
@@ -188,7 +188,7 @@ describe('store', () => {
         });
         describe('use dispatch', () => {
             it('should set state key and return payload, when payload is normal data', () => {
-                startRender({
+                start({
                     state1: {
                         state: state1,
                         config: state1Config,
@@ -206,7 +206,7 @@ describe('store', () => {
                 expect(selectState()).toEqual({ state1: { a: newState }, state2 });
             });
             it('should set state key and return payload, when payload is promise resolve', async () => {
-                startRender({
+                start({
                     state1: {
                         state: state1,
                         config: state1Config,
@@ -224,7 +224,7 @@ describe('store', () => {
             });
 
             it('should set state key and return payload, when payload is promise reject', async () => {
-                startRender({
+                start({
                     state1: {
                         state: state1,
                         config: state1Config,
@@ -244,7 +244,7 @@ describe('store', () => {
             });
 
             it('should set state key, when use custom dispatch and function action', () => {
-                const dispatch = startRender({
+                const dispatch = start({
                     state1: {
                         state: state1,
                         config: state1Config,
@@ -262,7 +262,7 @@ describe('store', () => {
             });
 
             it('should set state key, when use custom dispatch and reducers', () => {
-                const dispatch = startRender({}, reducers);
+                const dispatch = start({}, reducers);
 
                 expect(selectState()).toEqual({
                     list: 'reducer-list',
@@ -288,7 +288,7 @@ describe('store', () => {
                     },
                 };
 
-                startRender({
+                start({
                     state2: {
                         state: state2,
                         config: state2Config,

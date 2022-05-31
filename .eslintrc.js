@@ -21,7 +21,14 @@ module.exports = {
             experimentalObjectRestSpread: true,
         },
     },
-    plugins: ['prettier', '@typescript-eslint', 'react-hooks', 'import', 'react'],
+    plugins: [
+        'prettier',
+        '@typescript-eslint',
+        'react-hooks',
+        'import',
+        'react',
+        'testing-library',
+    ],
     settings: {
         react: {
             version: 'detect',
@@ -292,4 +299,10 @@ module.exports = {
             { terms: ['todo', 'fixme', 'any other term'], location: 'anywhere' },
         ],
     },
+    overrides: [
+        {
+            files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+            extends: ['plugin:testing-library/react'],
+        },
+    ],
 };

@@ -72,9 +72,7 @@ describe('plugin outer with router', () => {
         expect(document.body).toMatchSnapshot();
         expect(spyOuterCallTime).toHaveBeenCalledTimes(1);
         expect(spyOuterRenderTime).toHaveBeenCalledTimes(1);
-        act(() => {
-            userEvent.click(screen.getByText('go about'));
-        });
+        userEvent.click(screen.getByText('go about'));
         expect(document.body).toMatchSnapshot();
         expect(spyOuterCallTime).toHaveBeenCalledTimes(1);
         expect(spyOuterRenderTime).toHaveBeenCalledTimes(1);

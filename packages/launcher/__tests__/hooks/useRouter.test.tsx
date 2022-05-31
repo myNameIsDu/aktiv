@@ -84,9 +84,7 @@ describe('userRouter', () => {
                 app.start();
             });
 
-            act(() => {
-                userEvent.click(screen.getByText(s));
-            });
+            userEvent.click(screen.getByText(s));
         };
 
         describe('use userRouter => redirect and there is no basePath', () => {
@@ -154,9 +152,7 @@ describe('userRouter', () => {
                 app.start();
             });
 
-            act(() => {
-                userEvent.click(screen.getByText(s));
-            });
+            userEvent.click(screen.getByText(s));
         };
 
         it('show jump /hello/about, when use redirect relative path', () => {

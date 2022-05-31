@@ -1,3 +1,5 @@
+import '@testing-library/jest-dom/extend-expect';
+
 // eslint-disable-next-line init-declarations
 let node: HTMLDivElement;
 

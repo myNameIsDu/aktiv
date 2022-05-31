@@ -56,9 +56,7 @@ describe('useEffectRouter', () => {
                 app.start();
             });
 
-            act(() => {
-                userEvent.click(screen.getByText(s));
-            });
+            userEvent.click(screen.getByText(s));
         };
 
         it('should get truly path', () => {

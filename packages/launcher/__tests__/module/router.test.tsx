@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import { act, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Launcher, { Outlet, useRouter } from '../../src';
@@ -86,9 +85,7 @@ describe('router', () => {
 
                 it('should redirect to /home/children, when jump to /home', () => {
                     startMethod(parentRedirectItem(false));
-                    act(() => {
-                        userEvent.click(screen.getByText('go home'));
-                    });
+                    userEvent.click(screen.getByText('go home'));
                     expect(window.location.pathname).toBe('/home/children-two');
                     expect(screen.getByTestId('root')).toContainHTML(
                         '<div>home<div>childrenTwo</div></div>',
@@ -106,9 +103,7 @@ describe('router', () => {
 
                 it('should redirect to /home/children, when jump to /home', () => {
                     startMethod(parentRedirectItem(true));
-                    act(() => {
-                        userEvent.click(screen.getByText('go home'));
-                    });
+                    userEvent.click(screen.getByText('go home'));
                     expect(window.location.pathname).toBe('/home/children-two');
                     expect(screen.getByTestId('root')).toContainHTML(
                         '<div>home<div>childrenTwo</div></div>',
@@ -142,9 +137,7 @@ describe('router', () => {
 
                     it('should redirect to /hello/home/children, when jump to /hello/home', () => {
                         startMethod(parentRedirectItem(false), basePath);
-                        act(() => {
-                            userEvent.click(screen.getByText('go home'));
-                        });
+                        userEvent.click(screen.getByText('go home'));
 
                         expect(window.location.pathname).toBe('/hello/home/children-two');
                         expect(screen.getByTestId('root')).toContainHTML(
@@ -162,9 +155,7 @@ describe('router', () => {
 
                     it('should redirect to /hello/home/children, when jump to /hello/home', () => {
                         startMethod(parentRedirectItem(true), basePath);
-                        act(() => {
-                            userEvent.click(screen.getByText('go home'));
-                        });
+                        userEvent.click(screen.getByText('go home'));
 
                         expect(window.location.pathname).toBe('/hello/home/children-two');
                         expect(screen.getByTestId('root')).toContainHTML(

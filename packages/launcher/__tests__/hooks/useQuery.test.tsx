@@ -43,15 +43,12 @@ describe('useQuery', () => {
                 app.start();
             });
 
-            act(() => {
-                userEvent.click(screen.getByText(s));
-            });
+            userEvent.click(screen.getByText(s));
         };
 
         it('should get truly query', () => {
             renderAndJump('redirect self');
-
-            expect(screen.findByText('root')).toBeTruthy();
+            expect(screen.getByText('root')).toBeTruthy();
         });
     });
 });

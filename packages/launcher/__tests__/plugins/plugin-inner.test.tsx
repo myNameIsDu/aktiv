@@ -82,9 +82,7 @@ describe('plugin inner with router', () => {
         expect(document.body).toMatchSnapshot();
         expect(spyInnerRenderTime).toHaveBeenCalledTimes(1);
         expect(spyHomeRenderTime).toHaveBeenCalledTimes(1);
-        act(() => {
-            userEvent.click(screen.getByText('go children'));
-        });
+        userEvent.click(screen.getByText('go children'));
         expect(document.body).toMatchSnapshot();
         expect(spyInnerCallTime).toHaveBeenCalledTimes(2);
         // Note: Since react-router is written with children, routeComponent does not render when the router changes
