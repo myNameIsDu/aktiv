@@ -140,7 +140,7 @@ function defaultPlugins(options) {
         );
     }
 
-    if (extractCSS) {
+    if (extractCSS && !analyze) {
         plugins.push(
             new MintCssExtractWebpackPlugin({
                 filename: 'css/build.[contenthash:10].css',
