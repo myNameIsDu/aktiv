@@ -1,3 +1,5 @@
+const MintCssExtractWebpackPlugin = require('mini-css-extract-plugin');
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const {
     composeEntry,
     composeOutput,
@@ -222,6 +224,24 @@ const generateConfig = config => {
         webpackConfig.devtool = useSentry ? 'hidden-source-map' : false;
     } else {
         webpackConfig.devtool = devtool;
+    }
+    if (analyze) {
+        const smp = new SpeedMeasurePlugin();
+
+        if (presets.extractCSS) {
+            const webpackConfigSMPWithOutMCE = smp.wrap(webpackConfig);
+
+            webpackConfigSMPWithOutMCE.plugins.push(
+                new MintCssExtractWebpackPlugin({
+                    filename: 'css/build.[contenthash:10].css',
+                    ignoreOrder: true,
+                }),
+            );
+
+            return webpackConfigSMPWithOutMCE;
+        }
+
+        return smp.wrap(webpackConfig);
     }
 
     return webpackConfig;
