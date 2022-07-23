@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@1.3.1...@aktiv/launcher@1.5.0) (2022-07-23)
+
+
+### Bug Fixes
+
+* **launcher:** fix import sort lint ([f83b3d3](https://github.com/myNameIsDu/aktiv/commit/f83b3d3c3247932176f579fee63b3543ada89025))
+* 修复plugin-store test ([b327cb7](https://github.com/myNameIsDu/aktiv/commit/b327cb70415b6ba192b1fd54711957a6e902d2e0))
+
+
+### Features
+
+* **launcher:** add ignore file type for launcher ([76d34ca](https://github.com/myNameIsDu/aktiv/commit/76d34cac69b3431185892876f64d1fd8aaf9669c))
+* **launcher:** add new useAktivSelector for launcher ([a1f3fed](https://github.com/myNameIsDu/aktiv/commit/a1f3fed114e282e0a747bf5a4c3493a0f91dd346))
+* **launcher:** add use-effect-router ([fc78212](https://github.com/myNameIsDu/aktiv/commit/fc78212e0e068470c3107b160b8e2ffc19e1ffbf))
+* **launcher:** add useQuery ([b11e766](https://github.com/myNameIsDu/aktiv/commit/b11e76637720816398c92c24004585b08ec974ce))
+* **launcher:** handle review faq ([17357b0](https://github.com/myNameIsDu/aktiv/commit/17357b0853bd25a19055676e29057fbcd30d206c))
+* **launcher:** handle review faq ([d54aa4a](https://github.com/myNameIsDu/aktiv/commit/d54aa4ab37e6ce2ee2d99600dc2598b10cb0ceed))
+
+
+### Performance Improvements
+
+* **launcher-store:** 优化变量名 ([3e1cbec](https://github.com/myNameIsDu/aktiv/commit/3e1cbec8a7aebbc1e4ac4cb40966d869104bf1ac))
+* **launcher:** perf code ([c63cc3a](https://github.com/myNameIsDu/aktiv/commit/c63cc3a154c134c71bedfab35e8b9040f0375d92))
+* **launcher:** perf useRouter ([7a6800c](https://github.com/myNameIsDu/aktiv/commit/7a6800c76b56d0fddff6aa01e7293c9d126bcf08))
+* **launcher:** support unit test case ([e23dfca](https://github.com/myNameIsDu/aktiv/commit/e23dfcaee96a1d638c7416e68751f29605ff2a76))
+* **launcher:** use type predicates ([a14a848](https://github.com/myNameIsDu/aktiv/commit/a14a8483f777c2efb5df597b6b41f84346698db2))
+* **launcher:** 优化createActions类型 ([37b4834](https://github.com/myNameIsDu/aktiv/commit/37b4834adcf24cb9c51e4b570626885c2025677d))
+* **store:** redux-devtool enable trace ([da1ae0d](https://github.com/myNameIsDu/aktiv/commit/da1ae0d38cf5f02e2128af856b062832929b2502))
+* 优化plugin store test code ([f9ea5d2](https://github.com/myNameIsDu/aktiv/commit/f9ea5d260b10d7bc251f6dad3b54aa4e510e85e2))
+
+
+
+
+
 # [1.4.0](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@1.3.1...@aktiv/launcher@1.4.0) (2022-03-29)
 
 
