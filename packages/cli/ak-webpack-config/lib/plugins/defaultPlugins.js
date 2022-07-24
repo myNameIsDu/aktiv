@@ -102,6 +102,7 @@ function defaultPlugins(options) {
             typescript: {
                 configFile: path.resolve(workDir, './tsconfig.json'),
                 mode: 'write-references',
+                typescriptPath: path.resolve(workDir, 'node_modules/typescript'),
             },
         }),
     ];
