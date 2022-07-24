@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/myNameIsDu/aktiv/compare/@aktiv/cli@0.1.0...@aktiv/cli@0.1.1) (2022-07-24)
+
+
+### Bug Fixes
+
+* **cli:** set truly typescript file path for ForkTsCheckerWebpackPlugin ([e46f81b](https://github.com/myNameIsDu/aktiv/commit/e46f81b31e33631704c8496604cc45e4d3748d45))
+
+
+
+
+
 # 0.1.0 (2022-07-23)
 
 
