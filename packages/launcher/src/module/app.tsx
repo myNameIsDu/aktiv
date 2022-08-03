@@ -1,4 +1,5 @@
 import type { ComponentType } from 'react';
+import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import { enableES5 } from 'immer';
 // import { hot } from 'react-hot-loader';
@@ -51,6 +52,7 @@ export interface ConstructorOptionsType {
     routerBasePath?: string;
     rootNode?: string;
     reduxMiddleware?: Middleware[];
+    strictMode?: boolean;
 }
 
 class Launcher {
@@ -70,6 +72,7 @@ class Launcher {
             routerBasePath,
             rootNode = '#root',
             reduxMiddleware,
+            strictMode = false,
         } = this.options;
         // eslint-disable-next-line init-declarations
         let store: Store | null = null;
@@ -83,16 +86,19 @@ class Launcher {
             initialStore(store);
         }
 
-        ReactDOM.render(
+        const baseApp = (
             <LauncherProvider
                 value={{
                     basename: routerBasePath,
                 }}
             >
                 <WrapperInit store={store} hash={hash} routes={routes} />
-            </LauncherProvider>,
-            document.querySelector(rootNode),
+            </LauncherProvider>
         );
+
+        const App = strictMode ? <StrictMode>{baseApp}</StrictMode> : baseApp;
+
+        ReactDOM.render(App, document.querySelector(rootNode));
     }
 
     use(plugin: Plugin, opt?: PluginOpt): void {
