@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-next.0](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@1.5.0...@aktiv/launcher@2.0.0-next.0) (2022-08-23)
+
+
+### chore
+
+* **launcher:** 升级 react-router => 6.3.0 ([3695d4a](https://github.com/myNameIsDu/aktiv/commit/3695d4a7aca6e39ad22587dce6ef0999624764d1))
+
+
+### Features
+
+* **launcher:** add strict mode ([81c10f6](https://github.com/myNameIsDu/aktiv/commit/81c10f6fa48fd7a82cb8ff1041f45ab65defae9a))
+
+
+### BREAKING CHANGES
+
+* **launcher:** 升级 react-router 至稳定版本
+
+
+
+
+
 # [1.5.0](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@1.3.1...@aktiv/launcher@1.5.0) (2022-07-23)
 
 
