@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-next.1](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@2.0.0-next.0...@aktiv/launcher@2.0.0-next.1) (2022-08-28)
+
+
+### Bug Fixes
+
+* **launcher:** support index route and caseSensitive ([cd9bd64](https://github.com/myNameIsDu/aktiv/commit/cd9bd6449f69974c3df4bef580e47673de451c76))
+
+
+
+
+
 # [2.0.0-next.0](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@1.5.0...@aktiv/launcher@2.0.0-next.0) (2022-08-23)
 
 
