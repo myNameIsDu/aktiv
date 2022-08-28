@@ -7,12 +7,7 @@ export * from 'immer';
 export * from './hooks';
 export { default } from './module/app';
 
-export type {
-    DynamicImportType,
-    RouteItem,
-    ConstructorOptionsType,
-    RouteItemBase,
-} from './module/app';
+export type { DynamicImportType, RouteItem, ConstructorOptionsType } from './module/app';
 export type {
     PluginInnerRenderType,
     PluginOuterRenderType,

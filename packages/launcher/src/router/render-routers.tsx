@@ -15,8 +15,8 @@ const renderRoutes = (
         return [];
     }
 
-    return routes!.map(item => {
-        const { path, component, lazy, children, title, redirect } = item;
+    return routes.map(item => {
+        const { path, component, lazy, children, title, redirect, index, caseSensitive } = item;
 
         // RedirectRouteItem
         if (!component && redirect) {
@@ -27,22 +27,33 @@ const renderRoutes = (
         }
         let Com = component;
 
-        if (lazy) {
-            Com = loadable({
-                loader: component as () => DynamicImportType,
-                loading,
-            });
+        if (Com) {
+            if (lazy) {
+                Com = loadable({
+                    loader: component as () => DynamicImportType,
+                    loading,
+                });
+            }
+            const C = Com as ComponentType;
+            const baseWrapperC = (
+                <WrapperRoute redirect={redirect} title={title}>
+                    <C />
+                </WrapperRoute>
+            );
+            const pluginInnerWrapper = pluginRender(baseWrapperC, item);
+
+            // eslint-disable-next-line @typescript-eslint/no-use-before-define
+            return wrapperRoute(
+                { path, children, element: pluginInnerWrapper, index, caseSensitive },
+                pluginRender,
+            );
         }
-        const C = Com as ComponentType;
-        const baseWrapperC = (
-            <WrapperRoute redirect={redirect} title={title}>
-                <C />
-            </WrapperRoute>
-        );
-        const pluginInnerWrapper = pluginRender(baseWrapperC, item);
 
         // eslint-disable-next-line @typescript-eslint/no-use-before-define
-        return wrapperRoute({ path, children, element: pluginInnerWrapper }, pluginRender);
+        return wrapperRoute(
+            { path, children, element: undefined, index, caseSensitive },
+            pluginRender,
+        );
     });
 };
 
@@ -50,11 +61,11 @@ interface wrapperRouteParams extends RouteProps {
     children?: Array<RouteItem>;
 }
 const wrapperRoute = (
-    { path, element, children }: wrapperRouteParams,
+    { path, element, children, index, caseSensitive }: wrapperRouteParams,
     pluginRender: PluginRenderType,
 ) => {
     return (
-        <Route key={path} path={path} element={element}>
+        <Route key={path} index={index} caseSensitive={caseSensitive} path={path} element={element}>
             {renderRoutes(children, pluginRender)}
         </Route>
     );
