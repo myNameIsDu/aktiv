@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-next.3](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@2.0.0-next.2...@aktiv/launcher@2.0.0-next.3) (2022-08-30)
+
+
+### Bug Fixes
+
+* **launcher:** add component is undefined feature ([f7978ed](https://github.com/myNameIsDu/aktiv/commit/f7978ed6d037fdbe39a10332f2ccf99d2aea143f))
+
+
+
+
+
 # [2.0.0-next.2](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@2.0.0-next.1...@aktiv/launcher@2.0.0-next.2) (2022-08-30)
 
 
