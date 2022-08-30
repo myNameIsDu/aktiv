@@ -27,23 +27,31 @@ const renderRoutes = (
         }
         let Com = component;
 
-        if (lazy) {
-            Com = loadable({
-                loader: component as () => DynamicImportType,
-                loading,
-            });
+        if (Com) {
+            if (lazy) {
+                Com = loadable({
+                    loader: component as () => DynamicImportType,
+                    loading,
+                });
+            }
+            const C = Com as ComponentType;
+            const baseWrapperC = (
+                <WrapperRoute redirect={redirect} title={title}>
+                    <C />
+                </WrapperRoute>
+            );
+            const pluginInnerWrapper = pluginRender(baseWrapperC, item);
+
+            // eslint-disable-next-line @typescript-eslint/no-use-before-define
+            return wrapperRoute(
+                { path, children, element: pluginInnerWrapper, index, caseSensitive },
+                pluginRender,
+            );
         }
-        const C = Com as ComponentType;
-        const baseWrapperC = (
-            <WrapperRoute redirect={redirect} title={title}>
-                <C />
-            </WrapperRoute>
-        );
-        const pluginInnerWrapper = pluginRender(baseWrapperC, item);
 
         // eslint-disable-next-line @typescript-eslint/no-use-before-define
         return wrapperRoute(
-            { path, children, element: pluginInnerWrapper, index, caseSensitive },
+            { path, children, element: undefined, index, caseSensitive },
             pluginRender,
         );
     });
