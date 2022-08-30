@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-next.4](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@2.0.0-next.3...@aktiv/launcher@2.0.0-next.4) (2022-08-30)
+
+
+### Bug Fixes
+
+* **launcher:** add key is math.random ([b8510f0](https://github.com/myNameIsDu/aktiv/commit/b8510f078b9b60da502e19de5af91a5a29789d3a))
+
+
+
+
+
 # [2.0.0-next.3](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@2.0.0-next.2...@aktiv/launcher@2.0.0-next.3) (2022-08-30)
 
 
