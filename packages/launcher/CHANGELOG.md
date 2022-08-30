@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-next.2](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@2.0.0-next.1...@aktiv/launcher@2.0.0-next.2) (2022-08-30)
+
+
+### Bug Fixes
+
+* **launcher:** delete when  component is exist extra logic ([f47fb85](https://github.com/myNameIsDu/aktiv/commit/f47fb85c8fb158145f9d89144c37d89b83d0fdbe))
+
+
+
+
+
 # [2.0.0-next.1](https://github.com/myNameIsDu/aktiv/compare/@aktiv/launcher@2.0.0-next.0...@aktiv/launcher@2.0.0-next.1) (2022-08-28)
 
 
