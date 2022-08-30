@@ -65,7 +65,13 @@ const wrapperRoute = (
     pluginRender: PluginRenderType,
 ) => {
     return (
-        <Route key={path} index={index} caseSensitive={caseSensitive} path={path} element={element}>
+        <Route
+            key={path || Math.random()}
+            index={index}
+            caseSensitive={caseSensitive}
+            path={path}
+            element={element}
+        >
             {renderRoutes(children, pluginRender)}
         </Route>
     );
