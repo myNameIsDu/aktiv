@@ -4,7 +4,6 @@ import { act, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Launcher from '../../src/module/app';
 import withRouter, { type HocExtraProps } from '../../src/module/withRouter';
-import '@testing-library/jest-dom/extend-expect';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const spyPageRenderTime = jest.fn(() => {});

@@ -281,7 +281,7 @@ module.exports = {
                         position: 'before',
                     },
                     {
-                        pattern: '@testing-library/jest-dom/extend-expect',
+                        pattern: '@testing-library/jest-dom',
                         group: 'unknown',
                     },
                 ],
