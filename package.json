@@ -10,7 +10,7 @@
     "docs:deploy": "gh-pages -d docs-dist",
     "deploy": "pnpm run docs:build && pnpm run docs:deploy",
     "publish": "lerna publish --yes --conventional-commits",
-    "prepare": "husky install",
+    "postinstall": "husky install",
     "lint": "eslint .",
     "bootstrap": "lerna bootstrap",
     "test": "jest",
