@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/myNameIsDu/aktiv/compare/@aktiv/cli@0.1.1...@aktiv/cli@0.2.0) (2022-11-15)
+
+
+### Features
+
+* **cli:** 优化 cli ([900d852](https://github.com/myNameIsDu/aktiv/commit/900d8529e77c386f433ad304312c56b154cd6b13))
+
+
+
+
+
 ## [0.1.1](https://github.com/myNameIsDu/aktiv/compare/@aktiv/cli@0.1.0...@aktiv/cli@0.1.1) (2022-07-24)
 
 
