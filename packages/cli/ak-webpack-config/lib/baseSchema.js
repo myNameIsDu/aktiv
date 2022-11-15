@@ -47,7 +47,8 @@ module.exports = {
                 extensions: ['.js', '.jsx', '.ts', '.tsx'],
                 modules: [
                     'node_modules',
-                    path.resolve(__dirname, '../../node_modules'), // some babel helpers in this project
+                    path.resolve(__dirname, '../../node_modules'), // 兼容 core-js 包 和 swc/helper 路径问题
+                    path.resolve(__dirname, '../../../../../node_modules'), // 兼容 pnpm 结构
                 ],
             };
 
