@@ -9,7 +9,7 @@
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
     "deploy": "pnpm run docs:build && pnpm run docs:deploy",
-    "publish": "lerna publish --yes --conventional-commits",
+    "publish": "lerna publish --yes --conventional-commits --no-verify-access",
     "postinstall": "husky install",
     "lint": "eslint .",
     "bootstrap": "lerna bootstrap",
