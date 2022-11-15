@@ -44,7 +44,6 @@ const { browserTarget } = require('../config/index');
  * @property {string|string[]|Record<string,string>} entry
  * @property {string} workDir
  * @property {WebpackOptions['output']|string} output
- * @property {boolean} antdModuleLazyOff
  * @property {string[]} babelInclude
  * @property {boolean|Record<string, any>} svgSprite
  * @property {RuleSetRule|RuleSetRule[]} loaders
@@ -56,7 +55,6 @@ const { browserTarget } = require('../config/index');
  * @property {Record<string,any>} definitions
  * @property {string} staticSourcePath
  * @property {string} toCopyPath
- * @property {boolean} hotReplace
  * @property {Plugins} plugins
  * @property {Array<string> | string} splitChunksVendor
  * @property {Record<string,any>} splitChunksCacheGroups
@@ -70,6 +68,7 @@ const { browserTarget } = require('../config/index');
  * @property {TargetType} target
  * @property {ExternalsType} externalsType
  * @property {ReactRefreshPluginOptions} reactRefreshPluginOptions
+ * @property {boolean} typeCheck
  */
 
 /**
@@ -84,10 +83,10 @@ const generateConfig = config => {
         html: configHtml = {},
         miniMomentLocales = false,
         miniMomentTimezone = false,
+        typeCheck = true,
         entry,
         workDir,
         output,
-        antdModuleLazyOff,
         babelInclude,
         svgSprite,
         loaders: configLoaders,
@@ -100,7 +99,6 @@ const generateConfig = config => {
         staticSourcePath = './static',
         toCopyPath = './static',
         pkg,
-        hotReplace,
         plugins: configPlugins,
         splitChunksVendor,
         splitChunksCacheGroups,
@@ -143,8 +141,6 @@ const generateConfig = config => {
     const loaders = babelLoader(
         {
             babelInclude,
-            antdModuleLazyOff,
-            hotReplace,
             workDir,
         },
         presets,
@@ -187,10 +183,10 @@ const generateConfig = config => {
             workDir,
             target,
             presets,
-            hotReplace,
             externalLibConfigs,
             analyze,
             reactRefreshPluginOptions,
+            typeCheck,
         }),
     );
     if (configPlugins) {

@@ -1,4 +1,4 @@
-import Launcher from '@aktiv/launcher';
+import Launcher from 'react-launcher';
 import RouterConfig from './config/router.config';
 
 const app = new Launcher({

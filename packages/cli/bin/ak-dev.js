@@ -32,8 +32,7 @@ program
     .usage('[options]')
     .option('-d, --dir <path>', 'set workDi', resolvePath, defaultWorkDir)
     .option('-c, --config <path>', 'set config file', resolvePath, defaultConfigFile)
-    .option('-p, --port <port>', 'set dev server port', String(defaultPort))
-    .option('--no-hot-replace', 'set the livereload off');
+    .option('-p, --port <port>', 'set dev server port', String(defaultPort));
 
 program.addHelpText('after', () => {
     return `
@@ -62,8 +61,6 @@ const workDir = programOptions.dir;
 const configFile = programOptions.config;
 /** @type {string} */
 const commandPort = programOptions.port;
-/** @type {boolean} */
-const commandHotReplace = programOptions.hotReplace;
 
 const presets = getPreset(localBuildEnv, browserTarget);
 
@@ -79,13 +76,11 @@ if (!checkRequiredFiles([configFilePath, packageFilePath])) {
 const config = require(configFilePath);
 
 workDir && (config.workDir = workDir);
-commandHotReplace && (config.hotReplace = commandHotReplace);
 
 config.pkg = require(packageFilePath);
 config.presets = presets;
 config.target = browserTarget;
 /** @typedef {import ('https').ServerOptions} httpsServerOptions*/
-/** @typedef {import('webpack-dev-server').ServerType} ServerType*/
 /** @typedef {import('webpack-dev-server').Configuration} DevServerConfigType*/
 /** @type {DevServerConfigType} */
 const devServerConfig = config.server || {};
@@ -111,7 +106,7 @@ selectPortIsOccupied(numPort)
         /** @type {'http:'|'https:'} */
         const fromHttpsProtocol = https ? 'https:' : 'http:';
 
-        /** @type {{ type?: ServerType|string; options?: httpsServerOptions }} */
+        /** @type {{ type?: string; options?: httpsServerOptions }} */
         const serverNormal = typeof server === 'object' ? server : { type: server, options: {} };
 
         /** @type {string|undefined} */
@@ -124,7 +119,7 @@ selectPortIsOccupied(numPort)
 
         const url = prepareUrl(protocol, host, newPort, publicPath);
 
-        /** @type {{server?:{ type?: ServerType; options?: httpsServerOptions }}}*/
+        /** @type {{server?:{ type?: string; options?: httpsServerOptions }}}*/
         let httpsCaInfo = {};
 
         if (protocol === 'https:') {
@@ -145,7 +140,7 @@ selectPortIsOccupied(numPort)
             {
                 compress: true,
                 historyApiFallback: true,
-                hot: commandHotReplace,
+                hot: true,
                 ...devServerConfig,
                 host,
                 port: newPort,

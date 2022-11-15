@@ -65,10 +65,10 @@ function composeHtmlWebpackPlugin(htmlOptions, plugins, mode) {
  * @param {string} options.workDir workDir
  * @param {TargetType} options.target target
  * @param {PresetItemType} options.presets PresetItemType
- * @param {boolean} options.hotReplace hotReplace
  * @param {ExternalLibConfigs} options.externalLibConfigs externalLibConfigs
  * @param {boolean} options.analyze analyze
  * @param {ReactRefreshPluginOptions} options.reactRefreshPluginOptions reactRefreshPluginOptions
+ * @param {boolean} options.typeCheck typeCheck
  * @return {PluginsType} return
  */
 function defaultPlugins(options) {
@@ -84,10 +84,10 @@ function defaultPlugins(options) {
         workDir,
         target,
         presets,
-        hotReplace,
         externalLibConfigs,
         analyze,
         reactRefreshPluginOptions,
+        typeCheck,
     } = options;
     let { appName } = options;
     const { isLocal, outputHTML, mode, extractCSS } = presets;
@@ -98,14 +98,19 @@ function defaultPlugins(options) {
         // @ts-ignore not need options
         new Webpack(),
         new ExternalScriptsPlugin(externalLibConfigs),
-        new ForkTsCheckerWebpackPlugin({
-            typescript: {
-                configFile: path.resolve(workDir, './tsconfig.json'),
-                mode: 'write-references',
-                typescriptPath: path.resolve(workDir, 'node_modules/typescript'),
-            },
-        }),
     ];
+
+    if (typeCheck) {
+        plugins.push(
+            new ForkTsCheckerWebpackPlugin({
+                typescript: {
+                    configFile: path.resolve(workDir, './tsconfig.json'),
+                    mode: 'write-references',
+                    typescriptPath: path.resolve(workDir, 'node_modules/typescript'),
+                },
+            }),
+        );
+    }
     const builtInDefinitions = {
         'process.env.IS_LOCAL': JSON.stringify(isLocal),
         'process.env.BROWSER': JSON.stringify(target === browserTarget),
@@ -182,7 +187,7 @@ function defaultPlugins(options) {
         // 强制区分大小写
         plugins.push(new CaseSensitivePathsPlugin());
     }
-    if (isLocal && hotReplace) {
+    if (isLocal) {
         plugins.push(new ReactRefreshWebpackPlugin({ ...reactRefreshPluginOptions }));
     }
     if (analyze) {

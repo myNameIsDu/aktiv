@@ -1,4 +1,4 @@
-import { useNavigate } from '@aktiv/launcher';
+import { useNavigate } from 'react-launcher';
 import './index.less';
 
 function Main() {
