@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/myNameIsDu/aktiv/compare/@aktiv/cli@0.2.1...@aktiv/cli@0.3.0) (2022-11-16)
+
+
+### Features
+
+* **cli:** 降低swc版本 ([0a69e06](https://github.com/myNameIsDu/aktiv/commit/0a69e0616e1b5f9d580d524f0c682b37f15e5959))
+
+
+
+
+
 ## [0.2.1](https://github.com/myNameIsDu/aktiv/compare/@aktiv/cli@0.2.0...@aktiv/cli@0.2.1) (2022-11-15)
 
 **Note:** Version bump only for package @aktiv/cli
