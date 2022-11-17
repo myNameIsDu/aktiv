@@ -10,7 +10,6 @@ const webpack = require('webpack');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const Webpack = require('webpackbar');
 const ExternalScriptsPlugin = require('./ExternalScriptsPlugin');
-const WatchMissingNodeModulesPlugin = require('./WatchMissingNodeModulesPlugin');
 const { browserTarget } = require('../../../config/index');
 const genAppName = require('../../../utils/genAppName');
 
@@ -182,8 +181,6 @@ function defaultPlugins(options) {
     }
 
     if (isLocal) {
-        // 在安装包后不需要重新构建
-        plugins.push(new WatchMissingNodeModulesPlugin(path.resolve(workDir, 'node_modules')));
         // 强制区分大小写
         plugins.push(new CaseSensitivePathsPlugin());
     }
