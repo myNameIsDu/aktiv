@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/myNameIsDu/aktiv/compare/@aktiv/cli@0.3.0...@aktiv/cli@0.3.1) (2022-11-17)
+
+
+### Bug Fixes
+
+* **cli:** 删除 watchMissingNodeMoudlePlugin 修复 启动后页面打开pending ([d3b3981](https://github.com/myNameIsDu/aktiv/commit/d3b398174e27dc0813f1bc885c446f7c84a5a7fd))
+
+
+
+
+
 # [0.3.0](https://github.com/myNameIsDu/aktiv/compare/@aktiv/cli@0.2.1...@aktiv/cli@0.3.0) (2022-11-16)
 
 
