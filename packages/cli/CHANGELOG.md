@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/myNameIsDu/aktiv/compare/@aktiv/cli@0.3.1...@aktiv/cli@0.3.2) (2022-11-30)
+
+
+### Bug Fixes
+
+* **cli:** static 目录默认为 public toCopy  path 默认为 ./ ([88a510b](https://github.com/myNameIsDu/aktiv/commit/88a510bdb74f163193478afb06cc72f7d246e6b1))
+
+
+
+
+
 ## [0.3.1](https://github.com/myNameIsDu/aktiv/compare/@aktiv/cli@0.3.0...@aktiv/cli@0.3.1) (2022-11-17)
 
 
