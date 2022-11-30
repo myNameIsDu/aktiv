@@ -96,8 +96,9 @@ const generateConfig = config => {
         externalsType: configExternalsType,
         appName,
         definitions,
-        staticSourcePath = './static',
-        toCopyPath = './static',
+        // webpack dev server 默认为 public 所以这里也默认为 public
+        staticSourcePath = './public',
+        toCopyPath = './',
         pkg,
         plugins: configPlugins,
         splitChunksVendor,
