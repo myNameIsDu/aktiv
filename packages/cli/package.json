@@ -17,7 +17,7 @@
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.1",
     "@sentry/webpack-plugin": "^1.18.2",
     "@swc/core": "1.2.171",
-    "@swc/helpers": "^0.4.12",
+    "@swc/helpers": "0.4.12",
     "autoprefixer": "^10.3.7",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "chalk": "^4.1.2",
