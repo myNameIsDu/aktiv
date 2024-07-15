@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.3](https://github.com/myNameIsDu/aktiv/compare/@aktiv/cli@0.3.2...@aktiv/cli@0.3.3) (2024-07-15)
+
+
+### Bug Fixes
+
+* **cli:** 锁定 swc helpers 版本 ([de4d693](https://github.com/myNameIsDu/aktiv/commit/de4d6933ddd4ad365b6441857f074e43e408f4c2))
+
+
+
+
+
 ## [0.3.2](https://github.com/myNameIsDu/aktiv/compare/@aktiv/cli@0.3.1...@aktiv/cli@0.3.2) (2022-11-30)
 
 
