@@ -2,7 +2,6 @@ import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import tsc from '@rollup/plugin-typescript';
-import { terser } from 'rollup-plugin-terser';
 const { getExternals } = require('./bundle-util');
 
 const extensions = ['js', 'jsx', 'ts', 'tsx'];
@@ -41,6 +40,5 @@ export default {
             babelHelpers: 'runtime',
             exclude: /node_modules/,
         }),
-        terser(),
     ],
 };
