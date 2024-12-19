@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MintCssExtractWebpackPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const Webpack = require('webpackbar');
+const WebpackBar = require('webpackbar');
 const ExternalScriptsPlugin = require('./ExternalScriptsPlugin');
 const { browserTarget } = require('../../../config/index');
 const genAppName = require('../../../utils/genAppName');
@@ -95,7 +95,7 @@ function defaultPlugins(options) {
 
     const plugins = [
         // @ts-ignore not need options
-        new Webpack(),
+        new WebpackBar(),
         new ExternalScriptsPlugin(externalLibConfigs),
     ];
 
